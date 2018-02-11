@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="961.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AbonoController">
+   <children>
+      <SplitPane dividerPositions="0.5234619395203337" prefHeight="528.0" prefWidth="961.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
+               <children>
+                  <Label layoutX="77.0" layoutY="31.0" styleClass="labels3" text="Buscar Factura:" />
+                  <TextField fx:id="txtBusqueda" layoutX="197.0" layoutY="27.0" onKeyReleased="#BuscarFactura" onMouseEntered="#MouseEscribir" />
+                  <TableView fx:id="tblFacturas" layoutX="6.0" layoutY="79.0" onMouseClicked="#MostrarFactura" onMouseEntered="#MouseDireccion" prefHeight="439.0" prefWidth="486.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <SplitPane dividerPositions="0.5258126195028681" orientation="VERTICAL" prefHeight="525.0" prefWidth="456.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="fondo2">
+                           <children>
+                              <TableView fx:id="tblArticulos" layoutX="11.0" layoutY="11.0" onMouseEntered="#MouseDireccion" prefHeight="252.0" prefWidth="430.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="fondo2">
+                           <children>
+                              <Label fx:id="lblTotalFactura" layoutX="289.0" layoutY="12.0" styleClass="labels3" text="Total:" />
+                              <Label fx:id="lblTotal" layoutX="354.0" layoutY="12.0" prefHeight="17.0" prefWidth="91.0" styleClass="labels3" />
+                              <Label fx:id="lblPagadoFactura" layoutX="289.0" layoutY="34.0" prefHeight="17.0" prefWidth="63.0" styleClass="labels3" text="Pagado:" />
+                              <Label fx:id="lblPagado" layoutX="353.0" layoutY="34.0" prefHeight="17.0" prefWidth="91.0" styleClass="labels3" />
+                              <Label fx:id="lblFaltanteFactura" layoutX="286.0" layoutY="59.0" prefHeight="17.0" prefWidth="63.0" styleClass="labels3" text="Faltante:" />
+                              <Label fx:id="lblFaltante" layoutX="350.0" layoutY="59.0" prefHeight="17.0" prefWidth="91.0" styleClass="labels3" />
+                              <Label layoutX="59.0" layoutY="106.0" styleClass="labels3" text="Monto del Abono:" />
+                              <Label layoutX="60.0" layoutY="156.0" styleClass="labels3" text="Tipo de Pago:" />
+                              <TextField fx:id="txtMontoAbono" layoutX="183.0" layoutY="102.0" onMouseEntered="#MouseEscribir" prefHeight="25.0" prefWidth="185.0" />
+                              <RadioButton fx:id="rbtnEfectivo" layoutX="107.0" layoutY="193.0" mnemonicParsing="false" onMouseEntered="#MouseMano" selected="true" styleClass="labels3" text="Efectivo">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="rbtngTipoPago" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtnTarjeta" layoutX="210.0" layoutY="193.0" mnemonicParsing="false" onMouseEntered="#MouseMano" styleClass="labels3" text="Tarjeta" toggleGroup="$rbtngTipoPago" />
+                              <Button fx:id="btnRealizarAbono" layoutX="317.0" layoutY="160.0" mnemonicParsing="false" onAction="#RealizarAbono" onMouseEntered="#MouseMano" styleClass="btn2" text="Realizar Abono" />
+                              <Label fx:id="lblIdClienteFactura" layoutX="14.0" layoutY="12.0" styleClass="labels3" text="IdCliente: " />
+                              <Label fx:id="lblIdCliente" layoutX="128.0" layoutY="12.0" prefHeight="17.0" prefWidth="149.0" styleClass="labels3" />
+                              <Label fx:id="lblNombreClienteFactura" layoutX="16.0" layoutY="34.0" styleClass="labels3" text="Nombre Cliente:" />
+                              <Label fx:id="lblNumeroClienteFactura" layoutX="17.0" layoutY="59.0" styleClass="labels3" text="Numero Cliente:" />
+                              <Label fx:id="lblNombreCliente" layoutX="133.0" layoutY="34.0" prefHeight="17.0" prefWidth="149.0" styleClass="labels3" />
+                              <Label fx:id="lblNumeroCliente" layoutX="131.0" layoutY="59.0" prefHeight="17.0" prefWidth="149.0" styleClass="labels3" />
+                              <Label fx:id="lblNoMonto" layoutX="374.0" layoutY="103.0" styleClass="labels4" text="*" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

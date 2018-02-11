@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="960.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PrincipalController">
+   <children>
+      <ToolBar fx:id="toolBal" prefHeight="66.0" prefWidth="961.0" styleClass="fondo1">
+        <items>
+          <Button fx:id="btnInicio" mnemonicParsing="false" onAction="#Inicio" onMouseEntered="#MouseMano" styleClass="btn1" text="Inicio" />
+            <Button fx:id="btnVenta" mnemonicParsing="false" onAction="#Venta" onMouseEntered="#MouseMano" styleClass="btn1" text="Venta" />
+            <Button fx:id="btnApartado" mnemonicParsing="false" onAction="#Apartado" onMouseEntered="#MouseMano" styleClass="btn1" text="Apartado" />
+            <Button fx:id="btnAbono" mnemonicParsing="false" onAction="#Abono" onMouseEntered="#MouseMano" styleClass="btn1" text="Abono" />
+            <Button fx:id="btnConsultas" mnemonicParsing="false" onAction="#Consultas" onMouseEntered="#MouseMano" styleClass="btn1" text="Informacion" />
+            <Button fx:id="btnArticulos" mnemonicParsing="false" onAction="#Articulos" onMouseEntered="#MouseMano" styleClass="btn1" text="Articulos" />
+            <Button fx:id="btnDocumentacion" mnemonicParsing="false" onAction="#Documentacion" onMouseEntered="#MouseMano" styleClass="btn1" text="Documentacion" />
+            <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#Salir" onMouseEntered="#MouseMano" prefHeight="30.0" prefWidth="96.0" styleClass="btn1" stylesheets="@../Imagenes/Estilo.css" text="Salir" />
+        </items>
+      </ToolBar>
+      <AnchorPane fx:id="Espacio" layoutY="67.0" prefHeight="528.0" prefWidth="961.0" />
+   </children>
+</AnchorPane>

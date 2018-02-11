@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="835.0" styleClass="fondo2" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultaAbonosController">
+   <children>
+      <Label layoutX="242.0" layoutY="16.0" styleClass="labels3" text="Buscar Abono: " />
+      <TextField fx:id="txtBusqueda" layoutX="392.0" layoutY="13.0" onKeyReleased="#BuscarAbono" onMouseEntered="#MouseEscribir" prefHeight="25.0" prefWidth="201.0" />
+      <TableView fx:id="tblAbonos" layoutX="10.0" layoutY="59.0" onMouseEntered="#MouseDireccion" prefHeight="457.0" prefWidth="816.0" />
+   </children>
+</AnchorPane>

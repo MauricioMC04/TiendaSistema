@@ -1,0 +1,75 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 28, 2017, 4:23:13 PM
+    Author     : Josue
+*/
+
+.fondo1{
+    -fx-background-color: #3366ff;
+}
+
+.fondo2{
+    -fx-background-color: #ccccff;
+}
+
+.fondo3{
+    -fx-background-color: coral;
+    -fx-font-family :"Arial Rounded MT Bold";
+    -fx-font-size: 14px;
+}
+
+.btn1{
+    -fx-background-radius: 18;
+    -fx-background-color: coral;
+    -fx-font-family :"Arial Rounded MT Bold";
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+}
+
+.btn2{
+    -fx-background-radius: 18;
+    -fx-background-color: coral;
+    -fx-font-family :"Arial Rounded MT Bold";
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+
+.btn3{
+    -fx-background-color: coral;
+    -fx-font-family :"Arial Rounded MT Bold";
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-border-color: #ccccff;
+}
+
+.labels1{
+    -fx-font-family :"Arial Rounded MT Bold";
+    -fx-font-size: 14px;
+    -fx-text-fill: coral;
+}
+
+.labels2{
+    -fx-font-family :"Arial Rounded MT Bold";
+    -fx-font-size: 14px;
+    -fx-text-fill: #0000ff;
+}
+
+.labels3{
+    -fx-font-family :"Arial Rounded MT Bold";
+    -fx-font-size: 14px;
+    -fx-text-fill: #9900ff;
+}
+
+.labels4{
+    -fx-font-family :"Arial Rounded MT Bold";
+    -fx-font-size: 20px;
+    -fx-text-fill: #ff0000;
+}
+
+.Seleccionado{
+    -fx-border-color: #0000ff;
+}

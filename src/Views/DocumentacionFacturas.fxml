@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="764.0" styleClass="fondo2" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DocumentacionFacturasController">
+   <children>
+      <Button fx:id="btnGenerarDocumentacion" layoutX="255.0" layoutY="243.0" mnemonicParsing="false" onAction="#GenerarDocumentacion" onMouseEntered="#MouseMano" prefHeight="40.0" prefWidth="254.0" styleClass="btn2" text="Generar Facturas Documentacion" />
+   </children>
+</AnchorPane>

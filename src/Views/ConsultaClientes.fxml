@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="835.0" styleClass="fondo2" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultaClientesController">
+   <children>
+      <Label layoutX="240.0" layoutY="15.0" styleClass="labels3" text="Buscar Cliente:" />
+      <TextField fx:id="txtBusqueda" layoutX="357.0" layoutY="11.0" onKeyReleased="#BusquedaCliente" onMouseEntered="#MouseEscribir" prefHeight="25.0" prefWidth="212.0" />
+      <TableView fx:id="tblClientes" layoutX="10.0" layoutY="48.0" onMouseEntered="#MouseDireccion" prefHeight="470.0" prefWidth="817.0" />
+   </children>
+</AnchorPane>

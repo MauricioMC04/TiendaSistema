@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="961.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ArticulosController">
+   <children>
+      <TabPane prefHeight="528.0" prefWidth="961.0" styleClass="fondo2" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <tabs>
+            <Tab fx:id="TabAgregar" styleClass="fondo3" text="Agregar Articulo">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.4994786235662148" prefHeight="499.0" prefWidth="961.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
+                                 <children>
+                                    <TableView fx:id="tblAgregar" layoutX="8.0" layoutY="8.0" onMouseEntered="#MouseDireccion" prefHeight="482.0" prefWidth="460.0" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
+                                 <children>
+                                    <Label layoutX="25.0" layoutY="63.0" styleClass="labels3" text="Nombre:" />
+                                    <Label layoutX="31.0" layoutY="250.0" styleClass="labels3" text="Precio:" />
+                                    <TextArea fx:id="txtNombre" layoutX="109.0" layoutY="65.0" onMouseEntered="#MouseEscribir" prefHeight="108.0" prefWidth="344.0" />
+                                    <TextField fx:id="txtPrecio" layoutX="111.0" layoutY="246.0" onMouseEntered="#MouseEscribir" prefHeight="25.0" prefWidth="340.0" />
+                                    <Button fx:id="btnAgregar" layoutX="200.0" layoutY="363.0" mnemonicParsing="false" onAction="#Agregar" onMouseEntered="#MouseMano" styleClass="btn2" text="Agregar" />
+                                    <Label fx:id="lblNoPrecio" layoutX="100.0" layoutY="251.0" prefHeight="17.0" prefWidth="8.0" styleClass="labels4" text="*" />
+                                    <Label fx:id="lblNoNombre" layoutX="96.0" layoutY="63.0" prefHeight="17.0" prefWidth="8.0" styleClass="labels4" text="*" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab fx:id="TabEliminar" styleClass="fondo3" text="Eliminar Articulo">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.5005213764337852" prefHeight="499.0" prefWidth="961.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
+                                 <children>
+                                    <Label layoutX="78.0" layoutY="15.0" styleClass="labels3" text="Buscar Articulo:" />
+                                    <TextField fx:id="txtBusquedaEliminar" layoutX="197.0" layoutY="11.0" onKeyReleased="#BusquedaEliminar" onMouseEntered="#MouseEscribir" prefHeight="25.0" prefWidth="180.0" />
+                                    <TableView fx:id="tblEliminar" layoutX="6.0" layoutY="46.0" onMouseClicked="#MostrarEliminar" onMouseEntered="#MouseDireccion" prefHeight="446.0" prefWidth="465.0" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
+                                 <children>
+                                    <Button fx:id="btnEliminar" layoutX="200.0" layoutY="235.0" mnemonicParsing="false" onAction="#Eliminar" onMouseEntered="#MouseMano" styleClass="btn2" text="Eliminar" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab fx:id="TabEditar" styleClass="fondo3" text="Editar Articulo">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.5005213764337852" prefHeight="500.0" prefWidth="961.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
+                                 <children>
+                                    <Label layoutX="64.0" layoutY="16.0" styleClass="labels3" text="Buscar Articulo:" />
+                                    <TextField fx:id="txtBusquedaEditar" layoutX="192.0" layoutY="12.0" onKeyReleased="#BusquedaEditar" onMouseEntered="#MouseEscribir" prefHeight="25.0" prefWidth="165.0" />
+                                    <TableView fx:id="tblEditar" layoutX="7.0" layoutY="44.0" onMouseClicked="#MostrarArticulo" onMouseEntered="#MouseDireccion" prefHeight="449.0" prefWidth="464.0" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
+                                 <children>
+                                    <Label fx:id="lblNombreEditar" layoutX="31.0" layoutY="58.0" styleClass="labels3" text="Nombre:" />
+                                    <Label fx:id="lblPrecioEditar" layoutX="43.0" layoutY="240.0" styleClass="labels3" text="Precio:" />
+                                    <TextArea fx:id="txtNombreEditar" layoutX="124.0" layoutY="58.0" onMouseEntered="#MouseEscribir" prefHeight="108.0" prefWidth="344.0" />
+                                    <TextField fx:id="txtPrecioEditar" layoutX="124.0" layoutY="236.0" onMouseEntered="#MouseEscribir" prefHeight="25.0" prefWidth="345.0" />
+                                    <Label fx:id="lblNoNombreEditar" layoutX="106.0" layoutY="58.0" prefHeight="17.0" prefWidth="17.0" styleClass="labels4" text="*" />
+                                    <Label fx:id="lblNoPrecioEditar" layoutX="104.0" layoutY="241.0" prefHeight="17.0" prefWidth="17.0" styleClass="labels4" text="*" />
+                                    <Button fx:id="btnEditar" layoutX="207.0" layoutY="356.0" mnemonicParsing="false" onAction="#Editar" onMouseEntered="#MouseMano" styleClass="btn2" text="Editar" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

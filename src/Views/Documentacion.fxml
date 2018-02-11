@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="961.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DocumentacionController">
+   <children>
+      <SplitPane dividerPositions="0.20020855057351408" prefHeight="528.0" prefWidth="961.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
+               <children>
+                  <VBox prefHeight="528.0" prefWidth="193.0" styleClass="fondo2">
+                     <children>
+                        <Button fx:id="btnFacturas" mnemonicParsing="false" onAction="#Facturas" onMouseEntered="#MouseMano" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Facturas" />
+                        <Button fx:id="btnDetallesFacturas" mnemonicParsing="false" onAction="#DetallesFacturas" onMouseEntered="#MouseMano" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Detalles Facturas" />
+                        <Button fx:id="btnAbonos" mnemonicParsing="false" onAction="#Abonos" onMouseEntered="#MouseMano" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Abonos" />
+                        <Button fx:id="btnArticulos" mnemonicParsing="false" onAction="#Articulos" onMouseEntered="#MouseMano" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Articulos" />
+                        <Button fx:id="btnClientes" mnemonicParsing="false" onAction="#Clientes" onMouseEntered="#MouseMano" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Clientes" />
+                        <Button fx:id="btnTodo" mnemonicParsing="false" onAction="#Todo" onMouseEntered="#MouseMano" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Todo" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="Espacio" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
