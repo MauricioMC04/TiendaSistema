@@ -46,6 +46,14 @@ and open the template in the editor.
     -fx-border-color: #ccccff;
 }
 
+.btn4{
+    -fx-background-color: fuchsia;
+    -fx-font-family :"Arial Rounded MT Bold";
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-border-color: #ccccff;
+}
+
 .labels1{
     -fx-font-family :"Arial Rounded MT Bold";
     -fx-font-size: 14px;
@@ -68,8 +76,4 @@ and open the template in the editor.
     -fx-font-family :"Arial Rounded MT Bold";
     -fx-font-size: 20px;
     -fx-text-fill: #ff0000;
-}
-
-.Seleccionado{
-    -fx-border-color: #0000ff;
 }

@@ -7,20 +7,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="960.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="690.0" prefWidth="1105.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PrincipalController">
    <children>
-      <ToolBar fx:id="toolBal" prefHeight="66.0" prefWidth="961.0" styleClass="fondo1">
+      <SplitPane dividerPositions="0.13055303717135086" prefHeight="690.0" prefWidth="1105.0">
         <items>
-          <Button fx:id="btnInicio" mnemonicParsing="false" onAction="#Inicio" onMouseEntered="#MouseMano" styleClass="btn1" text="Inicio" />
-            <Button fx:id="btnVenta" mnemonicParsing="false" onAction="#Venta" onMouseEntered="#MouseMano" styleClass="btn1" text="Venta" />
-            <Button fx:id="btnApartado" mnemonicParsing="false" onAction="#Apartado" onMouseEntered="#MouseMano" styleClass="btn1" text="Apartado" />
-            <Button fx:id="btnAbono" mnemonicParsing="false" onAction="#Abono" onMouseEntered="#MouseMano" styleClass="btn1" text="Abono" />
-            <Button fx:id="btnConsultas" mnemonicParsing="false" onAction="#Consultas" onMouseEntered="#MouseMano" styleClass="btn1" text="Informacion" />
-            <Button fx:id="btnArticulos" mnemonicParsing="false" onAction="#Articulos" onMouseEntered="#MouseMano" styleClass="btn1" text="Articulos" />
-            <Button fx:id="btnDocumentacion" mnemonicParsing="false" onAction="#Documentacion" onMouseEntered="#MouseMano" styleClass="btn1" text="Documentacion" />
-            <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#Salir" onMouseEntered="#MouseMano" prefHeight="30.0" prefWidth="96.0" styleClass="btn1" stylesheets="@../Imagenes/Estilo.css" text="Salir" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <VBox prefHeight="688.0" prefWidth="141.0">
+                     <children>
+                      <Button fx:id="btnInicio" mnemonicParsing="false" onAction="#Inicio" onMouseEntered="#MouseMano" styleClass="btn3" text="Inicio" />
+                        <Button fx:id="btnVenta" mnemonicParsing="false" onAction="#Venta" onMouseEntered="#MouseMano" styleClass="btn3" text="Venta" />
+                        <Button fx:id="btnApartado" mnemonicParsing="false" onAction="#Apartado" onMouseEntered="#MouseMano" styleClass="btn3" text="Apartado" />
+                        <Button fx:id="btnAbono" mnemonicParsing="false" onAction="#Abono" onMouseEntered="#MouseMano" styleClass="btn3" text="Abono" />
+                        <Button fx:id="btnConsultas" mnemonicParsing="false" onAction="#Consultas" onMouseEntered="#MouseMano" prefHeight="0.0" prefWidth="163.0" styleClass="btn3" text="Informacion" />
+                        <Button fx:id="btnArticulos" mnemonicParsing="false" onAction="#Articulos" onMouseEntered="#MouseMano" styleClass="btn3" text="Articulos" />
+                        <Button fx:id="btnDocumentacion" mnemonicParsing="false" onAction="#Documentacion" onMouseEntered="#MouseMano" styleClass="btn3" text="Documentacion" />
+                        <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#Salir" onMouseEntered="#MouseMano" prefHeight="30.0" prefWidth="96.0" styleClass="btn4" stylesheets="@Estilo.css" text="Salir" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
         </items>
-      </ToolBar>
-      <AnchorPane fx:id="Espacio" layoutY="67.0" prefHeight="528.0" prefWidth="961.0" />
+      </SplitPane>
    </children>
 </AnchorPane>
