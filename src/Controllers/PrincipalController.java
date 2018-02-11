@@ -56,8 +56,6 @@ public class PrincipalController implements Initializable {
     private void MouseMano(MouseEvent event) {
         DropShadow shadow = new DropShadow(10, javafx.scene.paint.Color.BLUE);
         btnInicio.setEffect(shadow);
-        
-        
     }
 
     @FXML
