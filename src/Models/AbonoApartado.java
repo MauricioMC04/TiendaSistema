@@ -3,7 +3,7 @@ package Models;
 
 import java.sql.Date;
 
-public class Abono {
+public class AbonoApartado {
     
     private int idAbono;
     private int CodigoFactura;
@@ -11,10 +11,10 @@ public class Abono {
     private Date fecha;
     private int idTipoDePago;
 
-    public Abono() {
+    public AbonoApartado() {
     }
 
-    public Abono(int idAbono, int CodigoFactura, double Monto, Date fecha, int idTipoDePago) {
+    public AbonoApartado(int idAbono, int CodigoFactura, double Monto, Date fecha, int idTipoDePago) {
         this.idAbono = idAbono;
         this.CodigoFactura = CodigoFactura;
         this.Monto = Monto;

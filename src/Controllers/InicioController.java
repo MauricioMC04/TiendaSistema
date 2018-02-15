@@ -51,22 +51,6 @@ public class InicioController implements Initializable {
     @FXML
     private Label lblApartados;
     @FXML
-    private Label lblCantidadAbonos;
-    @FXML
-    private Label lblAbonos;
-    @FXML
-    private Label lblTotalPorAbonos;
-    @FXML
-    private Label lblTotalAbonos;
-    @FXML
-    private Label lblTotalAbonosEfectivo;
-    @FXML
-    private Label lblTotalAbEfectivo;
-    @FXML
-    private Label lblTotalAbonosTarjeta;
-    @FXML
-    private Label lblTotalAbTarjeta;
-    @FXML
     private Label lblTotalIngresosEfectivo;
     @FXML
     private Label lblTotalIEfectivo;
@@ -76,6 +60,50 @@ public class InicioController implements Initializable {
     private Label lblTotalITarjeta;
     @FXML
     private AnchorPane anchorPane1;
+    @FXML
+    private Label lblCantidadReparaciones;
+    @FXML
+    private Label lblReparaciones;
+    @FXML
+    private Label lblTotalPorReparaciones;
+    @FXML
+    private Label lblTotalReparacionesEfectivo;
+    @FXML
+    private Label lblTotalReparacionesTarjeta;
+    @FXML
+    private Label lblTotalReparaciones;
+    @FXML
+    private Label lblTortalREjectivo;
+    @FXML
+    private Label lblTotalRTarjeta;
+    @FXML
+    private Label lblAbonosApartadoTarjeta;
+    @FXML
+    private Label lblTotalAbAEfectivo;
+    @FXML
+    private Label lblAbonosEfectivo;
+    @FXML
+    private Label lblTotalAbonosApartado;
+    @FXML
+    private Label lblCantidadAbonosApartado;
+    @FXML
+    private Label lblAbonosApartado;
+    @FXML
+    private Label lblTotalAbATarjeta;
+    @FXML
+    private Label lblCantidadAbonosReparacion;
+    @FXML
+    private Label lblTotalAbonosReparacion;
+    @FXML
+    private Label lblAbonosReparacionEfectivo;
+    @FXML
+    private Label lblAbonosReparacionTarjeta;
+    @FXML
+    private Label lblAbonosReparacion;
+    @FXML
+    private Label lblTotalAbREjectivo;
+    @FXML
+    private Label lblAbRTarjeta;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,10 +120,10 @@ public class InicioController implements Initializable {
         lblTotalApartados.setText(String.valueOf(fecha.getTotalApartados()));
         lblTotalAEfectivo.setText(String.valueOf(fecha.getTotalApartadosEfectivo()));
         lblTotalATarjeta.setText(String.valueOf(fecha.getTotalApartadosTarjeta()));
-        lblAbonos.setText(Integer.toString(fecha.getCantidadAbonos()));
-        lblTotalAbonos.setText(String.valueOf(fecha.getTotalAbonos()));
-        lblTotalAbEfectivo.setText(String.valueOf(fecha.getTotalAbonosEfectivo()));
-        lblTotalAbTarjeta.setText(String.valueOf(fecha.getTotalAbonosTarjeta()));
+        lblAbonosApartado.setText(Integer.toString(fecha.getCantidadAbonos()));
+        lblTotalAbonosApartado.setText(String.valueOf(fecha.getTotalAbonos()));
+        lblTotalAbAEfectivo.setText(String.valueOf(fecha.getTotalAbonosEfectivo()));
+        lblTotalAbATarjeta.setText(String.valueOf(fecha.getTotalAbonosTarjeta()));
         lblIngresos.setText(String.valueOf(fecha.getTotalIngresos()));
         lblTotalIEfectivo.setText(String.valueOf(fecha.getTotalIngresosEfecttivo()));
         lblTotalITarjeta.setText(String.valueOf(fecha.getTotalIngresosTarjeta()));

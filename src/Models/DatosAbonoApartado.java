@@ -11,16 +11,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
 
-public class DatosAbono {
+public class DatosAbonoApartado {
 
     private final Conexion conex = Conexion.singleton();
     
-    public boolean RealizarAbono(Abono abono){
+    public boolean RealizarAbono(AbonoApartado abono){
         abono.setIdAbono(MayorIdAbono() + 1);
         return InsertarAbono(abono) && ActualizarApartado(abono);
     }
     
-    private boolean InsertarAbono(Abono abono){
+    private boolean InsertarAbono(AbonoApartado abono){
         Connection conexion = conex.open();
         try {
             PreparedStatement pst = conexion.prepareStatement("INSERT INTO abonos VALUES(?,?,?,?,?)");
@@ -58,7 +58,7 @@ public class DatosAbono {
         return -1;
     }
     
-    private boolean ActualizarApartado(Abono abono){
+    private boolean ActualizarApartado(AbonoApartado abono){
         Connection conexion = conex.open();
         try {
             PreparedStatement pst = conexion.prepareStatement("update facturas set MontoPagado = MontoPagado + " +
@@ -73,8 +73,8 @@ public class DatosAbono {
         return false;
     }
     
-    public ObservableList<Abono> Abonos(String busqueda){
-        ObservableList <Abono> modelo = FXCollections.observableArrayList();
+    public ObservableList<AbonoApartado> Abonos(String busqueda){
+        ObservableList <AbonoApartado> modelo = FXCollections.observableArrayList();
         String sql = GenerarSqlAbonos(busqueda);
         String[] datos = new String[4];
         Date fecha;
@@ -88,7 +88,7 @@ public class DatosAbono {
                 datos[2] = rs.getString(3);
                 fecha = rs.getDate(4);
                 datos[3] = rs.getString(5);
-                modelo.add(new Abono(Integer.parseInt(datos[0]),Integer.parseInt(datos[1]),Double.parseDouble(datos[2]),
+                modelo.add(new AbonoApartado(Integer.parseInt(datos[0]),Integer.parseInt(datos[1]),Double.parseDouble(datos[2]),
                     fecha, Integer.parseInt(datos[3])));
             }
         } catch (SQLException ex) {

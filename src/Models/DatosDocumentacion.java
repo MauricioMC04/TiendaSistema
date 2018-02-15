@@ -171,7 +171,7 @@ public class DatosDocumentacion {
     
     public boolean AbonosDocumentacion(String direccion){
         try {
-            ArrayList<Abono> abonos = Abonos();
+            ArrayList<AbonoApartado> abonos = Abonos();
             File archivoXLS = new File(direccion);
             if(archivoXLS.exists()){
                 archivoXLS.delete();
@@ -217,8 +217,8 @@ public class DatosDocumentacion {
         return false;
     }
     
-    public ArrayList<Abono> Abonos(){
-        ArrayList<Abono> abonos = new ArrayList<>();
+    public ArrayList<AbonoApartado> Abonos(){
+        ArrayList<AbonoApartado> abonos = new ArrayList<>();
         String sql ="select idAbono, CodigoFactura, Monto, Fecha, idTipoDePago from abonos";
         String[] datos = new String[4];
         Date fecha;
@@ -232,7 +232,7 @@ public class DatosDocumentacion {
                 datos[2] = rs.getString(3);
                 fecha = rs.getDate(4);
                 datos[3] = rs.getString(5);
-                abonos.add(new Abono(Integer.parseInt(datos[0]), Integer.parseInt(datos[1]), 
+                abonos.add(new AbonoApartado(Integer.parseInt(datos[0]), Integer.parseInt(datos[1]), 
                      Double.parseDouble(datos[2]), fecha, Integer.parseInt(datos[3])));
             }
         } catch (SQLException ex) {
@@ -366,7 +366,7 @@ public class DatosDocumentacion {
         try {
             ArrayList<Factura> facturas = Facturas();
             ArrayList<DetalleFactura> detallesFacturas = DetallesFacturas();
-            ArrayList<Abono> abonos = Abonos();
+            ArrayList<AbonoApartado> abonos = Abonos();
             ArrayList<Articulo> articulos = Articulos();
             ArrayList<Cliente> clientes = Clientes();
             ArrayList<TipoDeFactura> tiposDeFacturas = TiposDeFactura();

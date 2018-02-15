@@ -47,7 +47,15 @@ and open the template in the editor.
 }
 
 .btn4{
-    -fx-background-color: fuchsia;
+    -fx-background-color: #cc0033;
+    -fx-font-family :"Arial Rounded MT Bold";
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-border-color: #ccccff;
+}
+
+.btn5{
+    -fx-background-color: #0033ff;
     -fx-font-family :"Arial Rounded MT Bold";
     -fx-font-size: 14px;
     -fx-text-fill: white;

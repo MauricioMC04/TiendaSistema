@@ -20,6 +20,7 @@ public class MundoDelCalzado2 extends Application {
             stagePrincipal.setTitle("Mundo Del Calzado II");
             stagePrincipal.setScene(scene);
             stagePrincipal.resizableProperty().setValue(Boolean.FALSE);
+            //stagePrincipal.initStyle(StageStyle.UTILITY);
             stagePrincipal.show();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);

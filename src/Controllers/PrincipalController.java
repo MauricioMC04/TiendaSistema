@@ -1,22 +1,16 @@
 
 package Controllers;
 
-import static java.awt.Color.black;
-import static java.awt.Color.blue;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javax.swing.JOptionPane;
-import org.apache.poi.ss.usermodel.Color;
 
 public class PrincipalController implements Initializable {
     
@@ -27,8 +21,6 @@ public class PrincipalController implements Initializable {
     @FXML
     private Button btnApartado;
     @FXML
-    private Button btnAbono;
-    @FXML
     private Button btnConsultas;
     @FXML
     private Button btnSalir;
@@ -38,31 +30,44 @@ public class PrincipalController implements Initializable {
     private Button btnDocumentacion;
     @FXML
     private Button btnArticulos;
+    @FXML
+    private Button btnAbonoApartado;
+    @FXML
+    private Button btnReparacion;
+    @FXML
+    private Button btnAbonoReparacion;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         CargarVentana("Inicio");
+        btnInicio.getStyleClass().add("btn5");
         btnInicio.setCursor(javafx.scene.Cursor.HAND);
-        btnAbono.setCursor(javafx.scene.Cursor.HAND);
+        btnAbonoApartado.setCursor(javafx.scene.Cursor.HAND);
         btnApartado.setCursor(javafx.scene.Cursor.HAND);
         btnSalir.setCursor(javafx.scene.Cursor.HAND);
         btnConsultas.setCursor(javafx.scene.Cursor.HAND);
         btnVenta.setCursor(javafx.scene.Cursor.HAND);
         btnDocumentacion.setCursor(javafx.scene.Cursor.HAND);
         btnArticulos.setCursor(javafx.scene.Cursor.HAND);
+        btnReparacion.setCursor(javafx.scene.Cursor.HAND);
+        btnAbonoReparacion.setCursor(javafx.scene.Cursor.HAND);
     }    
-
-    @FXML
-    private void MouseMano(MouseEvent event) {
-        DropShadow shadow = new DropShadow(10, javafx.scene.paint.Color.BLUE);
-        btnInicio.setEffect(shadow);
-    }
 
     @FXML
     private void Inicio(ActionEvent event){
         btnInicio.setDisable(true);
         CargarVentana("Inicio");
         btnInicio.setDisable(false);
+        Seleccionados(btnInicio.getStyleClass());
+        Seleccionados(btnAbonoApartado.getStyleClass());
+        Seleccionados(btnAbonoReparacion.getStyleClass());
+        Seleccionados(btnApartado.getStyleClass());
+        Seleccionados(btnArticulos.getStyleClass());
+        Seleccionados(btnConsultas.getStyleClass());
+        Seleccionados(btnDocumentacion.getStyleClass());
+        Seleccionados(btnReparacion.getStyleClass());
+        Seleccionados(btnVenta.getStyleClass());
+        btnInicio.getStyleClass().add("btn5");
     }
     
     @FXML
@@ -70,6 +75,16 @@ public class PrincipalController implements Initializable {
         btnVenta.setDisable(true);
         CargarVentana("Venta");
         btnVenta.setDisable(false);
+        Seleccionados(btnVenta.getStyleClass());
+        Seleccionados(btnInicio.getStyleClass());
+        Seleccionados(btnAbonoApartado.getStyleClass());
+        Seleccionados(btnAbonoReparacion.getStyleClass());
+        Seleccionados(btnApartado.getStyleClass());
+        Seleccionados(btnArticulos.getStyleClass());
+        Seleccionados(btnConsultas.getStyleClass());
+        Seleccionados(btnDocumentacion.getStyleClass());
+        Seleccionados(btnReparacion.getStyleClass());
+        btnVenta.getStyleClass().add("btn5");
     }
 
     @FXML
@@ -77,13 +92,16 @@ public class PrincipalController implements Initializable {
         btnApartado.setDisable(true);
         CargarVentana("Apartado");
         btnApartado.setDisable(false);
-    }
-
-    @FXML
-    private void Abono(ActionEvent event) {
-        btnAbono.setDisable(true);
-        CargarVentana("Abono");
-        btnAbono.setDisable(false);
+        Seleccionados(btnApartado.getStyleClass());
+        Seleccionados(btnInicio.getStyleClass());
+        Seleccionados(btnAbonoApartado.getStyleClass());
+        Seleccionados(btnAbonoReparacion.getStyleClass());
+        Seleccionados(btnArticulos.getStyleClass());
+        Seleccionados(btnConsultas.getStyleClass());
+        Seleccionados(btnDocumentacion.getStyleClass());
+        Seleccionados(btnReparacion.getStyleClass());
+        Seleccionados(btnVenta.getStyleClass());
+        btnApartado.getStyleClass().add("btn5");
     }
 
     @FXML
@@ -91,6 +109,16 @@ public class PrincipalController implements Initializable {
         btnConsultas.setDisable(true);
         CargarVentana("Consultas");
         btnConsultas.setDisable(false);
+        Seleccionados(btnInicio.getStyleClass());
+        Seleccionados(btnAbonoApartado.getStyleClass());
+        Seleccionados(btnAbonoReparacion.getStyleClass());
+        Seleccionados(btnApartado.getStyleClass());
+        Seleccionados(btnArticulos.getStyleClass());
+        Seleccionados(btnConsultas.getStyleClass());
+        Seleccionados(btnDocumentacion.getStyleClass());
+        Seleccionados(btnReparacion.getStyleClass());
+        Seleccionados(btnVenta.getStyleClass());
+        btnConsultas.getStyleClass().add("btn5");
     }
 
     @FXML
@@ -111,7 +139,7 @@ public class PrincipalController implements Initializable {
     }
     
     private void CargarVentana(String ventana){
-         try {
+        try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/Views/"+ventana+".fxml"));
             Espacio.getChildren().clear();
             Espacio.getChildren().setAll(pane);
@@ -125,6 +153,16 @@ public class PrincipalController implements Initializable {
         btnDocumentacion.setDisable(true);
         CargarVentana("Documentacion");
         btnDocumentacion.setDisable(false);
+        Seleccionados(btnInicio.getStyleClass());
+        Seleccionados(btnAbonoApartado.getStyleClass());
+        Seleccionados(btnAbonoReparacion.getStyleClass());
+        Seleccionados(btnApartado.getStyleClass());
+        Seleccionados(btnArticulos.getStyleClass());
+        Seleccionados(btnConsultas.getStyleClass());
+        Seleccionados(btnDocumentacion.getStyleClass());
+        Seleccionados(btnReparacion.getStyleClass());
+        Seleccionados(btnVenta.getStyleClass());
+        btnDocumentacion.getStyleClass().add("btn5");
     }
 
     @FXML
@@ -132,5 +170,72 @@ public class PrincipalController implements Initializable {
         btnArticulos.setDisable(true);
         CargarVentana("Articulos");
         btnArticulos.setDisable(false);
+        Seleccionados(btnInicio.getStyleClass());
+        Seleccionados(btnAbonoApartado.getStyleClass());
+        Seleccionados(btnAbonoReparacion.getStyleClass());
+        Seleccionados(btnApartado.getStyleClass());
+        Seleccionados(btnArticulos.getStyleClass());
+        Seleccionados(btnConsultas.getStyleClass());
+        Seleccionados(btnDocumentacion.getStyleClass());
+        Seleccionados(btnReparacion.getStyleClass());
+        Seleccionados(btnVenta.getStyleClass());
+        btnArticulos.getStyleClass().add("btn5");
+    }
+
+    @FXML
+    private void AbonoApartado(ActionEvent event) {
+        btnAbonoApartado.setDisable(true);
+        CargarVentana("AbonoApartado");
+        btnAbonoApartado.setDisable(false);
+        Seleccionados(btnInicio.getStyleClass());
+        Seleccionados(btnAbonoApartado.getStyleClass());
+        Seleccionados(btnAbonoReparacion.getStyleClass());
+        Seleccionados(btnApartado.getStyleClass());
+        Seleccionados(btnArticulos.getStyleClass());
+        Seleccionados(btnConsultas.getStyleClass());
+        Seleccionados(btnDocumentacion.getStyleClass());
+        Seleccionados(btnReparacion.getStyleClass());
+        Seleccionados(btnVenta.getStyleClass());
+        btnAbonoApartado.getStyleClass().add("btn5");
+    }
+
+    @FXML
+    private void Reparacion(ActionEvent event) {
+        btnReparacion.setDisable(true);
+        CargarVentana("Reparacion");
+        btnReparacion.setDisable(false);
+        Seleccionados(btnInicio.getStyleClass());
+        Seleccionados(btnAbonoApartado.getStyleClass());
+        Seleccionados(btnAbonoReparacion.getStyleClass());
+        Seleccionados(btnApartado.getStyleClass());
+        Seleccionados(btnArticulos.getStyleClass());
+        Seleccionados(btnConsultas.getStyleClass());
+        Seleccionados(btnDocumentacion.getStyleClass());
+        Seleccionados(btnReparacion.getStyleClass());
+        Seleccionados(btnVenta.getStyleClass());
+        btnReparacion.getStyleClass().add("btn5");
+    }
+
+    @FXML
+    private void AbonoReparacion(ActionEvent event) {
+        btnAbonoReparacion.setDisable(true);
+        CargarVentana("AbonoReparacion");
+        btnAbonoReparacion.setDisable(false);
+        Seleccionados(btnInicio.getStyleClass());
+        Seleccionados(btnAbonoApartado.getStyleClass());
+        Seleccionados(btnAbonoReparacion.getStyleClass());
+        Seleccionados(btnApartado.getStyleClass());
+        Seleccionados(btnArticulos.getStyleClass());
+        Seleccionados(btnConsultas.getStyleClass());
+        Seleccionados(btnDocumentacion.getStyleClass());
+        Seleccionados(btnReparacion.getStyleClass());
+        Seleccionados(btnVenta.getStyleClass());
+        btnAbonoReparacion.getStyleClass().add("btn5");
+    }
+    
+    private void Seleccionados(ObservableList lista){
+        if(lista.size()>2){
+            lista.remove(2);
+        }
     }
 }

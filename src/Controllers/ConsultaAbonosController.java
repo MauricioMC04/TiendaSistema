@@ -1,8 +1,8 @@
 
 package Controllers;
 
-import Models.Abono;
-import Models.DatosAbono;
+import Models.AbonoApartado;
+import Models.DatosAbonoApartado;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -17,12 +17,12 @@ import javafx.scene.input.MouseEvent;
 
 public class ConsultaAbonosController implements Initializable {
 
-    DatosAbono datosAbono = new DatosAbono();
+    DatosAbonoApartado datosAbono = new DatosAbonoApartado();
     
     @FXML
     private TextField txtBusqueda;
     @FXML
-    private TableView<Abono> tblAbonos;
+    private TableView<AbonoApartado> tblAbonos;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -49,21 +49,21 @@ public class ConsultaAbonosController implements Initializable {
         tblAbonos.setCursor(Cursor.CROSSHAIR);
     }
     
-    private void CargarColumnasAbono(TableView<Abono> table) {
+    private void CargarColumnasAbono(TableView<AbonoApartado> table) {
         TableColumn tblCIdAbono = new TableColumn("IdAbono");
-        tblCIdAbono.setCellValueFactory(new PropertyValueFactory<Abono, String>("idAbono"));
+        tblCIdAbono.setCellValueFactory(new PropertyValueFactory<AbonoApartado, String>("idAbono"));
         tblCIdAbono.setMinWidth(163);
         TableColumn tblCCodigoFactura = new TableColumn("Codigo Factura");
-        tblCCodigoFactura.setCellValueFactory(new PropertyValueFactory<Abono, String>("CodigoFactura"));
+        tblCCodigoFactura.setCellValueFactory(new PropertyValueFactory<AbonoApartado, String>("CodigoFactura"));
         tblCCodigoFactura.setMinWidth(163);
         TableColumn tblCMonto = new TableColumn("Monto");
-        tblCMonto.setCellValueFactory(new PropertyValueFactory<Abono, String>("Monto"));
+        tblCMonto.setCellValueFactory(new PropertyValueFactory<AbonoApartado, String>("Monto"));
         tblCMonto.setMinWidth(163);
         TableColumn tblCFecha = new TableColumn("Fecha");
-        tblCFecha.setCellValueFactory(new PropertyValueFactory<Abono, String>("Fecha"));
+        tblCFecha.setCellValueFactory(new PropertyValueFactory<AbonoApartado, String>("Fecha"));
         tblCFecha.setMinWidth(163);
         TableColumn tblCIdTipoDePago = new TableColumn("Tipo Pago");
-        tblCIdTipoDePago.setCellValueFactory(new PropertyValueFactory<Abono, String>("idTipoDePago"));
+        tblCIdTipoDePago.setCellValueFactory(new PropertyValueFactory<AbonoApartado, String>("idTipoDePago"));
         tblCIdTipoDePago.setMinWidth(163);
         table.getColumns().addAll(tblCIdAbono, tblCCodigoFactura, tblCMonto, tblCFecha, tblCIdTipoDePago);
     }

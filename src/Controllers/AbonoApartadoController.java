@@ -1,9 +1,9 @@
 
 package Controllers;
 
-import Models.Abono;
+import Models.AbonoApartado;
 import Models.Cliente;
-import Models.DatosAbono;
+import Models.DatosAbonoApartado;
 import Models.DatosFactura;
 import Models.DetalleFactura;
 import Models.Factura;
@@ -27,10 +27,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 
-public class AbonoController implements Initializable {
+public class AbonoApartadoController implements Initializable {
 
     DatosFactura datosFactura = new DatosFactura();
-    DatosAbono datosAbono = new DatosAbono();
+    DatosAbonoApartado datosAbono = new DatosAbonoApartado();
     
     @FXML
     private TextField txtBusqueda;
@@ -245,6 +245,6 @@ public class AbonoController implements Initializable {
         if(rbtnTarjeta.isSelected()){
             tipoDePago = 2;
         }
-        return datosAbono.RealizarAbono(new Abono(0,codigoFactura,monto,fecha,tipoDePago));
+        return datosAbono.RealizarAbono(new AbonoApartado(0,codigoFactura,monto,fecha,tipoDePago));
     }
 }
