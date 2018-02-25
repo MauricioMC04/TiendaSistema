@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,9 +35,7 @@ public class AbonoApartadoController implements Initializable {
     
     @FXML
     private TextField txtBusqueda;
-    @FXML
     private TableView<Factura> tblFacturas;
-    @FXML
     private TableView<DetalleFactura> tblArticulos;
     @FXML
     private Label lblTotal;
@@ -74,6 +73,16 @@ public class AbonoApartadoController implements Initializable {
     private Label lblNombreClienteFactura;
     @FXML
     private Label lblNoMonto;
+    @FXML
+    private TableView<?> tblReparaciones;
+    @FXML
+    private Label lblArticulo;
+    @FXML
+    private TextField txtArticulo;
+    @FXML
+    private Label lblDescripcion;
+    @FXML
+    private TextArea txtDescripcion;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -84,13 +93,11 @@ public class AbonoApartadoController implements Initializable {
         lblNoMonto.setVisible(false);
     }    
 
-    @FXML
     private void MouseEscribir(MouseEvent event) {
         txtBusqueda.setCursor(Cursor.TEXT);
         txtMontoAbono.setCursor(Cursor.TEXT);
     }
 
-    @FXML
     private void BuscarFactura(KeyEvent event) {
         if(txtBusqueda.getText().equals("")){
             CargarFacturas("Ninguna");
@@ -99,13 +106,11 @@ public class AbonoApartadoController implements Initializable {
         }
     }
 
-    @FXML
     private void MouseDireccion(MouseEvent event) {
         tblArticulos.setCursor(Cursor.CROSSHAIR);
         tblFacturas.setCursor(Cursor.CROSSHAIR);
     }
 
-    @FXML
     private void MouseMano(MouseEvent event) {
         rbtnEfectivo.setCursor(Cursor.HAND);
         rbtnTarjeta.setCursor(Cursor.HAND);
@@ -156,7 +161,6 @@ public class AbonoApartadoController implements Initializable {
         btnRealizarAbono.setDisable(false);
     }
 
-    @FXML
     private void MostrarFactura(MouseEvent event) {
         Factura factura = tblFacturas.getSelectionModel().getSelectedItem();
         if(factura != null){
@@ -246,5 +250,13 @@ public class AbonoApartadoController implements Initializable {
             tipoDePago = 2;
         }
         return datosAbono.RealizarAbono(new AbonoApartado(0,codigoFactura,monto,fecha,tipoDePago));
+    }
+
+    @FXML
+    private void BuscarReparacion(KeyEvent event) {
+    }
+
+    @FXML
+    private void MostrarReparacion(MouseEvent event) {
     }
 }

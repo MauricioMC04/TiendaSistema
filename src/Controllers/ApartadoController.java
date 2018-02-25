@@ -100,7 +100,6 @@ public class ApartadoController implements Initializable {
     }    
 
 
-    @FXML
     private void MouseEscribir(MouseEvent event) {
         txtBusqueda.setCursor(Cursor.TEXT);
         txtDescuento.setCursor(Cursor.TEXT);
@@ -119,7 +118,6 @@ public class ApartadoController implements Initializable {
         ParteArticulo(false);
     }
 
-    @FXML
     private void MouseDireccion(MouseEvent event) {
         tblApartado.setCursor(Cursor.CROSSHAIR);
         tblArticulos.setCursor(Cursor.CROSSHAIR);
@@ -158,7 +156,6 @@ public class ApartadoController implements Initializable {
         btnAgregar.setDisable(false);
     }
 
-    @FXML
     private void MouseMano(MouseEvent event) {
         rbtnColones.setCursor(Cursor.HAND);
         rbtnPorcentaje.setCursor(Cursor.HAND);

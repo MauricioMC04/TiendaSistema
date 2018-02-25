@@ -19,11 +19,11 @@
                         <Button fx:id="btnVenta" mnemonicParsing="false" onAction="#Venta" prefHeight="40.0" prefWidth="154.0" styleClass="btn3" text="Venta" />
                         <Button fx:id="btnApartado" mnemonicParsing="false" onAction="#Apartado" prefHeight="40.0" prefWidth="154.0" styleClass="btn3" text="Apartado" />
                         <Button fx:id="btnAbonoApartado" mnemonicParsing="false" onAction="#AbonoApartado" prefHeight="40.0" prefWidth="154.0" styleClass="btn3" text="Abono Apartado" />
+                        <Button fx:id="btnReparacion" mnemonicParsing="false" onAction="#Reparacion" prefHeight="40.0" prefWidth="154.0" styleClass="btn3" text="Reparacion" />
+                        <Button fx:id="btnAbonoReparacion" mnemonicParsing="false" onAction="#AbonoReparacion" prefHeight="40.0" prefWidth="154.0" styleClass="btn3" text="Abono Reparacion" />
                         <Button fx:id="btnConsultas" mnemonicParsing="false" onAction="#Consultas" prefHeight="40.0" prefWidth="154.0" styleClass="btn3" text="Informacion" />
                         <Button fx:id="btnArticulos" mnemonicParsing="false" onAction="#Articulos" prefHeight="40.0" prefWidth="154.0" styleClass="btn3" text="Articulos" />
                         <Button fx:id="btnDocumentacion" mnemonicParsing="false" onAction="#Documentacion" prefHeight="40.0" prefWidth="154.0" styleClass="btn3" text="Documentacion" />
-                        <Button fx:id="btnReparacion" mnemonicParsing="false" onAction="#Reparacion" prefHeight="40.0" prefWidth="154.0" styleClass="btn3" text="Reparacion" />
-                        <Button fx:id="btnAbonoReparacion" mnemonicParsing="false" onAction="#AbonoReparacion" prefHeight="40.0" prefWidth="154.0" styleClass="btn3" text="Abono Reparacion" />
                         <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#Salir" prefHeight="40.0" prefWidth="154.0" styleClass="btn4" text="Salir" />
                      </children>
                   </VBox>

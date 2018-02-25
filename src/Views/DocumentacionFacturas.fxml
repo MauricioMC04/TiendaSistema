@@ -6,8 +6,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="764.0" styleClass="fondo2" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DocumentacionFacturasController">
+<AnchorPane id="AnchorPane" prefHeight="686.0" prefWidth="794.0" styleClass="fondo2" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DocumentacionFacturasController">
    <children>
-      <Button fx:id="btnGenerarDocumentacion" layoutX="255.0" layoutY="243.0" mnemonicParsing="false" onAction="#GenerarDocumentacion" onMouseEntered="#MouseMano" prefHeight="40.0" prefWidth="254.0" styleClass="btn2" text="Generar Facturas Documentacion" />
+      <Button fx:id="btnGenerarDocumentacion" layoutX="289.0" layoutY="326.0" mnemonicParsing="false" onAction="#GenerarDocumentacion" prefHeight="40.0" prefWidth="254.0" styleClass="btn2" text="Generar Facturas Documentacion" />
    </children>
 </AnchorPane>

@@ -25,7 +25,6 @@ public class DocumentacionTodoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }    
 
-    @FXML
     private void MouseMano(MouseEvent event) {
         btnGenerarDocumentacion.setCursor(Cursor.HAND);
     }

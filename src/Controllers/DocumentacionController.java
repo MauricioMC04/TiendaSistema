@@ -29,12 +29,15 @@ public class DocumentacionController implements Initializable {
     private Button btnTodo;
     @FXML
     private AnchorPane Espacio;
+    @FXML
+    private Button btnReparaciones;
+    @FXML
+    private Button btnAbonosReparaciones;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {   
     }    
 
-    @FXML
     private void MouseMano(MouseEvent event) {
         btnAbonos.setCursor(Cursor.HAND);
         btnArticulos.setCursor(Cursor.HAND);

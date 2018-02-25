@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="835.0" styleClass="fondo2" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultaArticulosController">
+<AnchorPane id="AnchorPane" prefHeight="686.0" prefWidth="847.0" styleClass="fondo2" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultaArticulosController">
    <children>
-      <Label layoutX="239.0" layoutY="17.0" styleClass="labels3" text="Buscar Articulo: " />
-      <TextField fx:id="txtBusqueda" layoutX="388.0" layoutY="13.0" onKeyReleased="#BusquedaArticulo" onMouseEntered="#MouseEscribir" prefHeight="25.0" prefWidth="189.0" />
-      <TableView fx:id="tblArticulos" layoutX="8.0" layoutY="55.0" onMouseEntered="#MouseDireccion" prefHeight="461.0" prefWidth="818.0" />
+      <TextField fx:id="txtBusqueda" layoutX="283.0" layoutY="13.0" onKeyReleased="#BusquedaArticulo" prefHeight="25.0" prefWidth="294.0" promptText="Buscar Articulo">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font></TextField>
+      <TableView fx:id="tblArticulos" layoutX="16.0" layoutY="55.0" prefHeight="620.0" prefWidth="818.0" />
    </children>
 </AnchorPane>

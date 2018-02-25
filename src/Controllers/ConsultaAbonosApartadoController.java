@@ -15,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-public class ConsultaAbonosController implements Initializable {
+public class ConsultaAbonosApartadoController implements Initializable {
 
     DatosAbonoApartado datosAbono = new DatosAbonoApartado();
     
@@ -30,7 +30,6 @@ public class ConsultaAbonosController implements Initializable {
         CargarAbonos("Ninguna");
     }    
 
-    @FXML
     private void MouseEscribir(MouseEvent event) {
         txtBusqueda.setCursor(Cursor.TEXT);
     }
@@ -44,7 +43,6 @@ public class ConsultaAbonosController implements Initializable {
         }
     }
 
-    @FXML
     private void MouseDireccion(MouseEvent event) {
         tblAbonos.setCursor(Cursor.CROSSHAIR);
     }

@@ -14,7 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
 import javax.swing.JOptionPane;
 
-public class DocumentacionAbonosController implements Initializable {
+public class DocumentacionAbonosApartadosController implements Initializable {
 
     DatosDocumentacion datosDocumentacion = new DatosDocumentacion();
     
@@ -25,7 +25,6 @@ public class DocumentacionAbonosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }    
 
-    @FXML
     private void MouseMano(MouseEvent event) {
         btnGenerarDocumentacion.setCursor(Cursor.HAND);
     }

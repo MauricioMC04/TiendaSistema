@@ -84,6 +84,38 @@ public class ConsultaFechasController implements Initializable {
     private Label lblTotalITarjeta;
     @FXML
     private TableView<Fecha> tblFechas;
+    @FXML
+    private Label lblCantidadReparaciones;
+    @FXML
+    private Label lblReparaciones;
+    @FXML
+    private Label lblTotalPorReparaciones;
+    @FXML
+    private Label lblTotalReparaciones;
+    @FXML
+    private Label lblTotalReparacionesEfectivo;
+    @FXML
+    private Label lblTortalREjectivo;
+    @FXML
+    private Label lblTotalReparacionesTarjeta;
+    @FXML
+    private Label lblTotalRTarjeta;
+    @FXML
+    private Label lblCantidadAbonosReparacion;
+    @FXML
+    private Label lblAbonosReparacion;
+    @FXML
+    private Label lblTotalAbonosReparacion;
+    @FXML
+    private Label lblTotalAbonosReparacion1;
+    @FXML
+    private Label lblAbonosReparacionEfectivo;
+    @FXML
+    private Label lblTotalAbREjectivo;
+    @FXML
+    private Label lblAbonosReparacionTarjeta;
+    @FXML
+    private Label lblAbRTarjeta;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,7 +124,6 @@ public class ConsultaFechasController implements Initializable {
         ParteFecha(false);
     }    
 
-    @FXML
     private void MouseEscribir(MouseEvent event) {
         txtBusqueda.setCursor(Cursor.TEXT);
     }
@@ -106,7 +137,6 @@ public class ConsultaFechasController implements Initializable {
         }
     }
 
-    @FXML
     private void MouseDireccion(MouseEvent event) {
         tblFechas.setCursor(Cursor.CROSSHAIR);
     }

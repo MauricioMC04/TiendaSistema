@@ -1,54 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="835.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultaFechasController">
+<AnchorPane id="AnchorPane" prefHeight="686.0" prefWidth="847.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultaFechasController">
    <children>
-      <SplitPane dividerPositions="0.49939975990396157" prefHeight="527.0" prefWidth="835.0">
+      <SplitPane dividerPositions="0.49939975990396157" prefHeight="686.0" prefWidth="847.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
                <children>
-                  <Label layoutX="71.0" layoutY="16.0" styleClass="labels3" text="Buscar Fecha: " />
-                  <TextField fx:id="txtBusqueda" layoutX="174.0" layoutY="12.0" onKeyReleased="#BusquedaFecha" onMouseEntered="#MouseEscribir" prefHeight="25.0" prefWidth="177.0" />
-                  <TableView fx:id="tblFechas" layoutX="8.0" layoutY="50.0" onMouseClicked="#MostrarFecha" onMouseEntered="#MouseDireccion" prefHeight="471.0" prefWidth="397.0" />
+                  <TextField fx:id="txtBusqueda" layoutX="82.0" layoutY="12.0" onKeyReleased="#BusquedaFecha" prefHeight="25.0" prefWidth="269.0" promptText="Buscar Fecha">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                     </font></TextField>
+                  <TableView fx:id="tblFechas" layoutX="8.0" layoutY="50.0" onMouseClicked="#MostrarFecha" prefHeight="626.0" prefWidth="397.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
                <children>
-                  <Label fx:id="lblTotalIngresos" layoutX="55.0" layoutY="399.0" styleClass="labels1" text="Total Ingresos:" />
-                  <Label fx:id="lblIngresos" layoutX="250.0" layoutY="399.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Ingresos" />
-                  <Label fx:id="lblCantidadVentas" layoutX="55.0" layoutY="15.0" styleClass="labels1" text="Cantidad de Ventas:" />
-                  <Label fx:id="lblVentas" layoutX="250.0" layoutY="15.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Ventas" />
-                  <Label fx:id="lblTotalPorVentas" layoutX="55.0" layoutY="47.0" styleClass="labels1" text="Total Por Ventas:" />
-                  <Label fx:id="lblTotalVentas" layoutX="250.0" layoutY="47.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total Ventas" />
-                  <Label fx:id="lblTotalVentasEfectivo" layoutX="55.0" layoutY="79.0" styleClass="labels1" text="Total Ventas Efectivo:" />
-                  <Label fx:id="lblTotalVEfectivo" layoutX="250.0" layoutY="79.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total VEfectivo" />
-                  <Label fx:id="lblTotalVentasTarjeta" layoutX="55.0" layoutY="111.0" styleClass="labels1" text="Total Ventas Tarjeta:" />
-                  <Label fx:id="lblTotalVTarjeta" layoutX="250.0" layoutY="111.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total VTarjeta" />
-                  <Label fx:id="lblTotalPorApartados" layoutX="55.0" layoutY="175.0" styleClass="labels1" text="Total Por Apartados:" />
-                  <Label fx:id="lblTotalApartados" layoutX="250.0" layoutY="175.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total Apartados" />
-                  <Label fx:id="lblTotalApartadosEfectivo" layoutX="55.0" layoutY="207.0" styleClass="labels1" text="Total Apartados Efectivo:" />
-                  <Label fx:id="lblTotalAEfectivo" layoutX="250.0" layoutY="207.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total  AEfectivo" />
-                  <Label fx:id="lblTotalApartadosTarjeta" layoutX="55.0" layoutY="239.0" styleClass="labels1" text="Total Apartados Tarjeta:" />
-                  <Label fx:id="lblTotalATarjeta" layoutX="250.0" layoutY="239.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total ATarjeta" />
-                  <Label fx:id="lblCantidadApartados" layoutX="55.0" layoutY="143.0" styleClass="labels1" text="Cantidad Apartados:" />
-                  <Label fx:id="lblApartados" layoutX="250.0" layoutY="143.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Apartados" />
-                  <Label fx:id="lblCantidadAbonos" layoutX="55.0" layoutY="271.0" styleClass="labels1" text="Cantidad Abonos:" />
-                  <Label fx:id="lblAbonos" layoutX="250.0" layoutY="271.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Abonos" />
-                  <Label fx:id="lblTotalPorAbonos" layoutX="55.0" layoutY="303.0" styleClass="labels1" text="Total Por Abonos:" />
-                  <Label fx:id="lblTotalAbonos" layoutX="250.0" layoutY="303.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total Abonos" />
-                  <Label fx:id="lblTotalAbonosEfectivo" layoutX="55.0" layoutY="335.0" styleClass="labels1" text="Total Abonos Efectivo:" />
-                  <Label fx:id="lblTotalAbEfectivo" layoutX="250.0" layoutY="335.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total AbEfectivo" />
-                  <Label fx:id="lblTotalAbonosTarjeta" layoutX="55.0" layoutY="367.0" styleClass="labels1" text="Total Abonos Tarjeta:" />
-                  <Label fx:id="lblTotalAbTarjeta" layoutX="250.0" layoutY="367.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total AbTarjeta" />
-                  <Label fx:id="lblTotalIngresosEfectivo" layoutX="55.0" layoutY="431.0" styleClass="labels1" text="Total Ingresos Efectivo:" />
-                  <Label fx:id="lblTotalIEfectivo" layoutX="250.0" layoutY="431.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Ingresos Efectivo" />
-                  <Label fx:id="lblTotalIngresosTarjeta" layoutX="55.0" layoutY="463.0" styleClass="labels1" text="Total Ingresos Tarjeta:" />
-                  <Label fx:id="lblTotalITarjeta" layoutX="250.0" layoutY="463.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Ingresos Tarjeta" />
+                  <Label fx:id="lblTotalIngresos" layoutX="45.0" layoutY="595.0" styleClass="labels1" text="Total Ingresos:" />
+                  <Label fx:id="lblIngresos" layoutX="255.0" layoutY="595.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Ingresos" />
+                  <Label fx:id="lblCantidadVentas" layoutX="45.0" layoutY="15.0" styleClass="labels1" text="Cantidad de Ventas:" />
+                  <Label fx:id="lblVentas" layoutX="255.0" layoutY="15.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Ventas" />
+                  <Label fx:id="lblTotalPorVentas" layoutX="45.0" layoutY="44.0" styleClass="labels1" text="Total Por Ventas:" />
+                  <Label fx:id="lblTotalVentas" layoutX="255.0" layoutY="44.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total Ventas" />
+                  <Label fx:id="lblTotalVentasEfectivo" layoutX="45.0" layoutY="73.0" styleClass="labels1" text="Total Ventas Efectivo:" />
+                  <Label fx:id="lblTotalVEfectivo" layoutX="255.0" layoutY="73.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total VEfectivo" />
+                  <Label fx:id="lblTotalVentasTarjeta" layoutX="45.0" layoutY="102.0" styleClass="labels1" text="Total Ventas Tarjeta:" />
+                  <Label fx:id="lblTotalVTarjeta" layoutX="255.0" layoutY="102.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total VTarjeta" />
+                  <Label fx:id="lblTotalPorApartados" layoutX="45.0" layoutY="160.0" styleClass="labels1" text="Total Por Apartados:" />
+                  <Label fx:id="lblTotalApartados" layoutX="255.0" layoutY="160.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total Apartados" />
+                  <Label fx:id="lblTotalApartadosEfectivo" layoutX="45.0" layoutY="189.0" styleClass="labels1" text="Total Apartados Efectivo:" />
+                  <Label fx:id="lblTotalAEfectivo" layoutX="255.0" layoutY="189.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total  AEfectivo" />
+                  <Label fx:id="lblTotalApartadosTarjeta" layoutX="45.0" layoutY="218.0" styleClass="labels1" text="Total Apartados Tarjeta:" />
+                  <Label fx:id="lblTotalATarjeta" layoutX="255.0" layoutY="218.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total ATarjeta" />
+                  <Label fx:id="lblCantidadApartados" layoutX="45.0" layoutY="131.0" styleClass="labels1" text="Cantidad Apartados:" />
+                  <Label fx:id="lblApartados" layoutX="255.0" layoutY="131.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Apartados" />
+                  <Label fx:id="lblCantidadAbonos" layoutX="45.0" layoutY="247.0" styleClass="labels1" text="Cantidad Abonos:" />
+                  <Label fx:id="lblAbonos" layoutX="255.0" layoutY="247.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Abonos" />
+                  <Label fx:id="lblTotalPorAbonos" layoutX="45.0" layoutY="276.0" styleClass="labels1" text="Total Por Abonos:" />
+                  <Label fx:id="lblTotalAbonos" layoutX="255.0" layoutY="276.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total Abonos" />
+                  <Label fx:id="lblTotalAbonosEfectivo" layoutX="45.0" layoutY="305.0" styleClass="labels1" text="Total Abonos Efectivo:" />
+                  <Label fx:id="lblTotalAbEfectivo" layoutX="255.0" layoutY="305.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total AbEfectivo" />
+                  <Label fx:id="lblTotalAbonosTarjeta" layoutX="45.0" layoutY="334.0" styleClass="labels1" text="Total Abonos Tarjeta:" />
+                  <Label fx:id="lblTotalAbTarjeta" layoutX="255.0" layoutY="334.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Total AbTarjeta" />
+                  <Label fx:id="lblTotalIngresosEfectivo" layoutX="45.0" layoutY="624.0" styleClass="labels1" text="Total Ingresos Efectivo:" />
+                  <Label fx:id="lblTotalIEfectivo" layoutX="255.0" layoutY="624.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Ingresos Efectivo" />
+                  <Label fx:id="lblTotalIngresosTarjeta" layoutX="45.0" layoutY="653.0" styleClass="labels1" text="Total Ingresos Tarjeta:" />
+                  <Label fx:id="lblTotalITarjeta" layoutX="255.0" layoutY="653.0" prefHeight="17.0" prefWidth="144.0" styleClass="labels2" text="Ingresos Tarjeta" />
+                  <Label fx:id="lblCantidadReparaciones" layoutX="45.0" layoutY="363.0" styleClass="labels1" text="Cantidad Reparaciones:" />
+                  <Label fx:id="lblReparaciones" layoutX="255.0" layoutY="363.0" styleClass="labels2" text="Reparaciones" />
+                  <Label fx:id="lblTotalPorReparaciones" layoutX="45.0" layoutY="392.0" styleClass="labels1" text="Total Por Reparaciones:" />
+                  <Label fx:id="lblTotalReparaciones" layoutX="255.0" layoutY="392.0" styleClass="labels2" text="Total Reparaciones" />
+                  <Label fx:id="lblTotalReparacionesEfectivo" layoutX="45.0" layoutY="421.0" styleClass="labels1" text="Total Reparaciones Efectivo:" />
+                  <Label fx:id="lblTortalREjectivo" layoutX="255.0" layoutY="421.0" styleClass="labels2" text="Total REfectivo" />
+                  <Label fx:id="lblTotalReparacionesTarjeta" layoutX="45.0" layoutY="450.0" styleClass="labels1" text="Total Reparaciones Tarjeta:" />
+                  <Label fx:id="lblTotalRTarjeta" layoutX="255.0" layoutY="450.0" styleClass="labels2" text="Total RTarjeta" />
+                  <Label fx:id="lblCantidadAbonosReparacion" layoutX="45.0" layoutY="479.0" styleClass="labels1" text="Cantidad Abonos Reparacion:" />
+                  <Label fx:id="lblAbonosReparacion" layoutX="255.0" layoutY="479.0" styleClass="labels2" text="Abonos Reparacion" />
+                  <Label fx:id="lblTotalAbonosReparacion" layoutX="45.0" layoutY="508.0" styleClass="labels1" text="Total Abonos Reparacion:" />
+                  <Label fx:id="lblTotalAbonosReparacion1" layoutX="255.0" layoutY="508.0" styleClass="labels2" text="Total Abonos Reparacion" />
+                  <Label fx:id="lblAbonosReparacionEfectivo" layoutX="45.0" layoutY="537.0" styleClass="labels1" text="Abonos Repacion Efectivo:" />
+                  <Label fx:id="lblTotalAbREjectivo" layoutX="255.0" layoutY="537.0" styleClass="labels2" text="Total AbREfectivo" />
+                  <Label fx:id="lblAbonosReparacionTarjeta" layoutX="45.0" layoutY="564.0" styleClass="labels1" text="Abonos Reparacion Tarjeta:" />
+                  <Label fx:id="lblAbRTarjeta" layoutX="255.0" layoutY="564.0" styleClass="labels2" text="TotalAbRTarjeta" />
                </children>
             </AnchorPane>
         </items>

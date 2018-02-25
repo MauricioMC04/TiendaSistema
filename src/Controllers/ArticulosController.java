@@ -79,14 +79,12 @@ public class ArticulosController implements Initializable {
     }    
 
 
-    @FXML
     private void MouseDireccion(MouseEvent event) {
         tblAgregar.setCursor(Cursor.CROSSHAIR);
         tblEliminar.setCursor(Cursor.CROSSHAIR);
         tblEditar.setCursor(Cursor.CROSSHAIR);
     }
 
-    @FXML
     private void MouseEscribir(MouseEvent event) {
         txtBusquedaEditar.setCursor(Cursor.TEXT);
         txtBusquedaEliminar.setCursor(Cursor.TEXT);
@@ -96,7 +94,6 @@ public class ArticulosController implements Initializable {
         txtPrecioEditar.setCursor(Cursor.TEXT);
     }
 
-    @FXML
     private void MouseMano(MouseEvent event) {
         btnAgregar.setCursor(Cursor.HAND);
         btnEditar.setCursor(Cursor.HAND);

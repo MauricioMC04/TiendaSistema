@@ -7,69 +7,70 @@ package Controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
  *
  * @author Josue
  */
-public class ReparacionController implements Initializable {
+public class ConsultaReparacionesController implements Initializable {
 
     @FXML
-    private Label lblNoNumeroPersona;
+    private TextField txtBusqueda;
     @FXML
-    private Label lblNoMontoPagado;
+    private TableView<?> tblReparaciones;
     @FXML
-    private Label lblNoEstado;
+    private Label lblArticulo;
     @FXML
     private Label lblNoArticulo;
     @FXML
-    private Label lblNoNombrePersona;
-    @FXML
-    private Label lblNoMontoTotal;
-    @FXML
     private TextField txtArticulo;
+    @FXML
+    private Label lblDescripcion;
     @FXML
     private TextArea txtDescripcion;
     @FXML
+    private Label lblNoDescripcion;
+    @FXML
+    private Label lblNombrePersona;
+    @FXML
     private TextField txtNombrePersona;
+    @FXML
+    private Label lblNoNombrePersona;
+    @FXML
+    private Label lblNumeroPersona;
     @FXML
     private TextField txtNumeroPersona;
     @FXML
-    private TextField txtMontoTotal;
+    private Label lblNoNumeroPersona;
     @FXML
-    private TextField txtMontoPagado;
-    @FXML
-    private RadioButton rbtnTarjeta;
-    @FXML
-    private ToggleGroup rbtngTiposDePago;
-    @FXML
-    private RadioButton rbtnFinalizada;
-    @FXML
-    private ToggleGroup rbtngEstados;
-    @FXML
-    private RadioButton rbtnEfectivo;
+    private Label lblEstadoReparacion;
     @FXML
     private RadioButton rbtnEnEspera;
     @FXML
+    private ToggleGroup rbtngEstadosReparacion;
+    @FXML
     private RadioButton rbtnEnProceso;
     @FXML
-    private Label lblNoTipoPago;
+    private RadioButton rbtnFinalizada;
     @FXML
-    private Button btnReparacion;
+    private Label lblTipoDePago;
     @FXML
-    private Button btnImprimir;
+    private RadioButton rbtnEfectivo;
     @FXML
-    private Button btnNuevaReparacion;
+    private ToggleGroup rbtngTiposDePago;
+    @FXML
+    private RadioButton rbtnTarjeta;
 
     /**
      * Initializes the controller class.
@@ -80,15 +81,11 @@ public class ReparacionController implements Initializable {
     }    
 
     @FXML
-    private void RealizarReparacion(ActionEvent event) {
+    private void Buscar(KeyEvent event) {
     }
 
     @FXML
-    private void Imprimir(ActionEvent event) {
-    }
-
-    @FXML
-    private void NuevaReparacion(ActionEvent event) {
+    private void Transladar(MouseEvent event) {
     }
     
 }

@@ -91,7 +91,6 @@ public class VentaController implements Initializable {
         btnNuevaVenta.setVisible(false);
     }    
 
-    @FXML
     private void MouseEscribir(MouseEvent event) {
         txtBusqueda.setCursor(Cursor.TEXT);
         txtDescuento.setCursor(Cursor.TEXT);
@@ -106,7 +105,6 @@ public class VentaController implements Initializable {
         }
     }
 
-    @FXML
     private void MouseDireccion(MouseEvent event) {
         tblArticulos.setCursor(Cursor.CROSSHAIR);
         tblVenta.setCursor(Cursor.CROSSHAIR);
@@ -145,7 +143,6 @@ public class VentaController implements Initializable {
         btnAgregar.setDisable(false);
     }
 
-    @FXML
     private void MouseMano(MouseEvent event) {
         btnAgregar.setCursor(Cursor.HAND);
         btnDescartar.setCursor(Cursor.HAND);

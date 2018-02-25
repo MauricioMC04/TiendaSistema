@@ -6,6 +6,42 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ReparacionController">
-    
+<AnchorPane id="AnchorPane" prefHeight="688.0" prefWidth="989.0" styleClass="fondo2" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ReparacionController">
+   <children>
+      <Label layoutX="73.0" layoutY="45.0" styleClass="labels3" text="Articulo:" />
+      <Label layoutX="73.0" layoutY="119.0" styleClass="labels3" text="Descripcion:" />
+      <Label layoutX="73.0" layoutY="235.0" styleClass="labels3" text="Nombre Persona:" />
+      <Label fx:id="lblNoNumeroPersona" layoutX="814.0" layoutY="275.0" styleClass="labels4" text="*" />
+      <Label fx:id="lblNoMontoPagado" layoutX="815.0" layoutY="387.0" styleClass="labels4" text="*" />
+      <Label layoutX="73.0" layoutY="283.0" styleClass="labels3" text="Numero Persona:" />
+      <Label layoutX="73.0" layoutY="347.0" styleClass="labels3" text="Monto Total:" />
+      <Label layoutX="73.0" layoutY="392.0" styleClass="labels3" text="Monto Pagado:" />
+      <Label fx:id="lblNoEstado" layoutX="153.0" layoutY="481.0" styleClass="labels4" text="*" />
+      <Label fx:id="lblNoArticulo" layoutX="815.0" layoutY="41.0" prefHeight="19.0" prefWidth="28.0" styleClass="labels4" text="*" />
+      <Label fx:id="lblNoNombrePersona" layoutX="814.0" layoutY="230.0" styleClass="labels4" text="*" />
+      <Label layoutX="350.0" layoutY="484.0" styleClass="labels3" text="Tipo de Pago:" />
+      <Label fx:id="lblNoMontoTotal" layoutX="816.0" layoutY="343.0" styleClass="labels4" text="*" />
+      <Label layoutX="80.0" layoutY="484.0" styleClass="labels3" text="Estado:" />
+      <TextField fx:id="txtArticulo" layoutX="197.0" layoutY="40.0" prefHeight="25.0" prefWidth="601.0" />
+      <TextArea fx:id="txtDescripcion" layoutX="198.0" layoutY="111.0" prefHeight="73.0" prefWidth="600.0" />
+      <TextField fx:id="txtNombrePersona" layoutX="199.0" layoutY="230.0" prefHeight="25.0" prefWidth="600.0" />
+      <TextField fx:id="txtNumeroPersona" layoutX="198.0" layoutY="276.0" prefHeight="25.0" prefWidth="600.0" />
+      <TextField fx:id="txtMontoTotal" layoutX="197.0" layoutY="342.0" prefHeight="25.0" prefWidth="601.0" />
+      <TextField fx:id="txtMontoPagado" layoutX="196.0" layoutY="385.0" prefHeight="25.0" prefWidth="604.0" promptText="0" />
+      <RadioButton fx:id="rbtnTarjeta" layoutX="437.0" layoutY="550.0" mnemonicParsing="false" styleClass="labels3" text="Tarjeta">
+         <toggleGroup>
+            <ToggleGroup fx:id="rbtngTiposDePago" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="rbtnFinalizada" layoutX="125.0" layoutY="580.0" mnemonicParsing="false" styleClass="labels3" text="Finalizada">
+         <toggleGroup>
+            <ToggleGroup fx:id="rbtngEstados" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="rbtnEfectivo" layoutX="437.0" layoutY="520.0" mnemonicParsing="false" selected="true" styleClass="labels3" text="Efectivo" toggleGroup="$rbtngTiposDePago" />
+      <RadioButton fx:id="rbtnEnEspera" layoutX="125.0" layoutY="520.0" mnemonicParsing="false" selected="true" styleClass="labels3" text="En Espera" toggleGroup="$rbtngEstados" />
+      <RadioButton fx:id="rbtnEnProceso" layoutX="125.0" layoutY="550.0" mnemonicParsing="false" styleClass="labels3" text="En Proceso" toggleGroup="$rbtngEstados" />
+      <Label fx:id="lblNoTipoPago" layoutX="463.0" layoutY="482.0" styleClass="labels4" text="*" />
+      <Button fx:id="btnReparacion" layoutX="747.0" layoutY="468.0" mnemonicParsing="false" onAction="#RealizarReparacion" styleClass="btn2" text="Realizar Reparacion" />
+      <Button fx:id="btnImprimir" layoutX="788.0" layoutY="526.0" mnemonicParsing="false" onAction="#Imprimir" styleClass="btn2" text="Imprimir" />
+      <Button fx:id="btnNuevaReparacion" layoutX="755.0" layoutY="587.0" mnemonicParsing="false" onAction="#NuevaReparacion" styleClass="btn2" text="Nueva Reparacion" />
+   </children>
 </AnchorPane>

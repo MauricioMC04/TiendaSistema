@@ -1,38 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="835.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultaApartadosController">
+<AnchorPane id="AnchorPane" prefHeight="686.0" prefWidth="847.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultaApartadosController">
    <children>
-      <SplitPane dividerPositions="0.5282112845138055" prefHeight="525.0" prefWidth="835.0">
+      <SplitPane dividerPositions="0.5282112845138055" prefHeight="686.0" prefWidth="847.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
                <children>
-                  <Label layoutX="62.0" layoutY="17.0" styleClass="labels3" text="Buscar Apartado:" />
-                  <TextField fx:id="txtBusqueda" layoutX="189.0" layoutY="13.0" onKeyReleased="#BusquedaApartado" onMouseEntered="#MouseEscribir" prefHeight="25.0" prefWidth="162.0" />
-                  <TableView fx:id="tblApartados" layoutX="4.0" layoutY="53.0" onMouseClicked="#MostrarApartado" onMouseEntered="#MouseDireccion" prefHeight="466.0" prefWidth="427.0" />
+                  <TextField fx:id="txtBusqueda" layoutX="109.0" layoutY="13.0" onKeyReleased="#BusquedaApartado" prefHeight="25.0" prefWidth="242.0" promptText="Buscar Apartado">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                     </font></TextField>
+                  <TableView fx:id="tblApartados" layoutX="4.0" layoutY="53.0" onMouseClicked="#MostrarApartado" prefHeight="621.0" prefWidth="427.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="524.0" prefWidth="436.0">
+                  <SplitPane dividerPositions="0.6671554252199413" orientation="VERTICAL" prefHeight="684.0" prefWidth="396.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <SplitPane dividerPositions="0.7090069284064665" prefHeight="259.0" prefWidth="435.0">
+                              <SplitPane dividerPositions="0.7908163265306123" prefHeight="452.0" prefWidth="394.0">
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
                                        <children>
-                                          <TableView fx:id="tblArticulos" layoutX="5.0" layoutY="4.0" onMouseClicked="#MostrarQuitarArticulo" onMouseEntered="#MouseDireccion" prefHeight="248.0" prefWidth="294.0" />
+                                          <TableView fx:id="tblArticulos" layoutX="5.0" layoutY="4.0" onMouseClicked="#MostrarQuitarArticulo" prefHeight="440.0" prefWidth="294.0" />
                                        </children>
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
                                        <children>
-                                          <Button fx:id="btnQuitarArticulo" layoutX="6.0" layoutY="115.0" mnemonicParsing="false" onAction="#QuitarArticulo" onMouseEntered="#MouseMano" styleClass="btn2" text="Quitar" />
+                                          <Button fx:id="btnQuitarArticulo" layoutX="11.0" layoutY="209.0" mnemonicParsing="false" onAction="#QuitarArticulo" styleClass="btn2" text="Quitar" />
                                        </children>
                                     </AnchorPane>
                                 </items>
@@ -42,22 +45,22 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="fondo2">
                            <children>
                               <Label fx:id="lblTipoPago" layoutX="20.0" layoutY="25.0" styleClass="labels3" text="Tipo de Pago:" />
-                              <RadioButton fx:id="rbtnEfectivo" layoutX="125.0" layoutY="25.0" mnemonicParsing="false" onMouseEntered="#MouseMano" styleClass="labels3" text="Efectivo">
+                              <RadioButton fx:id="rbtnEfectivo" layoutX="125.0" layoutY="25.0" mnemonicParsing="false" styleClass="labels3" text="Efectivo">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="rbtngTipoPago" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton fx:id="rbtnTarjeta" layoutX="125.0" layoutY="56.0" mnemonicParsing="false" onMouseEntered="#MouseMano" styleClass="labels3" text="Tarjeta" toggleGroup="$rbtngTipoPago" />
+                              <RadioButton fx:id="rbtnTarjeta" layoutX="125.0" layoutY="56.0" mnemonicParsing="false" styleClass="labels3" text="Tarjeta" toggleGroup="$rbtngTipoPago" />
                               <Label fx:id="lblPersona" layoutX="25.0" layoutY="109.0" styleClass="labels3" text="Persona:" />
                               <Label fx:id="lblNombre" layoutX="46.0" layoutY="145.0" styleClass="labels3" text="Nombre:" />
-                              <TextField fx:id="txtNombre" layoutX="129.0" layoutY="140.0" onMouseEntered="#MouseEscribir" prefHeight="25.0" prefWidth="235.0" />
+                              <TextField fx:id="txtNombre" layoutX="129.0" layoutY="140.0" prefHeight="25.0" prefWidth="235.0" />
                               <Label fx:id="lblNumero" layoutX="46.0" layoutY="179.0" styleClass="labels3" text="Numero:" />
-                              <TextField fx:id="txtNumero" layoutX="130.0" layoutY="175.0" onMouseEntered="#MouseEscribir" prefHeight="25.0" prefWidth="235.0" />
-                              <Button fx:id="btnEditar" layoutX="313.0" layoutY="12.0" mnemonicParsing="false" onAction="#Editar" onMouseEntered="#MouseMano" styleClass="btn2" text="Editar" />
+                              <TextField fx:id="txtNumero" layoutX="130.0" layoutY="175.0" prefHeight="25.0" prefWidth="235.0" />
+                              <Button fx:id="btnEditar" layoutX="313.0" layoutY="12.0" mnemonicParsing="false" onAction="#Editar" styleClass="btn2" text="Editar" />
                               <Label fx:id="lblNoNombre" layoutX="117.0" layoutY="145.0" prefHeight="17.0" prefWidth="15.0" styleClass="labels4" text="*" />
                               <Label fx:id="lblNoNumero" layoutX="117.0" layoutY="179.0" prefHeight="17.0" prefWidth="15.0" styleClass="labels4" text="*" />
-                              <Button fx:id="btnEliminar" layoutX="306.0" layoutY="52.0" mnemonicParsing="false" onAction="#Eliminar" onMouseEntered="#MouseMano" styleClass="btn2" text="Eliminar" />
-                              <Button fx:id="btnImprimir" layoutX="304.0" layoutY="92.0" mnemonicParsing="false" onAction="#Imprimir" onMouseEntered="#MouseMano" styleClass="btn2" text="Imprimir" />
+                              <Button fx:id="btnEliminar" layoutX="306.0" layoutY="52.0" mnemonicParsing="false" onAction="#Eliminar" styleClass="btn2" text="Eliminar" />
+                              <Button fx:id="btnImprimir" layoutX="304.0" layoutY="92.0" mnemonicParsing="false" onAction="#Imprimir" styleClass="btn2" text="Imprimir" />
                            </children>
                         </AnchorPane>
                     </items>

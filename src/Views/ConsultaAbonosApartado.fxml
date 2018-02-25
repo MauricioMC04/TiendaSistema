@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="686.0" prefWidth="847.0" styleClass="fondo2" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultaAbonosApartadoController">
+   <children>
+      <TextField fx:id="txtBusqueda" layoutX="264.0" layoutY="13.0" onKeyReleased="#BuscarAbono" prefHeight="25.0" prefWidth="329.0" promptText="Buscar Abono Apartado">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font></TextField>
+      <TableView fx:id="tblAbonos" layoutX="16.0" layoutY="57.0" prefHeight="617.0" prefWidth="816.0" />
+   </children>
+</AnchorPane>

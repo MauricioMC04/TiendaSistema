@@ -58,7 +58,6 @@ public class ConsultaFacturasController implements Initializable {
         btnQuitarArticulo.setVisible(false);
     }    
 
-    @FXML
     private void MouseEscribir(MouseEvent event) {
         txtBusqueda.setCursor(Cursor.TEXT);
     }
@@ -72,13 +71,11 @@ public class ConsultaFacturasController implements Initializable {
         }
     }
 
-    @FXML
     private void MouseDireccion(MouseEvent event) {
         tblFacturas.setCursor(Cursor.CROSSHAIR);
         tblDetalleFactura.setCursor(Cursor.CROSSHAIR);
     }
 
-    @FXML
     private void MouseMano(MouseEvent event) {
         btnQuitarArticulo.setCursor(Cursor.HAND);
         btnEditar.setCursor(Cursor.HAND);

@@ -30,7 +30,6 @@ public class ConsultaArticulosController implements Initializable {
         CargarArticulos("Ninguna");
     }    
 
-    @FXML
     private void MouseEscribir(MouseEvent event) {
          txtBusqueda.setCursor(Cursor.TEXT);
     }
@@ -44,7 +43,6 @@ public class ConsultaArticulosController implements Initializable {
         }
     }
 
-    @FXML
     private void MouseDireccion(MouseEvent event) {
         tblArticulos.setCursor(Cursor.CROSSHAIR);
     }

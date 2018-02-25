@@ -30,7 +30,6 @@ public class ConsultaClientesController implements Initializable {
         CargarClientes("Ninguna");
     }    
 
-    @FXML
     private void MouseEscribir(MouseEvent event) {
         txtBusqueda.setCursor(Cursor.TEXT);
     }
@@ -44,7 +43,6 @@ public class ConsultaClientesController implements Initializable {
         }
     }
 
-    @FXML
     private void MouseDireccion(MouseEvent event) {
         tblClientes.setCursor(Cursor.CROSSHAIR);
     }

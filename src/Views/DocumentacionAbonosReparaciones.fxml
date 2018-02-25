@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="686.0" prefWidth="794.0" styleClass="fondo2" stylesheets="@../Imagenes/Estilo.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controllers.DocumentacionAbonosReparacionesController">
+   <children>
+      <Button fx:id="btnGenerarDocumentacion" layoutX="256.0" layoutY="323.0" mnemonicParsing="false" onAction="#GenerarDocumentacion" prefHeight="40.0" prefWidth="354.0" styleClass="btn2" text="Generar Abonos Reparaciones Documentacion" />
+   </children>
+</AnchorPane>

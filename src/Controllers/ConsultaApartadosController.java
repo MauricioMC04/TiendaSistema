@@ -75,7 +75,6 @@ public class ConsultaApartadosController implements Initializable {
         CargarApartados("Ninguna");
     }    
 
-    @FXML
     private void MouseEscribir(MouseEvent event) {
         txtBusqueda.setCursor(Cursor.TEXT);
         txtNombre.setCursor(Cursor.TEXT);
@@ -91,13 +90,11 @@ public class ConsultaApartadosController implements Initializable {
         }
     }
 
-    @FXML
     private void MouseDireccion(MouseEvent event) {
         tblApartados.setCursor(Cursor.CROSSHAIR);
         tblArticulos.setCursor(Cursor.CROSSHAIR);
     }
 
-    @FXML
     private void MouseMano(MouseEvent event) {
         btnEditar.setCursor(Cursor.HAND);
         btnEliminar.setCursor(Cursor.HAND);

@@ -6,20 +6,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="961.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultasController">
+<AnchorPane id="AnchorPane" prefHeight="688.0" prefWidth="989.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultasController">
    <children>
-      <SplitPane dividerPositions="0.1261730969760167" prefHeight="528.0" prefWidth="961.0">
+      <SplitPane dividerPositions="0.13880445795339413" prefHeight="688.0" prefWidth="989.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="fondo2">
                <children>
-                  <VBox prefHeight="528.0" prefWidth="119.0" styleClass="fondo2">
+                  <VBox prefHeight="686.0" prefWidth="134.0" styleClass="fondo2">
                      <children>
-                        <Button fx:id="btnFacturas" mnemonicParsing="false" onAction="#Facturas" onMouseEntered="#MouseMano" prefHeight="40.0" prefWidth="123.0" styleClass="btn3" text="Ventas" />
-                        <Button fx:id="btnApartados" mnemonicParsing="false" onAction="#Apartados" onMouseEntered="#MouseMano" prefHeight="40.0" prefWidth="123.0" styleClass="btn3" text="Apartados" />
-                        <Button fx:id="btnAbonos" mnemonicParsing="false" onAction="#Abonos" onMouseEntered="#MouseMano" prefHeight="40.0" prefWidth="123.0" styleClass="btn3" text="Abonos" />
-                        <Button fx:id="btnClientes" mnemonicParsing="false" onAction="#Clientes" onMouseEntered="#MouseMano" prefHeight="40.0" prefWidth="123.0" styleClass="btn3" text="Clientes" />
-                        <Button fx:id="btnFechas" mnemonicParsing="false" onAction="#Fechas" onMouseEntered="#MouseMano" prefHeight="40.0" prefWidth="123.0" styleClass="btn3" text="Fechas" />
-                        <Button fx:id="btnArticulos" mnemonicParsing="false" onAction="#Articulos" onMouseEntered="#MouseMano" prefHeight="40.0" prefWidth="123.0" styleClass="btn3" text="Articulos" />
+                        <Button fx:id="btnFacturas" mnemonicParsing="false" onAction="#Facturas" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Ventas" />
+                        <Button fx:id="btnApartados" mnemonicParsing="false" onAction="#Apartados" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Apartados" />
+                        <Button fx:id="btnAbonos" mnemonicParsing="false" onAction="#Abonos" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Ab. Apartado" />
+                        <Button fx:id="btnClientes" mnemonicParsing="false" onAction="#Clientes" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Clientes" />
+                        <Button fx:id="btnFechas" mnemonicParsing="false" onAction="#Fechas" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Fechas" />
+                        <Button fx:id="btnArticulos" mnemonicParsing="false" onAction="#Articulos" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Articulos" />
+                        <Button fx:id="btnArticulos1" mnemonicParsing="false" onAction="#Articulos" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Reparaciones" />
+                        <Button fx:id="btnArticulos2" mnemonicParsing="false" onAction="#Articulos" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Ab. Reparacion" />
                      </children>
                   </VBox>
                </children>

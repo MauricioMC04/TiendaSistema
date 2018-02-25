@@ -26,7 +26,6 @@ public class DocumentacionFacturasController implements Initializable {
         
     }    
 
-    @FXML
     private void MouseMano(MouseEvent event) {
         btnGenerarDocumentacion.setCursor(Cursor.HAND);
     }
