@@ -11,38 +11,53 @@ import javax.swing.JOptionPane;
 public class DatosInicio {
     
     private final Conexion conex = Conexion.singleton();
+    private String fechaHoy;
     
     public Fecha FechaHoy(){
-        Calendar c = Calendar.getInstance();   
-        return DatosFecha(Integer.toString(c.get(Calendar.YEAR)) + "/" + Integer.toString(c.get(Calendar.MONTH) + 1) + "/"
-            + Integer.toString(c.get(Calendar.DAY_OF_MONTH)));
+        Calendar c = Calendar.getInstance();
+        fechaHoy = Integer.toString(c.get(Calendar.YEAR)) + "/" + Integer.toString(c.get(Calendar.MONTH) + 1) + "/"
+            + Integer.toString(c.get(Calendar.DAY_OF_MONTH));
+        return DatosFecha();
     }
     
-    private Fecha DatosFecha(String fechaHoy){
+    private Fecha DatosFecha(){
         Fecha fecha = new Fecha();
         fecha.setFecha(fechaHoy);
-        fecha.setCantidadVentas(CantidadVentas(fechaHoy));
-        fecha.setTotalVentas(TotalVentas(fechaHoy));
-        fecha.setTotalVentasEfectivo(TotalVentasEfectivo(fechaHoy));
-        fecha.setTotalVentasTarjeta(TotalVentasTarjeta(fechaHoy));
-        fecha.setCantidadApartados(CantidadApartados(fechaHoy));
-        fecha.setTotalApartados(TotalApartados(fechaHoy));
-        fecha.setTotalApartadosEfectivo(TotalApartadosEfectivo(fechaHoy));
-        fecha.setTotalApartadosTarjeta(TotalApartadosTarjeta(fechaHoy));
-        fecha.setCantidadAbonos(CantidadAbonos(fechaHoy));
-        fecha.setTotalAbonos(TotalAbonos(fechaHoy));
-        fecha.setTotalAbonosEfectivo(TotalAbonosEfectivo(fechaHoy));
-        fecha.setTotalAbonosTarjeta(TotalAbonosTarjeta(fechaHoy));
-        fecha.setTotalIngresos(fecha.getTotalAbonos() + fecha.getTotalApartados() + fecha.getTotalVentas());
-        fecha.setTotalIngresosEfecttivo(fecha.getTotalAbonosEfectivo()+ fecha.getTotalApartadosEfectivo()+ fecha.getTotalVentasEfectivo());
-        fecha.setTotalIngresosTarjeta(fecha.getTotalAbonosTarjeta()+ fecha.getTotalApartadosTarjeta()+ fecha.getTotalVentasTarjeta());
+        fecha.setCantidadVentas(CantidadVentas());
+        fecha.setTotalVentas(TotalVentas());
+        fecha.setTotalVentasEfectivo(TotalVentasEfectivo());
+        fecha.setTotalVentasTarjeta(TotalVentasTarjeta());
+        fecha.setCantidadApartados(CantidadApartados());
+        fecha.setTotalApartados(TotalApartados());
+        fecha.setTotalApartadosEfectivo(TotalApartadosEfectivo());
+        fecha.setTotalApartadosTarjeta(TotalApartadosTarjeta());
+        fecha.setCantidadAbonosApartados(CantidadAbonosApartados());
+        fecha.setTotalAbonosApartados(TotalAbonosApartados());
+        fecha.setTotalAbonosApartadosEfectivo(TotalAbonosApartadosEfectivo());
+        fecha.setTotalAbonosApartadosTarjeta(TotalAbonosApartadosTarjeta());
+        fecha.setCantidadReparaciones(CantidadReparaciones());
+        fecha.setTotalReparaciones(TotalReparaciones());
+        fecha.setTotalReparacionesEfectivo(TotalReparacioneEfectivo());
+        fecha.setTotalReparacionesTarjeta(TotalReparacionesTarjeta());
+        fecha.setCantidadAbonosReparaciones(CantidadAbonosReparaciones());
+        fecha.setTotalAbonosReparaciones(TotalAbonosReparaciones());
+        fecha.setTotalAbonosReparacionesEfectivo(TotalAbonosReparacionesEfectivo());
+        fecha.setTotalAbonosReparacionesTarjeta(TotalAbonosReparacionesTarjeta());
+        fecha.setTotalIngresos(fecha.getTotalAbonosApartados() + fecha.getTotalApartados() + fecha.getTotalVentas() + 
+            fecha.getTotalReparaciones() + fecha.getTotalAbonosReparaciones());
+        fecha.setTotalIngresosEfecttivo(fecha.getTotalAbonosApartadosEfectivo() + fecha.getTotalApartadosEfectivo() +
+            fecha.getTotalVentasEfectivo() + fecha.getTotalReparacionesEfectivo() + 
+            fecha.getTotalAbonosReparacionesEfectivo());
+        fecha.setTotalIngresosTarjeta(fecha.getTotalAbonosApartadosTarjeta() + fecha.getTotalApartadosTarjeta() +
+            fecha.getTotalVentasTarjeta() + fecha.getTotalReparacionesTarjeta() + 
+            fecha.getTotalAbonosReparacionesTarjeta());
         return fecha;
     }
     
-    private int CantidadVentas(String fecha){
+    private int CantidadVentas(){
         int cantidadVentas = 0;
         String sql = "select count(f.CodigoFactura) from facturas f, tiposdefactura t where f.Fecha = STR_TO_DATE('" 
-            + fecha + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Venta'";
+            + fechaHoy + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Venta'";
         String[] datos = new String[1];
         Connection conexion = conex.open();
         try {
@@ -59,10 +74,10 @@ public class DatosInicio {
         return cantidadVentas;
     }
     
-    private double TotalVentas(String fecha){
+    private double TotalVentas(){
         double TotalVentas = 0;
         String sql = "select SUM(f.MontoTotal) from facturas f, tiposdefactura t where f.Fecha = STR_TO_DATE('" 
-            + fecha + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Venta'";
+            + fechaHoy + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Venta'";
         String[] datos = new String[1];
         Connection conexion = conex.open();
         try {
@@ -81,10 +96,10 @@ public class DatosInicio {
         return TotalVentas;
     }
     
-    private double TotalVentasEfectivo(String fecha){
+    private double TotalVentasEfectivo(){
         double TotalVentasEfectivo = 0;
         String sql = "select SUM(f.MontoTotal) from facturas f, tiposdefactura t, tiposdepago tp where f.Fecha = STR_TO_"
-            + "DATE('" + fecha + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Venta' And "
+            + "DATE('" + fechaHoy + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Venta' And "
             + "f.idTipoDePago = tp.idTipoDePago AND tp.Tipo = 'Efectivo'";
         String[] datos = new String[1];
         Connection conexion = conex.open();
@@ -104,10 +119,10 @@ public class DatosInicio {
         return TotalVentasEfectivo;
     }
     
-    private double TotalVentasTarjeta(String fecha){
+    private double TotalVentasTarjeta(){
         double TotalVentasTarjeta = 0;
         String sql = "select SUM(f.MontoTotal) from facturas f, tiposdefactura t, tiposdepago tp where f.Fecha = STR_TO_"
-            + "DATE('" + fecha + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Venta' And "
+            + "DATE('" + fechaHoy + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Venta' And "
             + "f.idTipoDePago = tp.idTipoDePago AND tp.Tipo = 'Tarjeta'";
         String[] datos = new String[1];
         Connection conexion = conex.open();
@@ -127,10 +142,10 @@ public class DatosInicio {
         return TotalVentasTarjeta;
     }
     
-    private int CantidadApartados(String fecha){
+    private int CantidadApartados(){
         int cantidadApartados = 0;
         String sql = "select count(f.CodigoFactura) from facturas f, tiposdefactura t where f.Fecha = STR_TO_DATE('" 
-            + fecha + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Apartado'";
+            + fechaHoy + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Apartado'";
         String[] datos = new String[1];
         Connection conexion = conex.open();
         try {
@@ -147,10 +162,10 @@ public class DatosInicio {
         return cantidadApartados;
     }
     
-    private double TotalApartados(String fecha){
+    private double TotalApartados(){
         double TotalApartados = 0;
         String sql = "select SUM(f.MontoPagado) from facturas f, tiposdefactura t where f.Fecha = STR_TO_DATE('" 
-            + fecha + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Apartado'";
+            + fechaHoy + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Apartado'";
         String[] datos = new String[1];
         Connection conexion = conex.open();
         try {
@@ -169,10 +184,10 @@ public class DatosInicio {
         return TotalApartados;
     }
     
-    private double TotalApartadosEfectivo(String fecha){
+    private double TotalApartadosEfectivo(){
         double TotalApartadosEfectivo = 0;
         String sql = "select SUM(f.MontoPagado) from facturas f, tiposdefactura t, tiposdepago tp where f.Fecha = STR_TO_"
-            + "DATE('" + fecha + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Apartado' And "
+            + "DATE('" + fechaHoy + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Apartado' And "
             + "f.idTipoDePago = tp.idTipoDePago AND tp.Tipo = 'Efectivo'";
         String[] datos = new String[1];
         Connection conexion = conex.open();
@@ -192,10 +207,10 @@ public class DatosInicio {
         return TotalApartadosEfectivo;
     }
     
-    private double TotalApartadosTarjeta(String fecha){
+    private double TotalApartadosTarjeta(){
         double TotalApartadosTarjeta = 0;
         String sql = "select SUM(f.MontoPagado) from facturas f, tiposdefactura t, tiposdepago tp where f.Fecha = STR_TO_"
-            + "DATE('" + fecha + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Apartado' And "
+            + "DATE('" + fechaHoy + "', '%Y/%m/%d') And f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Apartado' And "
             + "f.idTipoDePago = tp.idTipoDePago AND tp.Tipo = 'Tarjeta'";
         String[] datos = new String[1];
         Connection conexion = conex.open();
@@ -215,9 +230,9 @@ public class DatosInicio {
         return TotalApartadosTarjeta;
     }
     
-    private int CantidadAbonos(String fecha){
+    private int CantidadAbonosApartados(){
         int cantidadAbonos = 0;
-        String sql = "select count(idAbono) from abonos where Fecha = STR_TO_DATE('" + fecha + "', '%Y/%m/%d')";
+        String sql = "select count(idAbono) from abonos where Fecha = STR_TO_DATE('" + fechaHoy + "', '%Y/%m/%d')";
         String[] datos = new String[1];
         Connection conexion = conex.open();
         try {
@@ -234,9 +249,9 @@ public class DatosInicio {
         return cantidadAbonos;
     }
     
-    private double TotalAbonos(String fecha){
+    private double TotalAbonosApartados(){
         double TotalAbonos = 0;
-        String sql = "select SUM(Monto) from abonos where Fecha = STR_TO_DATE('" + fecha + "', '%Y/%m/%d')";
+        String sql = "select SUM(Monto) from abonos where Fecha = STR_TO_DATE('" + fechaHoy + "', '%Y/%m/%d')";
         String[] datos = new String[1];
         Connection conexion = conex.open();
         try {
@@ -255,9 +270,9 @@ public class DatosInicio {
         return TotalAbonos;
     }
     
-    private double TotalAbonosEfectivo(String fecha){
+    private double TotalAbonosApartadosEfectivo(){
         double TotalAbonosEfectivo = 0;
-        String sql = "select SUM(a.Monto) from abonos a, tiposdepago t where Fecha = STR_TO_DATE('" + fecha + "', "
+        String sql = "select SUM(a.Monto) from abonos a, tiposdepago t where Fecha = STR_TO_DATE('" + fechaHoy + "', "
             + "'%Y/%m/%d') And a.idTipoDePago = t.idTipoDePago And t.Tipo = 'Efectivo'";
         String[] datos = new String[1];
         Connection conexion = conex.open();
@@ -277,9 +292,9 @@ public class DatosInicio {
         return TotalAbonosEfectivo;
     }
     
-    private double TotalAbonosTarjeta(String fecha){
+    private double TotalAbonosApartadosTarjeta(){
         double TotalAbonosTarjeta = 0;
-        String sql = "select SUM(a.Monto) from abonos a, tiposdepago t where Fecha = STR_TO_DATE('" + fecha + "', "
+        String sql = "select SUM(a.Monto) from abonos a, tiposdepago t where Fecha = STR_TO_DATE('" + fechaHoy + "', "
             + "'%Y/%m/%d') And a.idTipoDePago = t.idTipoDePago And t.Tipo = 'Tarjeta'";
         String[] datos = new String[1];
         Connection conexion = conex.open();
@@ -297,5 +312,176 @@ public class DatosInicio {
         }
         conex.close();
         return TotalAbonosTarjeta;
+    }
+    
+    private int CantidadReparaciones(){
+        int cantidadReparaciones = 0;
+        String sql = "select count(CodigoReparacion) from reparaciones where Fecha = STR_TO_DATE('" + fechaHoy + "', "
+            + "'%Y/%m/%d')";
+        String dato = "";
+        Connection conexion = conex.open();
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                dato = rs.getString(1);
+            }
+            cantidadReparaciones = Integer.parseInt(dato);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: Cantidad de Reparaciones \n" + ex);
+        }
+        conex.close();
+        return cantidadReparaciones;
+    }
+    
+    private double TotalReparaciones(){
+        double TotalReparaciones = 0;
+        String sql = "select SUM(MontoPagado) from reparaciones where Fecha = STR_TO_DATE('" + fechaHoy + "', "
+            + "'%Y/%m/%d')";
+        String dato = "";
+        Connection conexion = conex.open();
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                dato = rs.getString(1);
+            }
+            if(dato != null && !dato.equals("")){
+                TotalReparaciones = Double.parseDouble(dato);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: Total Reparaciones\n" + ex);
+        }
+        conex.close();
+        return TotalReparaciones;
+    }
+    
+    private double TotalReparacioneEfectivo(){
+        double TotalReparacionesEfectivo = 0;
+        String sql = "select SUM(r.MontoPagado) from reparaciones r, tiposdepago t where Fecha = STR_TO_DATE('" + 
+            fechaHoy + "', '%Y/%m/%d') And r.idTipoDePago = t.idTipoDePago And t.Tipo = 'Efectivo'";
+        String dato = "";
+        Connection conexion = conex.open();
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                dato = rs.getString(1);
+            }
+            if(dato != null && !dato.equals("")){
+                TotalReparacionesEfectivo = Double.parseDouble(dato);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: Total Reparaciones Efectivo\n" + ex);
+        }
+        conex.close();
+        return TotalReparacionesEfectivo;
+    }
+    
+    private double TotalReparacionesTarjeta(){
+        double TotalReparacionesTarjeta = 0;
+        String sql = "select SUM(r.MontoPagado) from reparaciones r, tiposdepago t where Fecha = STR_TO_DATE('" + 
+            fechaHoy + "', '%Y/%m/%d') And r.idTipoDePago = t.idTipoDePago And t.Tipo = 'Tarjeta'";
+        String dato = "";
+        Connection conexion = conex.open();
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                dato = rs.getString(1);
+            }
+            if(dato != null && !dato.equals("")){
+                TotalReparacionesTarjeta = Double.parseDouble(dato);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: Total Reparaciones Tarjeta\n" + ex);
+        }
+        conex.close();
+        return TotalReparacionesTarjeta;
+    }
+    
+    private int CantidadAbonosReparaciones(){
+        int cantidadAbonosReparaciones = 0;
+        String sql = "select count(CodigoAbono) from abonosreparacion where Fecha = STR_TO_DATE('" + fechaHoy + "', "
+            + "'%Y/%m/%d')";
+        String dato = "";
+        Connection conexion = conex.open();
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                dato = rs.getString(1);
+            }
+            cantidadAbonosReparaciones = Integer.parseInt(dato);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: Cantidad de Abonos de Reparaciones \n" + ex);
+        }
+        conex.close();
+        return cantidadAbonosReparaciones;
+    }
+    
+    private double TotalAbonosReparaciones(){
+        double TotalAbonosReparaciones = 0;
+        String sql = "select SUM(Monto) from abonosreparacion where Fecha = STR_TO_DATE('" + fechaHoy + "', '%Y/%m/%d')";
+        String dato = "";
+        Connection conexion = conex.open();
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                dato = rs.getString(1);
+            }
+            if(dato != null && !dato.equals("")){
+                TotalAbonosReparaciones = Double.parseDouble(dato);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: Total Abonos Reparaciones\n" + ex);
+        }
+        conex.close();
+        return TotalAbonosReparaciones;
+    }
+    
+    private double TotalAbonosReparacionesEfectivo(){
+        double TotalAbonosReparacionesEfectivo = 0;
+        String sql = "select SUM(a.Monto) from abonosreparacion a, tiposdepago t where Fecha = STR_TO_DATE('" + 
+            fechaHoy + "', '%Y/%m/%d') And a.idTipoDePago = t.idTipoDePago And t.Tipo = 'Efectivo'";
+        String dato = "";
+        Connection conexion = conex.open();
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                dato = rs.getString(1);
+            }
+            if(dato != null && !dato.equals("")){
+                TotalAbonosReparacionesEfectivo = Double.parseDouble(dato);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: Total Abonos de Reparaciones Efectivo\n" + ex);
+        }
+        conex.close();
+        return TotalAbonosReparacionesEfectivo;
+    }
+    
+    private double TotalAbonosReparacionesTarjeta(){
+        double TotalAbonosReparacionesTarjeta = 0;
+        String sql = "select SUM(a.Monto) from abonosreparacion a, tiposdepago t where Fecha = STR_TO_DATE('" + 
+            fechaHoy + "', '%Y/%m/%d') And a.idTipoDePago = t.idTipoDePago And t.Tipo = 'Tarjeta'";
+        String dato = "";
+        Connection conexion = conex.open();
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                dato = rs.getString(1);
+            }
+            if(dato != null && !dato.equals("")){
+                TotalAbonosReparacionesTarjeta = Double.parseDouble(dato);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: Total Abonos de Reparaciones Tarjeta\n" + ex);
+        }
+        conex.close();
+        return TotalAbonosReparacionesTarjeta;
     }
 }

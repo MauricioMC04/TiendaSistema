@@ -52,7 +52,7 @@ public class DatosFechas {
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 dato = rs.getString(1);
-                modelo.add(new Fecha(dato,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
+                //modelo.add(new Fecha(dato,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Fechas Facturas \n" + ex);
@@ -78,7 +78,7 @@ public class DatosFechas {
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 dato = rs.getString(1);
-                modelo.add(new Fecha(dato,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
+                //modelo.add(new Fecha(dato,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Fechas Abonos \n" + ex);
@@ -105,13 +105,13 @@ public class DatosFechas {
         fecha.setTotalApartados(TotalApartados(fechaHoy));
         fecha.setTotalApartadosEfectivo(TotalApartadosEfectivo(fechaHoy));
         fecha.setTotalApartadosTarjeta(TotalApartadosTarjeta(fechaHoy));
-        fecha.setCantidadAbonos(CantidadAbonos(fechaHoy));
-        fecha.setTotalAbonos(TotalAbonos(fechaHoy));
-        fecha.setTotalAbonosEfectivo(TotalAbonosEfectivo(fechaHoy));
-        fecha.setTotalAbonosTarjeta(TotalAbonosTarjeta(fechaHoy));
-        fecha.setTotalIngresos(fecha.getTotalAbonos() + fecha.getTotalApartados() + fecha.getTotalVentas());
-        fecha.setTotalIngresosEfecttivo(fecha.getTotalAbonosEfectivo()+ fecha.getTotalApartadosEfectivo()+ fecha.getTotalVentasEfectivo());
-        fecha.setTotalIngresosTarjeta(fecha.getTotalAbonosTarjeta()+ fecha.getTotalApartadosTarjeta()+ fecha.getTotalVentasTarjeta());
+        fecha.setCantidadAbonosApartados(CantidadAbonos(fechaHoy));
+        fecha.setTotalAbonosApartados(TotalAbonos(fechaHoy));
+        fecha.setTotalAbonosApartadosEfectivo(TotalAbonosEfectivo(fechaHoy));
+        fecha.setTotalAbonosApartadosTarjeta(TotalAbonosTarjeta(fechaHoy));
+        fecha.setTotalIngresos(fecha.getTotalAbonosApartados()+ fecha.getTotalApartados() + fecha.getTotalVentas());
+        fecha.setTotalIngresosEfecttivo(fecha.getTotalAbonosApartadosEfectivo()+ fecha.getTotalApartadosEfectivo()+ fecha.getTotalVentasEfectivo());
+        fecha.setTotalIngresosTarjeta(fecha.getTotalAbonosApartadosTarjeta()+ fecha.getTotalApartadosTarjeta()+ fecha.getTotalVentasTarjeta());
         return fecha;
     }
     

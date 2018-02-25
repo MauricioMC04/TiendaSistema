@@ -207,10 +207,10 @@ public class ConsultaFechasController implements Initializable {
         lblTotalApartados.setText(String.valueOf(fecha.getTotalApartados()));
         lblTotalAEfectivo.setText(String.valueOf(fecha.getTotalApartadosEfectivo()));
         lblTotalATarjeta.setText(String.valueOf(fecha.getTotalApartadosTarjeta()));
-        lblAbonos.setText(Integer.toString(fecha.getCantidadAbonos()));
-        lblTotalAbonos.setText(String.valueOf(fecha.getTotalAbonos()));
-        lblTotalAbEfectivo.setText(String.valueOf(fecha.getTotalAbonosEfectivo()));
-        lblTotalAbTarjeta.setText(String.valueOf(fecha.getTotalAbonosTarjeta()));
+        lblAbonos.setText(Integer.toString(fecha.getCantidadAbonosApartados()));
+        lblTotalAbonos.setText(String.valueOf(fecha.getTotalAbonosApartados()));
+        lblTotalAbEfectivo.setText(String.valueOf(fecha.getTotalAbonosApartadosEfectivo()));
+        lblTotalAbTarjeta.setText(String.valueOf(fecha.getTotalAbonosApartadosTarjeta()));
         lblIngresos.setText(String.valueOf(fecha.getTotalIngresos()));
         lblTotalIEfectivo.setText(String.valueOf(fecha.getTotalIngresosEfecttivo()));
         lblTotalITarjeta.setText(String.valueOf(fecha.getTotalIngresosTarjeta()));

@@ -12,18 +12,33 @@ public class Fecha {
     private double totalApartados;
     private double totalApartadosEfectivo;
     private double totalApartadosTarjeta;
-    private int cantidadAbonos;
-    private double totalAbonos;
-    private double totalAbonosEfectivo;
-    private double totalAbonosTarjeta;
+    private int cantidadAbonosApartados;
+    private double totalAbonosApartados;
+    private double totalAbonosApartadosEfectivo;
+    private double totalAbonosApartadosTarjeta;
     private double totalIngresos;
     private double totalIngresosEfecttivo;
     private double totalIngresosTarjeta;
+    private int cantidadReparaciones;
+    private double totalReparaciones;
+    private double totalReparacionesEfectivo;
+    private double totalReparacionesTarjeta;
+    private int cantidadAbonosReparaciones;
+    private double totalAbonosReparaciones;
+    private double totalAbonosReparacionesEfectivo;
+    private double totalAbonosReparacionesTarjeta;
 
     public Fecha() {
     }
 
-    public Fecha(String fecha, int cantidadVentas, double totalVentas, double totalVentasEfectivo, double totalVentasTarjeta, int cantidadApartados, double totalApartados, double totalApartadosEfectivo, double totalApartadosTarjeta, int cantidadAbonos, double totalAbonos, double totalAbonosEfectivo, double totalAbonosTarjeta, double totalIngresos, double totalIngresosEfecttivo, double totalIngresosTarjeta) {
+    public Fecha(String fecha, int cantidadVentas, double totalVentas, double totalVentasEfectivo, 
+            double totalVentasTarjeta, int cantidadApartados, double totalApartados, double totalApartadosEfectivo, 
+            double totalApartadosTarjeta, int cantidadAbonosApartados, double totalAbonosApartados, 
+            double totalAbonosApartadosEfectivo, double totalAbonosApartadosTarjeta, double totalIngresos, 
+            double totalIngresosEfecttivo, double totalIngresosTarjeta, int cantidadReparaciones, 
+            double totalReparaciones, double totalReparacionesEfectivo, double totalReparacionesTarjeta, 
+            int cantidadAbonosReparaciones, double totalAbonosReparaciones, double totalAbonosReparacionesEfectivo, 
+            double totalAbonosReparacionesTarjeta) {
         this.fecha = fecha;
         this.cantidadVentas = cantidadVentas;
         this.totalVentas = totalVentas;
@@ -33,13 +48,21 @@ public class Fecha {
         this.totalApartados = totalApartados;
         this.totalApartadosEfectivo = totalApartadosEfectivo;
         this.totalApartadosTarjeta = totalApartadosTarjeta;
-        this.cantidadAbonos = cantidadAbonos;
-        this.totalAbonos = totalAbonos;
-        this.totalAbonosEfectivo = totalAbonosEfectivo;
-        this.totalAbonosTarjeta = totalAbonosTarjeta;
+        this.cantidadAbonosApartados = cantidadAbonosApartados;
+        this.totalAbonosApartados = totalAbonosApartados;
+        this.totalAbonosApartadosEfectivo = totalAbonosApartadosEfectivo;
+        this.totalAbonosApartadosTarjeta = totalAbonosApartadosTarjeta;
         this.totalIngresos = totalIngresos;
         this.totalIngresosEfecttivo = totalIngresosEfecttivo;
         this.totalIngresosTarjeta = totalIngresosTarjeta;
+        this.cantidadReparaciones = cantidadReparaciones;
+        this.totalReparaciones = totalReparaciones;
+        this.totalReparacionesEfectivo = totalReparacionesEfectivo;
+        this.totalReparacionesTarjeta = totalReparacionesTarjeta;
+        this.cantidadAbonosReparaciones = cantidadAbonosReparaciones;
+        this.totalAbonosReparaciones = totalAbonosReparaciones;
+        this.totalAbonosReparacionesEfectivo = totalAbonosReparacionesEfectivo;
+        this.totalAbonosReparacionesTarjeta = totalAbonosReparacionesTarjeta;
     }
 
     public String getFecha() {
@@ -114,36 +137,36 @@ public class Fecha {
         this.totalApartadosTarjeta = totalApartadosTarjeta;
     }
 
-    public int getCantidadAbonos() {
-        return cantidadAbonos;
+    public int getCantidadAbonosApartados() {
+        return cantidadAbonosApartados;
     }
 
-    public void setCantidadAbonos(int cantidadAbonos) {
-        this.cantidadAbonos = cantidadAbonos;
+    public void setCantidadAbonosApartados(int cantidadAbonosApartados) {
+        this.cantidadAbonosApartados = cantidadAbonosApartados;
     }
 
-    public double getTotalAbonos() {
-        return totalAbonos;
+    public double getTotalAbonosApartados() {
+        return totalAbonosApartados;
     }
 
-    public void setTotalAbonos(double totalAbonos) {
-        this.totalAbonos = totalAbonos;
+    public void setTotalAbonosApartados(double totalAbonosApartados) {
+        this.totalAbonosApartados = totalAbonosApartados;
     }
 
-    public double getTotalAbonosEfectivo() {
-        return totalAbonosEfectivo;
+    public double getTotalAbonosApartadosEfectivo() {
+        return totalAbonosApartadosEfectivo;
     }
 
-    public void setTotalAbonosEfectivo(double totalAbonosEfectivo) {
-        this.totalAbonosEfectivo = totalAbonosEfectivo;
+    public void setTotalAbonosApartadosEfectivo(double totalAbonosApartadosEfectivo) {
+        this.totalAbonosApartadosEfectivo = totalAbonosApartadosEfectivo;
     }
 
-    public double getTotalAbonosTarjeta() {
-        return totalAbonosTarjeta;
+    public double getTotalAbonosApartadosTarjeta() {
+        return totalAbonosApartadosTarjeta;
     }
 
-    public void setTotalAbonosTarjeta(double totalAbonosTarjeta) {
-        this.totalAbonosTarjeta = totalAbonosTarjeta;
+    public void setTotalAbonosApartadosTarjeta(double totalAbonosApartadosTarjeta) {
+        this.totalAbonosApartadosTarjeta = totalAbonosApartadosTarjeta;
     }
 
     public double getTotalIngresos() {
@@ -169,4 +192,69 @@ public class Fecha {
     public void setTotalIngresosTarjeta(double totalIngresosTarjeta) {
         this.totalIngresosTarjeta = totalIngresosTarjeta;
     }
+
+    public int getCantidadReparaciones() {
+        return cantidadReparaciones;
+    }
+
+    public void setCantidadReparaciones(int cantidadReparaciones) {
+        this.cantidadReparaciones = cantidadReparaciones;
+    }
+
+    public double getTotalReparaciones() {
+        return totalReparaciones;
+    }
+
+    public void setTotalReparaciones(double totalReparaciones) {
+        this.totalReparaciones = totalReparaciones;
+    }
+
+    public double getTotalReparacionesEfectivo() {
+        return totalReparacionesEfectivo;
+    }
+
+    public void setTotalReparacionesEfectivo(double totalReparacionesEfectivo) {
+        this.totalReparacionesEfectivo = totalReparacionesEfectivo;
+    }
+
+    public double getTotalReparacionesTarjeta() {
+        return totalReparacionesTarjeta;
+    }
+
+    public void setTotalReparacionesTarjeta(double totalReparacionesTarjeta) {
+        this.totalReparacionesTarjeta = totalReparacionesTarjeta;
+    }
+
+    public int getCantidadAbonosReparaciones() {
+        return cantidadAbonosReparaciones;
+    }
+
+    public void setCantidadAbonosReparaciones(int cantidadAbonosReparaciones) {
+        this.cantidadAbonosReparaciones = cantidadAbonosReparaciones;
+    }
+
+    public double getTotalAbonosReparaciones() {
+        return totalAbonosReparaciones;
+    }
+
+    public void setTotalAbonosReparaciones(double totalAbonosReparaciones) {
+        this.totalAbonosReparaciones = totalAbonosReparaciones;
+    }
+
+    public double getTotalAbonosReparacionesEfectivo() {
+        return totalAbonosReparacionesEfectivo;
+    }
+
+    public void setTotalAbonosReparacionesEfectivo(double totalAbonosReparacionesEfectivo) {
+        this.totalAbonosReparacionesEfectivo = totalAbonosReparacionesEfectivo;
+    }
+
+    public double getTotalAbonosReparacionesTarjeta() {
+        return totalAbonosReparacionesTarjeta;
+    }
+
+    public void setTotalAbonosReparacionesTarjeta(double totalAbonosReparacionesTarjeta) {
+        this.totalAbonosReparacionesTarjeta = totalAbonosReparacionesTarjeta;
+    }
+    
 }

@@ -46,7 +46,7 @@
                               <Label fx:id="lblTotalReparacionesEfectivo" layoutX="75.0" layoutY="140.0" styleClass="labels1" text="Total Reparaciones Efectivo:" />
                               <Label fx:id="lblTotalReparacionesTarjeta" layoutX="75.0" layoutY="190.0" styleClass="labels1" text="Total Reparaciones Tarjeta:" />
                               <Label fx:id="lblTotalReparaciones" layoutX="280.0" layoutY="90.0" styleClass="labels2" text="Total Reparaciones" />
-                              <Label fx:id="lblTortalREjectivo" layoutX="280.0" layoutY="140.0" styleClass="labels2" text="Total REfectivo" />
+                              <Label fx:id="lblTotalREjectivo" layoutX="280.0" layoutY="140.0" styleClass="labels2" text="Total REfectivo" />
                               <Label fx:id="lblTotalRTarjeta" layoutX="280.0" layoutY="190.0" styleClass="labels2" text="Total RTarjeta" />
                            </children>
                         </AnchorPane>
@@ -73,7 +73,7 @@
                               <Label fx:id="lblAbonosApartadoTarjeta" layoutX="75.0" layoutY="190.0" styleClass="labels1" text="Abonos Apartado Tarjeta:" />
                               <Label fx:id="lblTotalAbAEfectivo" layoutX="280.0" layoutY="140.0" styleClass="labels2" text="Total AbAEfectivo" />
                               <Label fx:id="lblAbonosEfectivo" layoutX="75.0" layoutY="140.0" styleClass="labels1" text="Abonos Apartado Efectivo:" />
-                              <Label fx:id="lblTotalAbonosApartado" layoutX="280.0" layoutY="90.0" styleClass="labels2" text="Total Abonos Apartado" />
+                              <Label fx:id="lblTotalAbApartado" layoutX="280.0" layoutY="90.0" styleClass="labels2" text="Total Abonos Apartado" />
                               <Label fx:id="lblTotalAbonosApartado" layoutX="75.0" layoutY="90.0" styleClass="labels1" text="Total Abonos Apartado:" />
                               <Label fx:id="lblCantidadAbonosApartado" layoutX="75.0" layoutY="40.0" styleClass="labels1" text="Cantidad Abonos Apartado:" />
                               <Label fx:id="lblAbonosApartado" layoutX="280.0" layoutY="40.0" styleClass="labels2" text="Abonos Apartado" />
@@ -89,7 +89,7 @@
                               <Label fx:id="lblAbonosReparacion" layoutX="280.0" layoutY="40.0" styleClass="labels2" text="Abonos Reparacion" />
                               <Label fx:id="lblTotalAbonosReparacion" layoutX="280.0" layoutY="90.0" styleClass="labels2" text="Total Abonos Reparacion" />
                               <Label fx:id="lblTotalAbREjectivo" layoutX="280.0" layoutY="140.0" styleClass="labels2" text="Total AbREfectivo" />
-                              <Label fx:id="lblAbRTarjeta" layoutX="280.0" layoutY="190.0" styleClass="labels2" text="TotalAbRTarjeta" />
+                              <Label fx:id="lblTotalAbRTarjeta" layoutX="280.0" layoutY="190.0" styleClass="labels2" text="TotalAbRTarjeta" />
                            </children>
                         </AnchorPane>
                     </items>

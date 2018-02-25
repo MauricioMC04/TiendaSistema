@@ -12,7 +12,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class InicioController implements Initializable {
 
-    private DatosInicio datosInicio = new DatosInicio();
+    private final DatosInicio datosInicio = new DatosInicio();
     
     @FXML
     private Label lblTotalIngresos;
@@ -73,8 +73,6 @@ public class InicioController implements Initializable {
     @FXML
     private Label lblTotalReparaciones;
     @FXML
-    private Label lblTortalREjectivo;
-    @FXML
     private Label lblTotalRTarjeta;
     @FXML
     private Label lblAbonosApartadoTarjeta;
@@ -103,7 +101,11 @@ public class InicioController implements Initializable {
     @FXML
     private Label lblTotalAbREjectivo;
     @FXML
-    private Label lblAbRTarjeta;
+    private Label lblTotalREjectivo;
+    @FXML
+    private Label lblTotalAbRTarjeta;
+    @FXML
+    private Label lblTotalAbApartado;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -120,12 +122,20 @@ public class InicioController implements Initializable {
         lblTotalApartados.setText(String.valueOf(fecha.getTotalApartados()));
         lblTotalAEfectivo.setText(String.valueOf(fecha.getTotalApartadosEfectivo()));
         lblTotalATarjeta.setText(String.valueOf(fecha.getTotalApartadosTarjeta()));
-        lblAbonosApartado.setText(Integer.toString(fecha.getCantidadAbonos()));
-        lblTotalAbonosApartado.setText(String.valueOf(fecha.getTotalAbonos()));
-        lblTotalAbAEfectivo.setText(String.valueOf(fecha.getTotalAbonosEfectivo()));
-        lblTotalAbATarjeta.setText(String.valueOf(fecha.getTotalAbonosTarjeta()));
+        lblAbonosApartado.setText(Integer.toString(fecha.getCantidadAbonosApartados()));
+        lblTotalAbApartado.setText(String.valueOf(fecha.getTotalAbonosApartados()));
+        lblTotalAbAEfectivo.setText(String.valueOf(fecha.getTotalAbonosApartadosEfectivo()));
+        lblTotalAbATarjeta.setText(String.valueOf(fecha.getTotalAbonosApartadosTarjeta()));
         lblIngresos.setText(String.valueOf(fecha.getTotalIngresos()));
         lblTotalIEfectivo.setText(String.valueOf(fecha.getTotalIngresosEfecttivo()));
         lblTotalITarjeta.setText(String.valueOf(fecha.getTotalIngresosTarjeta()));
+        lblReparaciones.setText(Integer.toString(fecha.getCantidadReparaciones()));
+        lblTotalReparaciones.setText(String.valueOf(fecha.getTotalReparaciones()));
+        lblTotalREjectivo.setText(String.valueOf(fecha.getTotalReparacionesEfectivo()));
+        lblTotalRTarjeta.setText(String.valueOf(fecha.getTotalReparacionesTarjeta()));
+        lblAbonosReparacion.setText(Integer.toString(fecha.getCantidadAbonosReparaciones()));
+        lblTotalAbonosReparacion.setText(String.valueOf(fecha.getTotalAbonosReparaciones()));
+        lblTotalAbREjectivo.setText(String.valueOf(fecha.getTotalAbonosReparacionesEfectivo()));
+        lblTotalAbRTarjeta.setText(String.valueOf(fecha.getTotalAbonosReparacionesTarjeta()));
     }
 }
