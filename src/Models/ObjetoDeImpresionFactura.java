@@ -10,13 +10,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
 
-public class ObjetoDeImpresion implements Printable{
+public class ObjetoDeImpresionFactura implements Printable{
 
     private Factura factura;
     private ObservableList<DetalleFactura> detalles;
     private Cliente cliente;
     
-    public ObjetoDeImpresion(Factura factura, ObservableList<DetalleFactura> detalles, Cliente cliente) {
+    public ObjetoDeImpresionFactura(Factura factura, ObservableList<DetalleFactura> detalles, Cliente cliente) {
         this.factura = factura;
         this.detalles = detalles;
         this.cliente = cliente;

@@ -2,8 +2,8 @@
 package Controllers;
 
 import Models.Articulo;
-import Models.DatosArticulos;
-import Models.DatosFactura;
+import DataBase.DatosArticulos;
+import DataBase.DatosFactura;
 import Models.DetalleFactura;
 import Models.Factura;
 import java.net.URL;
@@ -85,11 +85,30 @@ public class ApartadoController implements Initializable {
     private Button btnNuevoVenta;
     @FXML
     private Button btnImprimir;
+    @FXML
+    private RadioButton rbtnPrecio;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cargarColumnasArticulos(tblArticulos);
-        CargarColumnasVenta(tblApartado);
+        txtBusqueda.setCursor(Cursor.TEXT);
+        txtDescuento.setCursor(Cursor.TEXT);
+        txtNombrePersona.setCursor(Cursor.TEXT);
+        txtNumeroPersona.setCursor(Cursor.TEXT);
+        txtPagoInicial.setCursor(Cursor.TEXT);
+        tblApartado.setCursor(Cursor.CROSSHAIR);
+        tblArticulos.setCursor(Cursor.CROSSHAIR);
+        rbtnColones.setCursor(Cursor.HAND);
+        rbtnPorcentaje.setCursor(Cursor.HAND);
+        btnAgregar.setCursor(Cursor.HAND);
+        btnDescartar.setCursor(Cursor.HAND);
+        rbtnEfectivo.setCursor(Cursor.HAND);
+        rbtnTarjeta.setCursor(Cursor.HAND);
+        btnRealizarVenta.setCursor(Cursor.HAND);
+        btnNuevoVenta.setCursor(Cursor.HAND);
+        btnImprimir.setCursor(Cursor.HAND);
+        rbtnPrecio.setCursor(Cursor.HAND);
+        cargarColumnasArticulos();
+        CargarColumnasVenta();
         CargarArticulos("Ninguna");
         ParteArticulo(false);
         lblNoNombre.setVisible(false);
@@ -99,15 +118,6 @@ public class ApartadoController implements Initializable {
         btnNuevoVenta.setVisible(false);
     }    
 
-
-    private void MouseEscribir(MouseEvent event) {
-        txtBusqueda.setCursor(Cursor.TEXT);
-        txtDescuento.setCursor(Cursor.TEXT);
-        txtNombrePersona.setCursor(Cursor.TEXT);
-        txtNumeroPersona.setCursor(Cursor.TEXT);
-        txtPagoInicial.setCursor(Cursor.TEXT);
-    }
-
     @FXML
     private void BuscarArticulos(KeyEvent event) {
         if(txtBusqueda.getText().equals("")){
@@ -116,11 +126,6 @@ public class ApartadoController implements Initializable {
             CargarArticulos(txtBusqueda.getText());
         }
         ParteArticulo(false);
-    }
-
-    private void MouseDireccion(MouseEvent event) {
-        tblApartado.setCursor(Cursor.CROSSHAIR);
-        tblArticulos.setCursor(Cursor.CROSSHAIR);
     }
 
     @FXML
@@ -134,19 +139,15 @@ public class ApartadoController implements Initializable {
             }
             try {
                 double desc = Double.parseDouble(descuento);
-                if(rbtnColones.isSelected()){
-                    if(AgregarEnApartado(articulo, desc)){
-                        ParteArticulo(false);
-                        tblArticulos.getSelectionModel().select(null);
-                        txtDescuento.setText("");
-                    }
-                }else if(rbtnPorcentaje.isSelected()){
-                    desc = articulo.getPrecio() * (desc / 100);
-                    if(AgregarEnApartado(articulo, desc)){
-                        ParteArticulo(false);
-                        tblArticulos.getSelectionModel().select(null);
-                        txtDescuento.setText("");
-                    }
+                if(rbtnPorcentaje.isSelected()){
+                    desc = articulo.getPrecio() * (desc / 100);                  
+                }else if(rbtnPrecio.isSelected()){
+                    desc = articulo.getPrecio() - desc;
+                }
+                if(AgregarEnApartado(articulo, desc)){
+                    ParteArticulo(false);
+                    tblArticulos.getSelectionModel().select(null);
+                    txtDescuento.setText("");
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Descuento invalido \n No digite letras en el campo del Descuento \n "
@@ -154,18 +155,6 @@ public class ApartadoController implements Initializable {
             }
         }
         btnAgregar.setDisable(false);
-    }
-
-    private void MouseMano(MouseEvent event) {
-        rbtnColones.setCursor(Cursor.HAND);
-        rbtnPorcentaje.setCursor(Cursor.HAND);
-        btnAgregar.setCursor(Cursor.HAND);
-        btnDescartar.setCursor(Cursor.HAND);
-        rbtnEfectivo.setCursor(Cursor.HAND);
-        rbtnTarjeta.setCursor(Cursor.HAND);
-        btnRealizarVenta.setCursor(Cursor.HAND);
-        btnNuevoVenta.setCursor(Cursor.HAND);
-        btnImprimir.setCursor(Cursor.HAND);
     }
 
     @FXML
@@ -242,17 +231,17 @@ public class ApartadoController implements Initializable {
         }
     }
     
-    private void cargarColumnasArticulos(TableView<Articulo> table) {
+    private void cargarColumnasArticulos() {
         TableColumn tblCCodigoArticulo = new TableColumn("Codigo");
-        tblCCodigoArticulo.setCellValueFactory(new PropertyValueFactory<Articulo, String>("CodigoArticulo"));
+        tblCCodigoArticulo.setCellValueFactory(new PropertyValueFactory<>("CodigoArticulo"));
         tblCCodigoArticulo.setMinWidth(121);
         TableColumn tblCNombre = new TableColumn("Nombre");
-        tblCNombre.setCellValueFactory(new PropertyValueFactory<Articulo, String>("Nombre"));
+        tblCNombre.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         tblCNombre.setMinWidth(121);
         TableColumn tblCPrecio = new TableColumn("Precio");
-        tblCPrecio.setCellValueFactory(new PropertyValueFactory<Articulo, String>("Precio"));
+        tblCPrecio.setCellValueFactory(new PropertyValueFactory<>("Precio"));
         tblCPrecio.setMinWidth(121);
-        table.getColumns().addAll(tblCCodigoArticulo, tblCNombre, tblCPrecio);
+        tblArticulos.getColumns().addAll(tblCCodigoArticulo, tblCNombre, tblCPrecio);
     }
     
     private void CargarArticulos(String busqueda){
@@ -269,19 +258,20 @@ public class ApartadoController implements Initializable {
         rbtnPorcentaje.setVisible(bandera);
         txtDescuento.setVisible(bandera);
         btnAgregar.setVisible(bandera);
+        rbtnPrecio.setVisible(bandera);
     }
     
-    private void CargarColumnasVenta(TableView<DetalleFactura> table) {
+    private void CargarColumnasVenta() {
         TableColumn tblCNombreArticulo = new TableColumn("Nombre Articulo");
-        tblCNombreArticulo.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("Nombre"));
+        tblCNombreArticulo.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         tblCNombreArticulo.setMinWidth(123);
         TableColumn tblCPrecioArticulo = new TableColumn("Precio Articulo");
-        tblCPrecioArticulo.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("Precio"));
+        tblCPrecioArticulo.setCellValueFactory(new PropertyValueFactory<>("Precio"));
         tblCPrecioArticulo.setMinWidth(123);
         TableColumn tblCDescuento = new TableColumn("Descuento");
-        tblCDescuento.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("Descuento"));
+        tblCDescuento.setCellValueFactory(new PropertyValueFactory<>("Descuento"));
         tblCDescuento.setMinWidth(123);
-        table.getColumns().addAll(tblCNombreArticulo, tblCPrecioArticulo, tblCDescuento);
+        tblApartado.getColumns().addAll(tblCNombreArticulo, tblCPrecioArticulo, tblCDescuento);
     }
     
     private void CalcularPrecio(){
@@ -294,16 +284,22 @@ public class ApartadoController implements Initializable {
     
     private boolean AgregarEnApartado(Articulo articulo, double descuento){
         if(descuento > articulo.getPrecio()){
-            JOptionPane.showMessageDialog(null, "Descuento invalido \n El descuento para este articulo no puede ser mayor"
-               + " a " + articulo.getPrecio() + "\n Recalcule su descuento");
+            JOptionPane.showMessageDialog(null, "Descuento invalido \nEl descuento para este articulo no puede "
+                + "ser mayor a " + articulo.getPrecio() + "\nRecalcule su descuento");
             return false;
         }else{
-            listaApartado.add(new DetalleFactura(0,descuento,articulo.getCodigoArticulo(),articulo.getNombre(),
-                articulo.getPrecio()));
-            CargarApartado();
-            CalcularPrecio();
-            return true;
-        }
+            if(descuento < 0){
+                JOptionPane.showMessageDialog(null, "Descuento invalido\nEl Descuento no puede ser menor a 0\nRecalcule su "
+                    + "Descuento");
+                return false;
+            }else{
+                listaApartado.add(new DetalleFactura(0,descuento,articulo.getCodigoArticulo(),articulo.getNombre(),
+                    articulo.getPrecio()));
+                CargarApartado();
+                CalcularPrecio();
+                return true;
+            }
+        } 
     }
     
     private void CargarApartado(){
@@ -342,7 +338,11 @@ public class ApartadoController implements Initializable {
                 return pago;
             }else{
                 pago = Double.parseDouble(txtPagoInicial.getText());
-                return pago;
+                if(pago <= Double.parseDouble(lblTotal.getText())){
+                    return pago;
+                }
+                JOptionPane.showMessageDialog(null, "Pago Inicial invalido\nEl Pago Inicial no puede ser mayor a " + 
+                    lblTotal.getText() + "\nRedigite el Pago Inicial");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Pago Inicial invalido\nNo digite letras en el espacio del Pago Inicial"

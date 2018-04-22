@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="686.0" prefWidth="847.0" stylesheets="@../Imagenes/Estilo.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controllers.ConsultaReparacionesController">
+<AnchorPane id="AnchorPane" prefHeight="686.0" prefWidth="847.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultaReparacionesController">
    <children>
       <SplitPane dividerPositions="0.5467455621301776" prefHeight="686.0" prefWidth="847.0">
         <items>
@@ -29,7 +28,6 @@
                   <TextField fx:id="txtArticulo" layoutX="88.0" layoutY="13.0" prefHeight="25.0" prefWidth="264.0" />
                   <Label fx:id="lblDescripcion" layoutX="2.0" layoutY="84.0" styleClass="labels3" text="Descripcion:" />
                   <TextArea fx:id="txtDescripcion" layoutX="100.0" layoutY="77.0" prefHeight="148.0" prefWidth="247.0" />
-                  <Label fx:id="lblNoDescripcion" layoutX="355.0" layoutY="80.0" styleClass="labels4" text="*" />
                   <Label fx:id="lblNombrePersona" layoutX="6.0" layoutY="253.0" styleClass="labels3" text="Nombre Persona:" />
                   <TextField fx:id="txtNombrePersona" layoutX="137.0" layoutY="249.0" prefHeight="25.0" prefWidth="209.0" />
                   <Label fx:id="lblNoNombrePersona" layoutX="355.0" layoutY="250.0" styleClass="labels4" text="*" />
@@ -51,6 +49,9 @@
                      </toggleGroup>
                   </RadioButton>
                   <RadioButton fx:id="rbtnTarjeta" layoutX="94.0" layoutY="589.0" mnemonicParsing="false" styleClass="labels3" text="Tarjeta" toggleGroup="$rbtngTiposDePago" />
+                  <Button fx:id="btnEditar" layoutX="263.0" layoutY="529.0" mnemonicParsing="false" onAction="#Editar" styleClass="btn2" text="Editar" />
+                  <Button fx:id="btnImprimir" layoutX="255.0" layoutY="586.0" mnemonicParsing="false" onAction="#Imprimir" styleClass="btn2" text="Imprimir" />
+                  <Button fx:id="btnEliminar" layoutX="255.0" layoutY="629.0" mnemonicParsing="false" onAction="#Eliminar" styleClass="btn2" text="Eliminar" />
                </children>
             </AnchorPane>
         </items>

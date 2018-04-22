@@ -2,7 +2,7 @@
 package Controllers;
 
 import Models.Cliente;
-import Models.DatosClientes;
+import DataBase.DatosClientes;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -13,7 +13,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 
 public class ConsultaClientesController implements Initializable {
 
@@ -26,13 +25,10 @@ public class ConsultaClientesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        CargarColumnasClientes(tblClientes);
+        CargarColumnasClientes();
         CargarClientes("Ninguna");
+        tblClientes.setCursor(Cursor.CROSSHAIR);
     }    
-
-    private void MouseEscribir(MouseEvent event) {
-        txtBusqueda.setCursor(Cursor.TEXT);
-    }
 
     @FXML
     private void BusquedaCliente(KeyEvent event) {
@@ -42,25 +38,21 @@ public class ConsultaClientesController implements Initializable {
             CargarClientes(txtBusqueda.getText());
         }
     }
-
-    private void MouseDireccion(MouseEvent event) {
-        tblClientes.setCursor(Cursor.CROSSHAIR);
-    }
     
-    private void CargarColumnasClientes(TableView<Cliente> table) {
+    private void CargarColumnasClientes() {
         TableColumn tblCIdCliente = new TableColumn("IdCliente");
-        tblCIdCliente.setCellValueFactory(new PropertyValueFactory<Cliente, String>("idCliente"));
+        tblCIdCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
         tblCIdCliente.setMinWidth(204);
         TableColumn tblCNombre = new TableColumn("Nombre");
-        tblCNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("Nombre"));
+        tblCNombre.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         tblCNombre.setMinWidth(204);
         TableColumn tblCNumero = new TableColumn("Numero");
-        tblCNumero.setCellValueFactory(new PropertyValueFactory<Cliente, String>("Numero"));
+        tblCNumero.setCellValueFactory(new PropertyValueFactory<>("Numero"));
         tblCNumero.setMinWidth(204);
         TableColumn tblCCantidadApartados = new TableColumn("Cantidad Apartados");
-        tblCCantidadApartados.setCellValueFactory(new PropertyValueFactory<Cliente, String>("CantidadApartados"));
-        tblCCantidadApartados.setMinWidth(204);
-        table.getColumns().addAll(tblCIdCliente, tblCNombre, tblCNumero, tblCCantidadApartados);
+        tblCCantidadApartados.setCellValueFactory(new PropertyValueFactory<>("CantidadApartados"));
+        tblCCantidadApartados.setPrefWidth(202);
+        tblClientes.getColumns().addAll(tblCIdCliente, tblCNombre, tblCNumero, tblCCantidadApartados);
     }
     
     private void CargarClientes(String busqueda){

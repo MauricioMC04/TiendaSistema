@@ -1,5 +1,5 @@
 
-package Models;
+package DataBase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +12,6 @@ public class Conexion {
     private Connection conexion;
 
     private Conexion(){
-        
     }
     
     public static Conexion singleton(){
@@ -32,8 +31,8 @@ public class Conexion {
         Connection conex = null;
         try {    
             Class.forName("com.mysql.jdbc.Driver");
-            conex = DriverManager.getConnection("jdbc:mysql://127.0.0.1/Tienda", "root", "Ghptjj26");
-            //conex = DriverManager.getConnection("jdbc:mysql://127.0.0.1/Tienda", "root", "24166556");
+            //conex = DriverManager.getConnection("jdbc:mysql://127.0.0.1/Tienda", "root", "Ghptjj26");
+            conex = DriverManager.getConnection("jdbc:mysql://127.0.0.1/Tienda", "root", "24166556");
         } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, "error de conexion " + e);
         }
@@ -52,5 +51,4 @@ public class Conexion {
             System.exit(0);
         } 
     }
-    
 }

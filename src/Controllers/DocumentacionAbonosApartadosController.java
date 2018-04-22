@@ -1,7 +1,7 @@
 
 package Controllers;
 
-import Models.DatosDocumentacion;
+import DataBase.DatosDocumentacion;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
 import javax.swing.JOptionPane;
 
@@ -23,11 +22,8 @@ public class DocumentacionAbonosApartadosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
-
-    private void MouseMano(MouseEvent event) {
         btnGenerarDocumentacion.setCursor(Cursor.HAND);
-    }
+    }    
 
     @FXML
     private void GenerarDocumentacion(ActionEvent event) {
@@ -36,12 +32,11 @@ public class DocumentacionAbonosApartadosController implements Initializable {
         File selectedFile = fileChooser.showDialog(null);
         if (selectedFile != null) {
            if(datosDocumentacion.AbonosDocumentacion(selectedFile.getPath()+"/MundoDelCalzado2Abonos.xls")){
-               JOptionPane.showMessageDialog(null, "Documentacion de Abonos generado correctamente");
+               JOptionPane.showMessageDialog(null, "Documentacion de Abonos Apartados generado correctamente");
            }else{
-               JOptionPane.showMessageDialog(null, "Error al generar Documentacion de Abonos");
+               JOptionPane.showMessageDialog(null, "Error al generar Documentacion de Abonos Apartados");
            }
         }
         btnGenerarDocumentacion.setDisable(false);
     }
-    
 }

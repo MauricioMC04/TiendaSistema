@@ -1,8 +1,8 @@
 
-package Models;
+package DataBase;
 
+import Models.Abono;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,12 +15,12 @@ public class DatosAbonoApartado {
 
     private final Conexion conex = Conexion.singleton();
     
-    public boolean RealizarAbono(AbonoApartado abono){
+    public boolean RealizarAbono(Abono abono){
         abono.setIdAbono(MayorIdAbono() + 1);
         return InsertarAbono(abono) && ActualizarApartado(abono);
     }
     
-    private boolean InsertarAbono(AbonoApartado abono){
+    private boolean InsertarAbono(Abono abono){
         Connection conexion = conex.open();
         try {
             PreparedStatement pst = conexion.prepareStatement("INSERT INTO abonos VALUES(?,?,?,?,?)");
@@ -41,16 +41,15 @@ public class DatosAbonoApartado {
     
     private int MayorIdAbono(){
         Connection conexion = conex.open();
-        String sql = "SELECT IFNULL(MAX(idAbono), 0) FROM abonos";
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            String dato = "";
+            ResultSet rs = st.executeQuery("SELECT IFNULL(MAX(idAbono), 0) FROM abonos");
+            int dato = -1;
             while(rs.next()){
-                dato = rs.getString(1);
+                dato = rs.getInt(1);
             }
             conex.close();
-            return Integer.parseInt(dato);
+            return dato;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Mayor Abono\n" + ex);
         }
@@ -58,7 +57,7 @@ public class DatosAbonoApartado {
         return -1;
     }
     
-    private boolean ActualizarApartado(AbonoApartado abono){
+    private boolean ActualizarApartado(Abono abono){
         Connection conexion = conex.open();
         try {
             PreparedStatement pst = conexion.prepareStatement("update facturas set MontoPagado = MontoPagado + " +
@@ -73,23 +72,14 @@ public class DatosAbonoApartado {
         return false;
     }
     
-    public ObservableList<AbonoApartado> Abonos(String busqueda){
-        ObservableList <AbonoApartado> modelo = FXCollections.observableArrayList();
-        String sql = GenerarSqlAbonos(busqueda);
-        String[] datos = new String[4];
-        Date fecha;
+    public ObservableList<Abono> Abonos(String busqueda){
+        ObservableList <Abono> modelo = FXCollections.observableArrayList();
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery(GenerarSqlAbonos(busqueda));
             while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                fecha = rs.getDate(4);
-                datos[3] = rs.getString(5);
-                modelo.add(new AbonoApartado(Integer.parseInt(datos[0]),Integer.parseInt(datos[1]),Double.parseDouble(datos[2]),
-                    fecha, Integer.parseInt(datos[3])));
+                modelo.add(new Abono(rs.getInt(1), rs.getInt(2), rs.getDouble(3), rs.getDate(4), rs.getInt(5)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Abonos \n" + ex);
@@ -105,5 +95,39 @@ public class DatosAbonoApartado {
         return "select idAbono, CodigoFactura, Monto, Fecha, idTipoDePago from abonos where idAbono Like '%" + busqueda +
             "%' Or CodigoFactura Like '%" + busqueda + "%' Or Monto Like '%" + busqueda + "%' Or Fecha Like '%" + 
             busqueda + "%' Or idTipoDePago Like '%" + busqueda + "%'";
+    }
+    
+    public boolean EliminarAbono(Abono abono){
+        return DescontarAbono(abono) && EliminarAbonoApartado(abono);
+    }
+    
+    private boolean DescontarAbono(Abono abono){
+        Connection conexion = conex.open();
+        try {
+            PreparedStatement pst = conexion.prepareStatement("update facturas set MontoPagado = MontoPagado - " +
+                abono.getMonto() + " where CodigoFactura = " + abono.getCodigoFactura());
+            pst.executeUpdate();
+            conex.close();
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: Actualizar Apartado por Eliminacion de Abono\n" + ex);
+        }
+        conex.close();
+        return false;
+    }
+     
+    private boolean EliminarAbonoApartado(Abono abono){
+        Connection conexion = conex.open();
+        try {
+            PreparedStatement pst = conexion.prepareStatement("delete from abonos where idAbono = " + 
+                abono.getIdAbono());
+            pst.executeUpdate();
+            conex.close();
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al Eliminar Abono:\n" + ex);
+        }
+        conex.close();
+        return false;
     }
 }

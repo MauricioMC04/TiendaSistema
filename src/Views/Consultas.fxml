@@ -20,8 +20,8 @@
                         <Button fx:id="btnClientes" mnemonicParsing="false" onAction="#Clientes" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Clientes" />
                         <Button fx:id="btnFechas" mnemonicParsing="false" onAction="#Fechas" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Fechas" />
                         <Button fx:id="btnArticulos" mnemonicParsing="false" onAction="#Articulos" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Articulos" />
-                        <Button fx:id="btnArticulos1" mnemonicParsing="false" onAction="#Articulos" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Reparaciones" />
-                        <Button fx:id="btnArticulos2" mnemonicParsing="false" onAction="#Articulos" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Ab. Reparacion" />
+                        <Button fx:id="btnReparaciones" mnemonicParsing="false" onAction="#Reparaciones" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Reparaciones" />
+                        <Button fx:id="btnAbonosReparacion" mnemonicParsing="false" onAction="#AbonosReparacion" prefHeight="40.0" prefWidth="134.0" styleClass="btn3" text="Ab. Reparacion" />
                      </children>
                   </VBox>
                </children>

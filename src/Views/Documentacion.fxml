@@ -16,11 +16,11 @@
                      <children>
                         <Button fx:id="btnFacturas" mnemonicParsing="false" onAction="#Facturas" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Facturas" />
                         <Button fx:id="btnDetallesFacturas" mnemonicParsing="false" onAction="#DetallesFacturas" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Detalles Facturas" />
-                        <Button fx:id="btnAbonos" mnemonicParsing="false" onAction="#Abonos" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Abonos Apartados" />
+                        <Button fx:id="btnAbonos" mnemonicParsing="false" onAction="#AbonosApartado" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Abonos Apartados" />
                         <Button fx:id="btnArticulos" mnemonicParsing="false" onAction="#Articulos" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Articulos" />
                         <Button fx:id="btnClientes" mnemonicParsing="false" onAction="#Clientes" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Clientes" />
-                        <Button fx:id="btnReparaciones" mnemonicParsing="false" onAction="#Clientes" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Reparaciones" />
-                        <Button fx:id="btnAbonosReparaciones" mnemonicParsing="false" onAction="#Clientes" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Abonos Reparaciones" />
+                        <Button fx:id="btnReparaciones" mnemonicParsing="false" onAction="#Reparaciones" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Reparaciones" />
+                        <Button fx:id="btnAbonosReparaciones" mnemonicParsing="false" onAction="#AbonosReparacion" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Abonos Reparaciones" />
                         <Button fx:id="btnTodo" mnemonicParsing="false" onAction="#Todo" prefHeight="45.0" prefWidth="188.0" styleClass="btn3" text="Todo" />
                      </children>
                   </VBox>

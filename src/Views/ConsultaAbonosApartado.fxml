@@ -7,12 +7,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="686.0" prefWidth="847.0" styleClass="fondo2" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultaAbonosApartadoController">
+<AnchorPane id="AnchorPane" prefHeight="686.0" prefWidth="847.0" stylesheets="@../Imagenes/Estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConsultaAbonosApartadoController">
    <children>
-      <TextField fx:id="txtBusqueda" layoutX="264.0" layoutY="13.0" onKeyReleased="#BuscarAbono" prefHeight="25.0" prefWidth="329.0" promptText="Buscar Abono Apartado">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
-         </font></TextField>
-      <TableView fx:id="tblAbonos" layoutX="16.0" layoutY="57.0" prefHeight="617.0" prefWidth="816.0" />
+      <SplitPane dividerPositions="0.9385964912280702" orientation="VERTICAL" prefHeight="686.0" prefWidth="847.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="fondo2">
+               <children>
+                  <TextField fx:id="txtBusqueda" layoutX="274.0" layoutY="13.0" onKeyReleased="#BuscarAbono" prefHeight="25.0" prefWidth="329.0" promptText="Buscar Abono Apartado">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TableView fx:id="tblAbonos" layoutX="14.0" layoutY="48.0" onMouseClicked="#Seleccionar" prefHeight="573.0" prefWidth="816.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="fondo2">
+               <children>
+                  <Button fx:id="btnEliminar" layoutX="390.0" layoutY="7.0" mnemonicParsing="false" onAction="#Eliminar" styleClass="btn2" text="Eliminar" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
    </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 
-package Models;
+package DataBase;
 
+import Models.Articulo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,17 +17,12 @@ public class DatosArticulos {
     
     public ObservableList<Articulo> Articulos(String busqueda){
         ObservableList <Articulo> modelo = FXCollections.observableArrayList();
-        String sql = GenerarSql(busqueda);
-        String[] datos = new String[3];
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery(GenerarSql(busqueda));
             while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                modelo.add(new Articulo(Integer.parseInt(datos[0]),datos[1],Double.parseDouble(datos[2])));
+                modelo.add(new Articulo(rs.getInt(1), rs.getString(2), rs.getDouble(3)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Articulos \n" + ex);
@@ -37,25 +33,20 @@ public class DatosArticulos {
  
     private String GenerarSql(String busqueda){
         if(busqueda.equals("Ninguna")){
-            return "select CodigoArticulo, Nombre, Precio from articulos";
+            return "select CodigoArticulo, Nombre, Precio from articulos Order by Nombre ASC";
         }
         return "select CodigoArticulo, Nombre, Precio from articulos where CodigoArticulo LIKE '%" + busqueda + "%' Or "
-            + "Nombre LIKE '%" + busqueda + "%' Or Precio LIKE '%" + busqueda + "%'";
+            + "Nombre LIKE '%" + busqueda + "%' Or Precio LIKE '%" + busqueda + "%' Order by Nombre ASC";
     }
     
     public ObservableList<Articulo> ArticulosEliminar(String busqueda){
         ObservableList <Articulo> modelo = FXCollections.observableArrayList();
-        String sql = GenerarSqlEliminar(busqueda);
-        String[] datos = new String[3];
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery(GenerarSqlEliminar(busqueda));
             while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                modelo.add(new Articulo(Integer.parseInt(datos[0]),datos[1],Double.parseDouble(datos[2])));
+                modelo.add(new Articulo(rs.getInt(1),rs.getString(2),rs.getDouble(3)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Articulos Eliminar\n" + ex);
@@ -67,28 +58,25 @@ public class DatosArticulos {
     private String GenerarSqlEliminar(String busqueda){
         if(busqueda.equals("Ninguna")){
             return "select T1.CodigoArticulo, T1.Nombre, T1.Precio from articulos T1 Left Outer Join detalleFactura T2 "
-                + "ON T1.CodigoArticulo = T2.CodigoArticulo where T2.CodigoArticulo is null";
+                + "ON T1.CodigoArticulo = T2.CodigoArticulo where T2.CodigoArticulo is null Order by T1.Nombre ASC";
         }
         return  "select T1.CodigoArticulo, T1.Nombre, T1.Precio from articulos T1 Left Outer Join detalleFactura T2 ON "
             + "T1.CodigoArticulo = T2.CodigoArticulo where T2.CodigoArticulo is null And (T1.CodigoArticulo Like '%" + 
-            busqueda + "%' Or T1.Nombre Like '%" + busqueda + "%' Or T1.Precio Like '%" + busqueda + "%')";
+            busqueda + "%' Or T1.Nombre Like '%" + busqueda + "%' Or T1.Precio Like '%" + busqueda + "%') Order by "
+            + "T1.Nombre ASC";
     }
     
     public boolean ExisteArticulo(String nombre, double precio){
         int CodigoArticulo = 0;
-        String dato = "";
-        String sql = "select CodigoArticulo from articulos where Nombre = '" + nombre + "' And Precio = " + precio;
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery("select CodigoArticulo from articulos where Nombre = '" + nombre + "' And "
+                + "Precio = " + precio);
             while (rs.next()) {
-                dato = rs.getString(1);
+                CodigoArticulo = rs.getInt(1);      
             }
             conex.close();
-            if(dato != null && !dato.equals("")){
-                CodigoArticulo = Integer.parseInt(dato);
-            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Existe Articulo\n" + ex);
         }
@@ -113,17 +101,16 @@ public class DatosArticulos {
     }
      
     private int MayorArticulo(){
-        String sql = "SELECT IFNULL(MAX(CodigoArticulo), 0) FROM articulos";
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            String dato = "";
+            ResultSet rs = st.executeQuery("SELECT IFNULL(MAX(CodigoArticulo), 0) FROM articulos");
+            int dato = -1;
             while(rs.next()){
-                dato = rs.getString(1);
+                dato = rs.getInt(1);
             }
             conex.close();
-            return Integer.parseInt(dato);
+            return dato;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Mayor Articulo\n" + ex);
         }

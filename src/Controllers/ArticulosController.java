@@ -2,7 +2,7 @@
 package Controllers;
 
 import Models.Articulo;
-import Models.DatosArticulos;
+import DataBase.DatosArticulos;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -70,6 +70,12 @@ public class ArticulosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        tblAgregar.setCursor(Cursor.CROSSHAIR);
+        tblEliminar.setCursor(Cursor.CROSSHAIR);
+        tblEditar.setCursor(Cursor.CROSSHAIR);
+        btnAgregar.setCursor(Cursor.HAND);
+        btnEditar.setCursor(Cursor.HAND);
+        btnEliminar.setCursor(Cursor.HAND);
         CargarColumnasArticulos(tblAgregar, 1);
         CargarColumnasArticulos(tblEliminar, 2);
         CargarColumnasArticulos(tblEditar, 3);
@@ -77,28 +83,6 @@ public class ArticulosController implements Initializable {
         PorDefectoEliminar();
         PorDefectoEditar();
     }    
-
-
-    private void MouseDireccion(MouseEvent event) {
-        tblAgregar.setCursor(Cursor.CROSSHAIR);
-        tblEliminar.setCursor(Cursor.CROSSHAIR);
-        tblEditar.setCursor(Cursor.CROSSHAIR);
-    }
-
-    private void MouseEscribir(MouseEvent event) {
-        txtBusquedaEditar.setCursor(Cursor.TEXT);
-        txtBusquedaEliminar.setCursor(Cursor.TEXT);
-        txtNombre.setCursor(Cursor.TEXT);
-        txtNombreEditar.setCursor(Cursor.TEXT);
-        txtPrecio.setCursor(Cursor.TEXT);
-        txtPrecioEditar.setCursor(Cursor.TEXT);
-    }
-
-    private void MouseMano(MouseEvent event) {
-        btnAgregar.setCursor(Cursor.HAND);
-        btnEditar.setCursor(Cursor.HAND);
-        btnEliminar.setCursor(Cursor.HAND);
-    }
 
     @FXML
     private void Agregar(ActionEvent event) {
@@ -212,11 +196,11 @@ public class ArticulosController implements Initializable {
         
     private void CargarColumnasArticulos(TableView<Articulo> table, int tabla) {
         TableColumn tblCCodigoArticulo = new TableColumn("Codigo");
-        tblCCodigoArticulo.setCellValueFactory(new PropertyValueFactory<Articulo, String>("CodigoArticulo")); 
+        tblCCodigoArticulo.setCellValueFactory(new PropertyValueFactory<>("CodigoArticulo")); 
         TableColumn tblCNombre = new TableColumn("Nombre");
-        tblCNombre.setCellValueFactory(new PropertyValueFactory<Articulo, String>("Nombre"));
+        tblCNombre.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         TableColumn tblCPrecio = new TableColumn("Precio");
-        tblCPrecio.setCellValueFactory(new PropertyValueFactory<Articulo, String>("Precio"));
+        tblCPrecio.setCellValueFactory(new PropertyValueFactory<>("Precio"));
         switch(tabla){
             case 1:
                 tblCCodigoArticulo.setMinWidth(153);

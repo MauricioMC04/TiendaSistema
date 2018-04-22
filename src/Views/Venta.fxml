@@ -30,14 +30,15 @@
                               <Label fx:id="lblPrecioSeleccionado" layoutX="84.0" layoutY="61.0" styleClass="labels3" text="Precio:" />
                               <Label fx:id="lblArticulo" layoutX="199.0" layoutY="28.0" prefHeight="17.0" prefWidth="347.0" styleClass="labels3" text="Nombre Articulo" />
                               <Button fx:id="btnAgregar" layoutX="454.0" layoutY="124.0" mnemonicParsing="false" onAction="#Agregar" styleClass="btn2" text="Agregar" />
-                              <RadioButton fx:id="rbtnColones" layoutX="84.0" layoutY="106.0" mnemonicParsing="false" selected="true" styleClass="labels3" text="Colones">
+                              <RadioButton fx:id="rbtnColones" layoutX="84.0" layoutY="106.0" mnemonicParsing="false" selected="true" styleClass="labels3" text="Colones Menos">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="rbtngDescuentos" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton fx:id="rbtnPorcentaje" layoutX="84.0" layoutY="141.0" mnemonicParsing="false" styleClass="labels3" text="Porcentaje" toggleGroup="$rbtngDescuentos" />
+                              <RadioButton fx:id="rbtnPorcentaje" layoutX="84.0" layoutY="136.0" mnemonicParsing="false" styleClass="labels3" text="Porcentaje" toggleGroup="$rbtngDescuentos" />
                               <TextField fx:id="txtDescuento" layoutX="229.0" layoutY="124.0" prefHeight="25.0" prefWidth="183.0" promptText="Descuento" />
                               <Label fx:id="lblPrecio" layoutX="199.0" layoutY="60.0" prefHeight="17.0" prefWidth="359.0" styleClass="labels3" text="Precio Articulo" />
+                              <RadioButton fx:id="rbtnPrecio" layoutX="84.0" layoutY="166.0" mnemonicParsing="false" styleClass="labels3" text="Precio Final" toggleGroup="$rbtngDescuentos" />
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="fondo2">

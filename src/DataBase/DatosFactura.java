@@ -1,14 +1,17 @@
 
-package Models;
+package DataBase;
 
 import Controllers.ApartadoController;
 import Controllers.VentaController;
+import Models.Cliente;
+import Models.DetalleFactura;
+import Models.Factura;
+import Models.ObjetoDeImpresionFactura;
 import java.awt.print.PageFormat;
 import java.awt.print.Paper;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +29,6 @@ public class DatosFactura {
         if(GenerarFactura(mayorFactura +1, factura) && GenerarDetalles(mayorFactura +1, listaVenta)){
             factura.setCodigoFactura(mayorFactura + 1);            
             VentaController.factura = factura;
-            Imprimir(factura, listaVenta);
             return true;
         }else{
             return false;
@@ -74,17 +76,16 @@ public class DatosFactura {
     }
     
     private int MayorFactura(){
-        String sql = "SELECT IFNULL(MAX(CodigoFactura), 0) FROM facturas";
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            String dato = "";
+            ResultSet rs = st.executeQuery("SELECT IFNULL(MAX(CodigoFactura), 0) FROM facturas");
+            int dato = -1;
             while(rs.next()){
-                dato = rs.getString(1);
+                dato = rs.getInt(1);
             }
             conex.close();
-            return Integer.parseInt(dato);
+            return dato;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Mayor Factura\n" + ex);
         }
@@ -92,14 +93,14 @@ public class DatosFactura {
         return -1;
     }
     
-    public boolean RealizarApartado(Factura factura, ObservableList<DetalleFactura> listaVenta, String nombre, String numero){
+    public boolean RealizarApartado(Factura factura, ObservableList<DetalleFactura> listaVenta, String nombre, 
+    String numero){
         int mayorFactura = MayorFactura();
         factura.setIdCliente(ObtenerCliente(nombre, numero));
         if(factura.getIdCliente() != -1){
             if(GenerarFactura(mayorFactura +1, factura) && GenerarDetalles(mayorFactura +1, listaVenta)){
                 factura.setCodigoFactura(mayorFactura + 1);
                 ApartadoController.factura = factura;
-                Imprimir(factura, listaVenta);
                 return true;
             }
             return false;
@@ -108,20 +109,18 @@ public class DatosFactura {
     }
     
     public int ObtenerCliente(String nombre, String numero){
-        String sql = "SELECT idCliente FROM clientes where Nombre = '" + nombre + "' And Numero = '" + numero + "'";
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            String dato = "";
+            ResultSet rs = st.executeQuery("SELECT idCliente FROM clientes where Nombre = '" + nombre + "' And Numero ="
+                + " '" + numero + "'");
+            int dato = -1;
             while(rs.next()){
-                if(rs.getString(1) != null){
-                    dato = rs.getString(1);
-                }
+                dato = rs.getInt(1);
             }
             conex.close();
-            if(!dato.equals("")){
-                return Integer.parseInt(dato);
+            if(dato != -1 && dato != 0){
+                return dato;
             }else{
                 return GenerarCliente(nombre, numero);
             }
@@ -151,17 +150,16 @@ public class DatosFactura {
     }
     
     private int MayorCliente(){
-        String sql = "SELECT IFNULL(MAX(idCliente), 0) FROM clientes";
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            String dato = "";
+            ResultSet rs = st.executeQuery("SELECT IFNULL(MAX(idCliente), 0) FROM clientes");
+            int dato = -1;
             while(rs.next()){
-                dato = rs.getString(1);
+                dato = rs.getInt(1);
             }
             conex.close();
-            return Integer.parseInt(dato);
+            return dato;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Mayor Factura\n" + ex);
         }
@@ -171,22 +169,13 @@ public class DatosFactura {
     
     public ObservableList<Factura> FacturasApartados(String busqueda){
         ObservableList <Factura> modelo = FXCollections.observableArrayList();
-        String sql = GenerarSqlFacturas(busqueda);
-        String[] datos = new String[5];
-        Date fecha;
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery(GenerarSqlFacturas(busqueda));
             while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                fecha = rs.getDate(4);
-                datos[3] = rs.getString(5);
-                datos[4] = rs.getString(6);
-                modelo.add(new Factura(Integer.parseInt(datos[0]),2,Double.parseDouble(datos[1]),
-                    Double.parseDouble(datos[2]),fecha,Integer.parseInt(datos[3]),Integer.parseInt(datos[4])));
+                modelo.add(new Factura(rs.getInt(1), 2, rs.getDouble(2), rs.getDouble(3), rs.getDate(4), rs.getInt(5), 
+                    rs.getInt(6)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Facturas \n" + ex);
@@ -197,31 +186,27 @@ public class DatosFactura {
  
     private String GenerarSqlFacturas(String busqueda){
         if(busqueda.equals("Ninguna")){
-            return "select f.CodigoFactura, f.MontoTotal, f.MontoPagado, f.Fecha, f.idCliente, f.idTipoDePago from "
-                + "facturas f, tiposdefactura t where f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Apartado' And "
-                + "f.MontoTotal != f.MontoPagado";
+            return "Select f.CodigoFactura, f.MontoTotal, f.MontoPagado, f.Fecha, f.idCliente, f.idTipoDePago FROM "
+                + "facturas f INNER JOIN tiposdefactura t ON f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = "
+                + "'Apartado' where f.MontoTotal != f.MontoPagado";
         }
-        return "select f.CodigoFactura, f.MontoTotal, f.MontoPagado, f.Fecha, f.idCliente, f.idTipoDePago from "
-            + "facturas f, tiposdefactura t, clientes c where f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = "
-            + "'Apartado' And f.MontoTotal != f.MontoPagado And f.idCliente = c.idCliente And (c.Nombre Like '%" + 
-            busqueda + "%' Or c.Numero Like '%" + busqueda + "%' Or f.CodigoFactura Like '%" + busqueda + "%' "
-            + "Or f.MontoTotal Like '%" + busqueda + "%' Or f.MontoPagado Like '%" + busqueda + "%' Or f.Fecha Like '%"
-            + busqueda + "%' Or f.idCliente Like '%" + busqueda + "%' Or f.idTipoDePago Like '%" + busqueda + "%')";
+        return "SELECT f.CodigoFactura, f.MontoTotal, f.MontoPagado, f.Fecha, f.idCliente, f.idTipoDePago FROM facturas"
+            + " f INNER JOIN tiposdefactura t ON f.TipoDeFactura = t.idTipoDeFactura And t.Tipo = 'Apartado' INNER JOIN"
+            + " clientes c ON f.idCliente = c.idCliente where f.MontoTotal != f.MontoPagado And (c.Nombre Like '%" + 
+            busqueda + "%' Or c.Numero Like '%" + busqueda + "%' Or f.CodigoFactura Like '%" + busqueda + "%' Or "
+            + "f.MontoTotal Like '%" + busqueda + "%' Or f.MontoPagado Like '%" + busqueda + "%' Or f.Fecha Like '%" +
+            busqueda + "%' Or f.idCliente Like '%" + busqueda + "%' Or f.idTipoDePago Like '%" + busqueda + "%')";
     }
     
     public Cliente Cliente(int idCliente){
         Cliente cliente = new Cliente();
-        String sql = "SELECT Nombre, Numero FROM clientes where idCliente = " + idCliente;
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            String[] datos = new String[2];
+            ResultSet rs = st.executeQuery("SELECT Nombre, Numero FROM clientes where idCliente = " + idCliente);
             while(rs.next()){
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
+                cliente = new Cliente(idCliente, rs.getString(1), rs.getString(2),0);
             }
-            cliente = new Cliente(idCliente, datos[0], datos[1],0);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Cliente\n" + ex);
         }
@@ -231,20 +216,15 @@ public class DatosFactura {
     
     public ObservableList<DetalleFactura> DetalleFactura(int codigoFactura){
         ObservableList <DetalleFactura> modelo = FXCollections.observableArrayList();
-        String sql = "select a.CodigoArticulo, a.Nombre, a.Precio, d.Descuento from detallefactura d, articulos a where"
-            + " d.CodigoFactura = " + codigoFactura + " And d.CodigoArticulo = a.CodigoArticulo";
-        String[] datos = new String[4];
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery("SELECT a.CodigoArticulo, a.Nombre, a.Precio, d.Descuento FROM "
+                + "detallefactura d INNER JOIN articulos a ON d.CodigoArticulo = a.CodigoArticulo And d.CodigoFactura "
+                + "= " + codigoFactura);
             while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                datos[3] = rs.getString(4);
-                modelo.add(new DetalleFactura(codigoFactura, Double.parseDouble(datos[3]),Integer.parseInt(datos[0]),
-                    datos[1],Double.parseDouble(datos[2])));
+                modelo.add(new DetalleFactura(codigoFactura, rs.getDouble(4), rs.getInt(1), rs.getString(2), 
+                    rs.getDouble(3)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Detalle de Factura\n" + ex);
@@ -255,23 +235,13 @@ public class DatosFactura {
     
     public ObservableList<Factura> TodasFacturas(String busqueda){
         ObservableList <Factura> modelo = FXCollections.observableArrayList();
-        String sql = GenerarSqlTodasFacturas(busqueda);
-        String[] datos = new String[5];
-        Date fecha;
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery(GenerarSqlTodasFacturas(busqueda));
             while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                fecha = rs.getDate(4);
-                datos[3] = rs.getString(5);
-                datos[4] = rs.getString(6);
-                modelo.add(new Factura(Integer.parseInt(datos[0]),1,Double.parseDouble(datos[1]),
-                    Double.parseDouble(datos[2]),fecha,Integer.parseInt(datos[3]),
-                    Integer.parseInt(datos[4])));
+                modelo.add(new Factura(rs.getInt(1), 1, rs.getDouble(2), rs.getDouble(3), rs.getDate(4), rs.getInt(5),
+                    rs.getInt(6)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Todas las Facturas \n" + ex);
@@ -285,8 +255,8 @@ public class DatosFactura {
             return "select CodigoFactura, MontoTotal, MontoPagado, Fecha, idCliente, idTipoDePago from "
                 + "facturas where TipoDeFactura = 1";
         }
-        return "select f.CodigoFactura, f.MontoTotal, f.MontoPagado, f.Fecha, f.idCliente, f.idTipoDePago from "
-            + "facturas f, clientes c where f.TipoDeFactura = 1 And f.idCliente = c.idCliente And (c.Nombre Like '%" + 
+        return "SELECT f.CodigoFactura, f.MontoTotal, f.MontoPagado, f.Fecha, f.idCliente, f.idTipoDePago FROM facturas"
+            + " f INNER JOIN clientes c ON f.idCliente = c.idCliente And f.TipoDeFactura = 1 And (c.Nombre Like '%" + 
             busqueda + "%' Or c.Numero Like '%" + busqueda + "%' Or f.CodigoFactura Like '%" + busqueda + "%' Or "
             + "f.TipoDeFactura Like '%" + busqueda + "%' Or f.MontoTotal Like '%" + busqueda + "%' Or f.MontoPagado "
             + "Like '%" + busqueda + "%' Or f.Fecha Like '%" + busqueda + "%' Or f.idCliente Like '%" + busqueda + "%' "
@@ -344,7 +314,7 @@ public class DatosFactura {
     }
     
     public boolean EliminarFactura(Factura factura){
-        return EliminarDetalles(factura) && Eliminar(factura);
+        return EliminarDetalles(factura) && EliminarAbonosFactura(factura) && Eliminar(factura);
     }
    
     public boolean EliminarDetalles(Factura factura){
@@ -379,23 +349,13 @@ public class DatosFactura {
     
     public ObservableList<Factura> TodosApartados(String busqueda){
         ObservableList <Factura> modelo = FXCollections.observableArrayList();
-        String sql = GenerarSqlTodosApartados(busqueda);
-        String[] datos = new String[5];
-        Date fecha;
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery(GenerarSqlTodosApartados(busqueda));
             while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                fecha = rs.getDate(4);
-                datos[3] = rs.getString(5);
-                datos[4] = rs.getString(6);
-                modelo.add(new Factura(Integer.parseInt(datos[0]),2,Double.parseDouble(datos[1]),
-                    Double.parseDouble(datos[2]),fecha,Integer.parseInt(datos[3]),
-                    Integer.parseInt(datos[4])));
+                modelo.add(new Factura(rs.getInt(1), 2, rs.getDouble(2), rs.getDouble(3), rs.getDate(4), rs.getInt(5), 
+                    rs.getInt(6)));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Todos los Apartados \n" + ex);
@@ -409,8 +369,8 @@ public class DatosFactura {
             return "select CodigoFactura, MontoTotal, MontoPagado, Fecha, idCliente, idTipoDePago from "
                 + "facturas where TipoDeFactura = 2";
         }
-        return "select f.CodigoFactura, f.MontoTotal, f.MontoPagado, f.Fecha, f.idCliente, f.idTipoDePago from "
-            + "facturas f, clientes c where f.TipoDeFactura = 2 And f.idCliente = c.idCliente And (c.Nombre Like '%" + 
+        return "SELECT f.CodigoFactura, f.MontoTotal, f.MontoPagado, f.Fecha, f.idCliente, f.idTipoDePago FROM facturas"
+            + " f INNER JOIN clientes c ON f.idCliente = c.idCliente And f.TipoDeFactura = 2 And (c.Nombre Like '%" + 
             busqueda + "%' Or c.Numero Like '%" + busqueda + "%' Or f.CodigoFactura Like '%" + busqueda + "%' Or "
             + "f.TipoDeFactura Like '%" + busqueda + "%' Or f.MontoTotal Like '%" + busqueda + "%' Or f.MontoPagado "
             + "Like '%" + busqueda + "%' Or f.Fecha Like '%" + busqueda + "%' Or f.idCliente Like '%" + busqueda + "%' "
@@ -442,7 +402,7 @@ public class DatosFactura {
         paper.setImageableArea(margin, margin, paper.getWidth()-margin, paper.getHeight()-margin);
         pf.setPaper(paper);
         pf.setOrientation(PageFormat.PORTRAIT);
-        job.setPrintable(new ObjetoDeImpresion(factura,listaVenta,Cliente(factura.getIdCliente())), pf);  
+        job.setPrintable(new ObjetoDeImpresionFactura(factura,listaVenta,Cliente(factura.getIdCliente())), pf);  
         try{
             job.print();
         }catch(PrinterException e){
@@ -451,35 +411,46 @@ public class DatosFactura {
     }
     
     private Factura Factura(int codigo){
-        String sql = "select MontoTotal, MontoPagado, Fecha, idCliente, idTipoDePago, TipoDeFactura "
-            + "from facturas where CodigoFactura = " + codigo;
-        String[] datos = new String[5];
-        Date fecha = null;
         Connection conexion = conex.open();
+        Factura factura = null;
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery("select MontoTotal, MontoPagado, Fecha, idCliente, idTipoDePago, "
+                + "TipoDeFactura from facturas where CodigoFactura = " + codigo);
             while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                fecha = rs.getDate(3);
-                datos[2] = rs.getString(4);
-                datos[3] = rs.getString(5);
-                datos[4] = rs.getString(6);
+                factura = new Factura(codigo, rs.getInt(6), rs.getDouble(1), rs.getDouble(2), rs.getDate(3), 
+                    rs.getInt(4), rs.getInt(5));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Factura\n" + ex);
         }
         conex.close();
-        return (new Factura(codigo,Integer.parseInt(datos[4]),Double.parseDouble(datos[0]),
-                    Double.parseDouble(datos[1]),fecha,Integer.parseInt(datos[2]),
-                    Integer.parseInt(datos[3])));
+        return factura;
     }
     
     public void ImprimirFactura(int codigoFactura){
         Factura factura = Factura(codigoFactura);
         ObservableList<DetalleFactura> listaVenta = DetalleFactura(codigoFactura);
         Imprimir(factura, listaVenta);
+    }
+    
+    public boolean EliminarAbonosFactura(Factura factura){
+        if(factura.getTipoDeFactura() == 1){
+            return true;
+        }else{
+            Connection conexion = conex.open();
+            try {
+                PreparedStatement pst = conexion.prepareStatement("delete from abonos where CodigoFactura = " + 
+                factura.getCodigoFactura());
+                pst.executeUpdate();
+                conex.close();
+                return true;
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al Eliminar Abonos Factura:\n" + ex);
+            }
+            conex.close();
+            return false;
+        }
     }
 }
 

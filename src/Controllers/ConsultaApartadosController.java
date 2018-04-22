@@ -2,7 +2,7 @@
 package Controllers;
 
 import Models.Cliente;
-import Models.DatosFactura;
+import DataBase.DatosFactura;
 import Models.DetalleFactura;
 import Models.Factura;
 import java.net.URL;
@@ -70,16 +70,18 @@ public class ConsultaApartadosController implements Initializable {
         lblNoNombre.setVisible(false);
         lblNoNumero.setVisible(false);
         ParteApartado(false);
-        CargarColumnasFactura(tblApartados);
-        CargarColumnasDetalle(tblArticulos);
+        CargarColumnasFactura();
+        CargarColumnasDetalle();
         CargarApartados("Ninguna");
+        tblApartados.setCursor(Cursor.CROSSHAIR);
+        tblArticulos.setCursor(Cursor.CROSSHAIR);
+        btnEditar.setCursor(Cursor.HAND);
+        btnEliminar.setCursor(Cursor.HAND);
+        btnQuitarArticulo.setCursor(Cursor.HAND);
+        rbtnEfectivo.setCursor(Cursor.HAND);
+        rbtnTarjeta.setCursor(Cursor.HAND);
+        btnImprimir.setCursor(Cursor.HAND);
     }    
-
-    private void MouseEscribir(MouseEvent event) {
-        txtBusqueda.setCursor(Cursor.TEXT);
-        txtNombre.setCursor(Cursor.TEXT);
-        txtNumero.setCursor(Cursor.TEXT);
-    }
 
     @FXML
     private void BusquedaApartado(KeyEvent event) {
@@ -88,20 +90,6 @@ public class ConsultaApartadosController implements Initializable {
         }else{
             CargarApartados(txtBusqueda.getText());
         }
-    }
-
-    private void MouseDireccion(MouseEvent event) {
-        tblApartados.setCursor(Cursor.CROSSHAIR);
-        tblArticulos.setCursor(Cursor.CROSSHAIR);
-    }
-
-    private void MouseMano(MouseEvent event) {
-        btnEditar.setCursor(Cursor.HAND);
-        btnEliminar.setCursor(Cursor.HAND);
-        btnQuitarArticulo.setCursor(Cursor.HAND);
-        rbtnEfectivo.setCursor(Cursor.HAND);
-        rbtnTarjeta.setCursor(Cursor.HAND);
-        btnImprimir.setCursor(Cursor.HAND);
     }
 
     @FXML
@@ -251,45 +239,45 @@ public class ConsultaApartadosController implements Initializable {
         btnImprimir.setVisible(bandera);
     }
     
-    private void CargarColumnasFactura(TableView<Factura> table) {
+    private void CargarColumnasFactura() {
         TableColumn tblCCodigoFactura = new TableColumn("Codigo");
-        tblCCodigoFactura.setCellValueFactory(new PropertyValueFactory<Factura, String>("CodigoFactura"));
+        tblCCodigoFactura.setCellValueFactory(new PropertyValueFactory<>("CodigoFactura"));
         tblCCodigoFactura.setMinWidth(10);
         tblCCodigoFactura.setPrefWidth(71);
         TableColumn tblCMontoTotal = new TableColumn("Total");
-        tblCMontoTotal.setCellValueFactory(new PropertyValueFactory<Factura, String>("MontoTotal"));
+        tblCMontoTotal.setCellValueFactory(new PropertyValueFactory<>("MontoTotal"));
         tblCMontoTotal.setMinWidth(10);
         tblCMontoTotal.setPrefWidth(71);
         TableColumn tblCMontoPagado = new TableColumn("Pagado");
-        tblCMontoPagado.setCellValueFactory(new PropertyValueFactory<Factura, String>("MontoPagado"));
+        tblCMontoPagado.setCellValueFactory(new PropertyValueFactory<>("MontoPagado"));
         tblCMontoPagado.setMinWidth(10);
         tblCMontoPagado.setPrefWidth(71);
         TableColumn tblCFecha = new TableColumn("Fecha");
-        tblCFecha.setCellValueFactory(new PropertyValueFactory<Factura, String>("Fecha"));
+        tblCFecha.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
         tblCFecha.setMinWidth(10);
         tblCFecha.setPrefWidth(71);
         TableColumn tblCIdCliente = new TableColumn("Cliente");
-        tblCIdCliente.setCellValueFactory(new PropertyValueFactory<Factura, String>("idCliente"));
+        tblCIdCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
         tblCIdCliente.setMinWidth(10);
         tblCIdCliente.setPrefWidth(71);
         TableColumn tblCIdTipoDePago = new TableColumn("Tipo Pago");
-        tblCIdTipoDePago.setCellValueFactory(new PropertyValueFactory<Factura, String>("idTipoDePago"));
+        tblCIdTipoDePago.setCellValueFactory(new PropertyValueFactory<>("idTipoDePago"));
         tblCIdTipoDePago.setMinWidth(10);
-        tblCIdTipoDePago.setPrefWidth(71);
-        table.getColumns().addAll(tblCCodigoFactura, tblCMontoTotal, tblCMontoPagado, tblCFecha, tblCIdCliente, tblCIdTipoDePago);
+        tblCIdTipoDePago.setPrefWidth(69);
+        tblApartados.getColumns().addAll(tblCCodigoFactura, tblCMontoTotal, tblCMontoPagado, tblCFecha, tblCIdCliente, tblCIdTipoDePago);
     }
     
-    private void CargarColumnasDetalle(TableView<DetalleFactura> table) {
+    private void CargarColumnasDetalle() {
         TableColumn tblCNombreArticulo = new TableColumn("Nombre Articulo");
-        tblCNombreArticulo.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("Nombre"));
+        tblCNombreArticulo.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         tblCNombreArticulo.setMinWidth(118);
         TableColumn tblCPrecioArticulo = new TableColumn("Precio Articulo");
-        tblCPrecioArticulo.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("Precio"));
+        tblCPrecioArticulo.setCellValueFactory(new PropertyValueFactory<>("Precio"));
         tblCPrecioArticulo.setMinWidth(96);
         TableColumn tblCDescuento = new TableColumn("Descuento");
-        tblCDescuento.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("Descuento"));
+        tblCDescuento.setCellValueFactory(new PropertyValueFactory<>("Descuento"));
         tblCDescuento.setMinWidth(80);
-        table.getColumns().addAll(tblCNombreArticulo, tblCPrecioArticulo, tblCDescuento);
+        tblArticulos.getColumns().addAll(tblCNombreArticulo, tblCPrecioArticulo, tblCDescuento);
     }
     
     private void CargarApartados(String busqueda){

@@ -1,7 +1,7 @@
 
 package Controllers;
 
-import Models.DatosDocumentacion;
+import DataBase.DatosDocumentacion;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
 import javax.swing.JOptionPane;
 
@@ -23,11 +22,8 @@ public class DocumentacionTodoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
-
-    private void MouseMano(MouseEvent event) {
         btnGenerarDocumentacion.setCursor(Cursor.HAND);
-    }
+    }    
 
     @FXML
     private void GenerarDocumentacion(ActionEvent event) {
@@ -43,5 +39,4 @@ public class DocumentacionTodoController implements Initializable {
         }
         btnGenerarDocumentacion.setDisable(false);
     }
-    
 }

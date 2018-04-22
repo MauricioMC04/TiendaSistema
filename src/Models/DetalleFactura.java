@@ -35,6 +35,4 @@ public class DetalleFactura extends Articulo{
     public void setDescuento(double Descuento) {
         this.Descuento = Descuento;
     }
-
-    
 }

@@ -81,5 +81,4 @@ public class Factura {
     public void setIdTipoDePago(int idTipoDePago) {
         this.idTipoDePago = idTipoDePago;
     }
-    
 }

@@ -1,10 +1,10 @@
 
 package Controllers;
 
-import Models.AbonoApartado;
+import Models.Abono;
 import Models.Cliente;
-import Models.DatosAbonoApartado;
-import Models.DatosFactura;
+import DataBase.DatosAbonoApartado;
+import DataBase.DatosFactura;
 import Models.DetalleFactura;
 import Models.Factura;
 import java.net.URL;
@@ -20,7 +20,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -32,10 +31,13 @@ public class AbonoApartadoController implements Initializable {
 
     DatosFactura datosFactura = new DatosFactura();
     DatosAbonoApartado datosAbono = new DatosAbonoApartado();
+    private Factura apartado = null;
     
     @FXML
     private TextField txtBusqueda;
+    @FXML
     private TableView<Factura> tblFacturas;
+    @FXML
     private TableView<DetalleFactura> tblArticulos;
     @FXML
     private Label lblTotal;
@@ -74,30 +76,31 @@ public class AbonoApartadoController implements Initializable {
     @FXML
     private Label lblNoMonto;
     @FXML
-    private TableView<?> tblReparaciones;
+    private Button btnImprimir;
     @FXML
-    private Label lblArticulo;
-    @FXML
-    private TextField txtArticulo;
-    @FXML
-    private Label lblDescripcion;
-    @FXML
-    private TextArea txtDescripcion;
+    private Button btnNuevoAbono;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        txtBusqueda.setCursor(Cursor.TEXT);
+        txtMontoAbono.setCursor(Cursor.TEXT);
+        tblArticulos.setCursor(Cursor.CROSSHAIR);
+        tblFacturas.setCursor(Cursor.CROSSHAIR);
+        rbtnEfectivo.setCursor(Cursor.HAND);
+        rbtnTarjeta.setCursor(Cursor.HAND);
+        btnRealizarAbono.setCursor(Cursor.HAND);
+        btnImprimir.setCursor(Cursor.HAND);
+        btnImprimir.setVisible(false);
+        btnNuevoAbono.setCursor(Cursor.HAND);
+        btnNuevoAbono.setVisible(false);
         ParteFactura(false);
-        CargarColumnasDetalle(tblArticulos);
-        CargarColumnasFactura(tblFacturas);
+        CargarColumnasDetalle();
+        CargarColumnasFactura();
         CargarFacturas("Ninguna");
         lblNoMonto.setVisible(false);
     }    
-
-    private void MouseEscribir(MouseEvent event) {
-        txtBusqueda.setCursor(Cursor.TEXT);
-        txtMontoAbono.setCursor(Cursor.TEXT);
-    }
-
+    
+    @FXML
     private void BuscarFactura(KeyEvent event) {
         if(txtBusqueda.getText().equals("")){
             CargarFacturas("Ninguna");
@@ -106,61 +109,43 @@ public class AbonoApartadoController implements Initializable {
         }
     }
 
-    private void MouseDireccion(MouseEvent event) {
-        tblArticulos.setCursor(Cursor.CROSSHAIR);
-        tblFacturas.setCursor(Cursor.CROSSHAIR);
-    }
-
-    private void MouseMano(MouseEvent event) {
-        rbtnEfectivo.setCursor(Cursor.HAND);
-        rbtnTarjeta.setCursor(Cursor.HAND);
-        btnRealizarAbono.setCursor(Cursor.HAND);
-    }
-
     @FXML
     private void RealizarAbono(ActionEvent event) {
         btnRealizarAbono.setDisable(true);
-        Factura factura = tblFacturas.getSelectionModel().getSelectedItem();
-        if(factura != null){
+        apartado = tblFacturas.getSelectionModel().getSelectedItem();
+        if(apartado != null){
             if(txtMontoAbono.getText().equals("")){
                 lblNoMonto.setVisible(true);
             }else{
                 try {
                     double monto = Double.parseDouble(txtMontoAbono.getText());
                     if(monto <= Double.parseDouble(lblFaltante.getText())){
-                        if(Abono(factura.getCodigoFactura(), monto)){
-                            if(monto == Double.parseDouble(lblFaltante.getText())){                                
-                                datosFactura.ImprimirFactura(factura.getCodigoFactura());
-                            }
-                            rbtnEfectivo.setSelected(true);
-                            lblNoMonto.setVisible(false);
-                            tblArticulos.getItems().clear();
-                            ParteFactura(false);
-                            tblFacturas.getSelectionModel().select(null);
-                            txtMontoAbono.setText("");
-                            if(txtBusqueda.getText().equals("")){
-                                CargarFacturas("Ninguna");
-                            }else{
-                                CargarFacturas(txtBusqueda.getText());
-                            }
+                        if(Abono(apartado.getCodigoFactura(), monto)){
+                            btnImprimir.setVisible(true);
+                            btnNuevoAbono.setVisible(true);
                         }else{
                             JOptionPane.showMessageDialog(null, "Error al realizar el Abono");
+                              btnRealizarAbono.setDisable(false);
                         }
                     }else{
                         JOptionPane.showMessageDialog(null, "Monto del Abono Invalido\nEl monto faltante es de " + 
                             lblFaltante.getText() + "\nRedigite el Monto del Abono");
+                          btnRealizarAbono.setDisable(false);
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Monto de Abono Invalido\nNo digite letras en el espacio del monto "
                         + "del Abono\nRedigite el Monto del Abono");
+                      btnRealizarAbono.setDisable(false);
                 }
             }
         }else{
             JOptionPane.showMessageDialog(null, "Seleccione la factura sobre la que desea hacer el Abono");
+              btnRealizarAbono.setDisable(false);
         }
-        btnRealizarAbono.setDisable(false);
+      
     }
 
+    @FXML
     private void MostrarFactura(MouseEvent event) {
         Factura factura = tblFacturas.getSelectionModel().getSelectedItem();
         if(factura != null){
@@ -187,39 +172,39 @@ public class AbonoApartadoController implements Initializable {
         lblNumeroClienteFactura.setVisible(bandera);
     }
     
-     private void CargarColumnasFactura(TableView<Factura> table) {
+     private void CargarColumnasFactura() {
         TableColumn tblCCodigoFactura = new TableColumn("Codigo");
-        tblCCodigoFactura.setCellValueFactory(new PropertyValueFactory<Factura, String>("CodigoFactura"));
+        tblCCodigoFactura.setCellValueFactory(new PropertyValueFactory<>("CodigoFactura"));
         tblCCodigoFactura.setMinWidth(81);
         TableColumn tblCMontoTotal = new TableColumn("Total");
-        tblCMontoTotal.setCellValueFactory(new PropertyValueFactory<Factura, String>("MontoTotal"));
+        tblCMontoTotal.setCellValueFactory(new PropertyValueFactory<>("MontoTotal"));
         tblCMontoTotal.setMinWidth(81);
         TableColumn tblCMontoPagado = new TableColumn("Pagado");
-        tblCMontoPagado.setCellValueFactory(new PropertyValueFactory<Factura, String>("MontoPagado"));
+        tblCMontoPagado.setCellValueFactory(new PropertyValueFactory<>("MontoPagado"));
         tblCMontoPagado.setMinWidth(81);
         TableColumn tblCFecha = new TableColumn("Fecha");
-        tblCFecha.setCellValueFactory(new PropertyValueFactory<Factura, String>("Fecha"));
+        tblCFecha.setCellValueFactory(new PropertyValueFactory<>("Fecha"));
         tblCFecha.setMinWidth(81);
         TableColumn tblCIdCliente = new TableColumn("Cliente");
-        tblCIdCliente.setCellValueFactory(new PropertyValueFactory<Factura, String>("idCliente"));
+        tblCIdCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
         tblCIdCliente.setMinWidth(81);
         TableColumn tblCIdTipoDePago = new TableColumn("Tipo Pago");
-        tblCIdTipoDePago.setCellValueFactory(new PropertyValueFactory<Factura, String>("idTipoDePago"));
+        tblCIdTipoDePago.setCellValueFactory(new PropertyValueFactory<>("idTipoDePago"));
         tblCIdTipoDePago.setMinWidth(81);
-        table.getColumns().addAll(tblCCodigoFactura, tblCMontoTotal, tblCMontoPagado, tblCFecha, tblCIdCliente, tblCIdTipoDePago);
+        tblFacturas.getColumns().addAll(tblCCodigoFactura, tblCMontoTotal, tblCMontoPagado, tblCFecha, tblCIdCliente, tblCIdTipoDePago);
     }
     
-    private void CargarColumnasDetalle(TableView<DetalleFactura> table) {
+    private void CargarColumnasDetalle() {
         TableColumn tblCNombreArticulo = new TableColumn("Nombre Articulo");
-        tblCNombreArticulo.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("Nombre"));
+        tblCNombreArticulo.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         tblCNombreArticulo.setMinWidth(143);
         TableColumn tblCPrecioArticulo = new TableColumn("Precio Articulo");
-        tblCPrecioArticulo.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("Precio"));
+        tblCPrecioArticulo.setCellValueFactory(new PropertyValueFactory<>("Precio"));
         tblCPrecioArticulo.setMinWidth(143);
         TableColumn tblCDescuento = new TableColumn("Descuento");
-        tblCDescuento.setCellValueFactory(new PropertyValueFactory<DetalleFactura, String>("Descuento"));
+        tblCDescuento.setCellValueFactory(new PropertyValueFactory<>("Descuento"));
         tblCDescuento.setMinWidth(143);
-        table.getColumns().addAll(tblCNombreArticulo, tblCPrecioArticulo, tblCDescuento);
+        tblArticulos.getColumns().addAll(tblCNombreArticulo, tblCPrecioArticulo, tblCDescuento);
     }
     
     private void CargarFacturas(String busqueda){
@@ -249,14 +234,33 @@ public class AbonoApartadoController implements Initializable {
         if(rbtnTarjeta.isSelected()){
             tipoDePago = 2;
         }
-        return datosAbono.RealizarAbono(new AbonoApartado(0,codigoFactura,monto,fecha,tipoDePago));
+        return datosAbono.RealizarAbono(new Abono(0,codigoFactura,monto,fecha,tipoDePago));
     }
 
     @FXML
-    private void BuscarReparacion(KeyEvent event) {
+    private void Imprimir(ActionEvent event) {
+        btnImprimir.setDisable(true);
+        datosFactura.ImprimirFactura(apartado.getCodigoFactura());
+        btnImprimir.setDisable(false);
     }
 
     @FXML
-    private void MostrarReparacion(MouseEvent event) {
+    private void NuevoAbono(ActionEvent event) {
+        btnNuevoAbono.setDisable(true);
+        rbtnEfectivo.setSelected(true);
+        lblNoMonto.setVisible(false);
+        tblArticulos.getItems().clear();
+        ParteFactura(false);
+        tblFacturas.getSelectionModel().select(null);
+        txtMontoAbono.setText("");
+        if(txtBusqueda.getText().equals("")){
+            CargarFacturas("Ninguna");
+        }else{
+            CargarFacturas(txtBusqueda.getText());
+        }
+        btnImprimir.setVisible(false);
+        btnNuevoAbono.setVisible(false);
+        btnRealizarAbono.setDisable(false);
+        btnNuevoAbono.setDisable(false);
     }
 }

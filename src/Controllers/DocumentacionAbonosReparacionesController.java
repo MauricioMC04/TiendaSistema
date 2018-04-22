@@ -1,37 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controllers;
 
+import DataBase.DatosDocumentacion;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.stage.DirectoryChooser;
+import javax.swing.JOptionPane;
 
-/**
- * FXML Controller class
- *
- * @author Josue
- */
 public class DocumentacionAbonosReparacionesController implements Initializable {
 
+    private final DatosDocumentacion datosDocumentacion = new DatosDocumentacion();
+    
     @FXML
     private Button btnGenerarDocumentacion;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        btnGenerarDocumentacion.setCursor(Cursor.HAND);
     }    
 
     @FXML
     private void GenerarDocumentacion(ActionEvent event) {
+        btnGenerarDocumentacion.setDisable(true);
+        DirectoryChooser fileChooser = new DirectoryChooser();
+        File selectedFile = fileChooser.showDialog(null);
+        if (selectedFile != null) {
+           if(datosDocumentacion.AbonosReparacionDocumentacion(selectedFile.getPath()+"/MundoDelCalzado2AbonosReparacion.xls")){
+               JOptionPane.showMessageDialog(null, "Documentacion de Abonos Reparaciones generado correctamente");
+           }else{
+               JOptionPane.showMessageDialog(null, "Error al generar Documentacion de Abonos Reparaciones");
+           }
+        }
+        btnGenerarDocumentacion.setDisable(false);
     }
-    
 }

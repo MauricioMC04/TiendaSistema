@@ -32,13 +32,12 @@ public class Fecha {
     }
 
     public Fecha(String fecha, int cantidadVentas, double totalVentas, double totalVentasEfectivo, 
-            double totalVentasTarjeta, int cantidadApartados, double totalApartados, double totalApartadosEfectivo, 
-            double totalApartadosTarjeta, int cantidadAbonosApartados, double totalAbonosApartados, 
-            double totalAbonosApartadosEfectivo, double totalAbonosApartadosTarjeta, double totalIngresos, 
-            double totalIngresosEfecttivo, double totalIngresosTarjeta, int cantidadReparaciones, 
-            double totalReparaciones, double totalReparacionesEfectivo, double totalReparacionesTarjeta, 
-            int cantidadAbonosReparaciones, double totalAbonosReparaciones, double totalAbonosReparacionesEfectivo, 
-            double totalAbonosReparacionesTarjeta) {
+    double totalVentasTarjeta, int cantidadApartados, double totalApartados, double totalApartadosEfectivo, 
+    double totalApartadosTarjeta, int cantidadAbonosApartados, double totalAbonosApartados, 
+    double totalAbonosApartadosEfectivo, double totalAbonosApartadosTarjeta, double totalIngresos, 
+    double totalIngresosEfecttivo, double totalIngresosTarjeta, int cantidadReparaciones, double totalReparaciones, 
+    double totalReparacionesEfectivo, double totalReparacionesTarjeta, int cantidadAbonosReparaciones, 
+    double totalAbonosReparaciones, double totalAbonosReparacionesEfectivo, double totalAbonosReparacionesTarjeta) {
         this.fecha = fecha;
         this.cantidadVentas = cantidadVentas;
         this.totalVentas = totalVentas;
@@ -256,5 +255,4 @@ public class Fecha {
     public void setTotalAbonosReparacionesTarjeta(double totalAbonosReparacionesTarjeta) {
         this.totalAbonosReparacionesTarjeta = totalAbonosReparacionesTarjeta;
     }
-    
 }

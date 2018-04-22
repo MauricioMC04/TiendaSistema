@@ -29,9 +29,9 @@ public class ConsultasController implements Initializable {
     @FXML
     private AnchorPane Espacio;
     @FXML
-    private Button btnArticulos1;
+    private Button btnReparaciones;
     @FXML
-    private Button btnArticulos2;
+    private Button btnAbonosReparacion;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -41,6 +41,8 @@ public class ConsultasController implements Initializable {
         btnClientes.setCursor(Cursor.HAND);
         btnFacturas.setCursor(Cursor.HAND);
         btnFechas.setCursor(Cursor.HAND);
+        btnReparaciones.setCursor(Cursor.HAND);
+        btnAbonosReparacion.setCursor(Cursor.HAND);
         btnFacturas.getStyleClass().add("btn5");
         CargarVentana("Facturas");
     }
@@ -66,7 +68,7 @@ public class ConsultasController implements Initializable {
     @FXML
     private void Abonos(ActionEvent event) {
         btnAbonos.setDisable(true);
-        CargarVentana("Abonos");
+        CargarVentana("AbonosApartado");
         DesSeleccionar();
         btnAbonos.getStyleClass().add("btn5");
         btnAbonos.setDisable(false);
@@ -122,5 +124,25 @@ public class ConsultasController implements Initializable {
         Seleccionados(btnArticulos.getStyleClass());
         Seleccionados(btnClientes.getStyleClass());
         Seleccionados(btnFechas.getStyleClass());
+        Seleccionados(btnReparaciones.getStyleClass());
+        Seleccionados(btnAbonosReparacion.getStyleClass());
+    }
+
+    @FXML
+    private void Reparaciones(ActionEvent event) {
+        btnReparaciones.setDisable(true);
+        CargarVentana("Reparaciones");
+        DesSeleccionar();
+        btnReparaciones.getStyleClass().add("btn5");
+        btnReparaciones.setDisable(false);
+    }
+
+    @FXML
+    private void AbonosReparacion(ActionEvent event) {
+        btnAbonosReparacion.setDisable(true);
+        CargarVentana("AbonosReparacion");
+        DesSeleccionar();
+        btnAbonosReparacion.getStyleClass().add("btn5");
+        btnAbonosReparacion.setDisable(false);
     }
 }

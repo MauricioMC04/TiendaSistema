@@ -1,7 +1,7 @@
 
 package Controllers;
 
-import Models.DatosFechas;
+import DataBase.DatosFechas;
 import Models.Fecha;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -59,22 +59,6 @@ public class ConsultaFechasController implements Initializable {
     @FXML
     private Label lblApartados;
     @FXML
-    private Label lblCantidadAbonos;
-    @FXML
-    private Label lblAbonos;
-    @FXML
-    private Label lblTotalPorAbonos;
-    @FXML
-    private Label lblTotalAbonos;
-    @FXML
-    private Label lblTotalAbonosEfectivo;
-    @FXML
-    private Label lblTotalAbEfectivo;
-    @FXML
-    private Label lblTotalAbonosTarjeta;
-    @FXML
-    private Label lblTotalAbTarjeta;
-    @FXML
     private Label lblTotalIngresosEfectivo;
     @FXML
     private Label lblTotalIEfectivo;
@@ -95,8 +79,6 @@ public class ConsultaFechasController implements Initializable {
     @FXML
     private Label lblTotalReparacionesEfectivo;
     @FXML
-    private Label lblTortalREjectivo;
-    @FXML
     private Label lblTotalReparacionesTarjeta;
     @FXML
     private Label lblTotalRTarjeta;
@@ -107,26 +89,41 @@ public class ConsultaFechasController implements Initializable {
     @FXML
     private Label lblTotalAbonosReparacion;
     @FXML
-    private Label lblTotalAbonosReparacion1;
-    @FXML
     private Label lblAbonosReparacionEfectivo;
-    @FXML
-    private Label lblTotalAbREjectivo;
     @FXML
     private Label lblAbonosReparacionTarjeta;
     @FXML
     private Label lblAbRTarjeta;
+    @FXML
+    private Label lblCantidadAbonosApartados;
+    @FXML
+    private Label lblAbonosApartados;
+    @FXML
+    private Label lblTotalPorAbonosApartados;
+    @FXML
+    private Label lblTotalAbonosApartados;
+    @FXML
+    private Label lblTotalAbonosApartadosEfectivo;
+    @FXML
+    private Label lblTotalAbApartadosEfectivo;
+    @FXML
+    private Label lblTotalAbonosApartadosTarjeta;
+    @FXML
+    private Label lblTotalAbApartadosTarjeta;
+    @FXML
+    private Label lblTotalAbReparacion;
+    @FXML
+    private Label lblTotalREfectivo;
+    @FXML
+    private Label lblTotalAbREfectivo;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        CargarColumnasFecha(tblFechas);
+        CargarColumnasFecha();
         CargarFechas("Ninguna");
         ParteFecha(false);
+        tblFechas.setCursor(Cursor.CROSSHAIR);
     }    
-
-    private void MouseEscribir(MouseEvent event) {
-        txtBusqueda.setCursor(Cursor.TEXT);
-    }
 
     @FXML
     private void BusquedaFecha(KeyEvent event) {
@@ -135,10 +132,6 @@ public class ConsultaFechasController implements Initializable {
         }else{
             CargarFechas(txtBusqueda.getText());
         }
-    }
-
-    private void MouseDireccion(MouseEvent event) {
-        tblFechas.setCursor(Cursor.CROSSHAIR);
     }
 
     @FXML
@@ -152,11 +145,11 @@ public class ConsultaFechasController implements Initializable {
         }
     }
     
-    private void CargarColumnasFecha(TableView<Fecha> table) {
+    private void CargarColumnasFecha() {
         TableColumn tblCFecha = new TableColumn("Fecha");
-        tblCFecha.setCellValueFactory(new PropertyValueFactory<Fecha, String>("fecha"));
-        tblCFecha.setMinWidth(397);
-        table.getColumns().addAll(tblCFecha);
+        tblCFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        tblCFecha.setMinWidth(395);
+        tblFechas.getColumns().addAll(tblCFecha);
     }
     
     private void CargarFechas(String busqueda){
@@ -165,19 +158,19 @@ public class ConsultaFechasController implements Initializable {
     }
     
     private void ParteFecha(boolean bandera){
-        lblAbonos.setVisible(bandera);
+        lblAbonosApartados.setVisible(bandera);
         lblApartados.setVisible(bandera);
-        lblCantidadAbonos.setVisible(bandera);
+        lblCantidadAbonosApartados.setVisible(bandera);
         lblCantidadApartados.setVisible(bandera);
         lblCantidadVentas.setVisible(bandera);
         lblIngresos.setVisible(bandera);
         lblTotalAEfectivo.setVisible(bandera);
         lblTotalATarjeta.setVisible(bandera);
-        lblTotalAbEfectivo.setVisible(bandera);
-        lblTotalAbTarjeta.setVisible(bandera);
-        lblTotalAbonos.setVisible(bandera);
-        lblTotalAbonosEfectivo.setVisible(bandera);
-        lblTotalAbonosTarjeta.setVisible(bandera);
+        lblTotalAbApartadosEfectivo.setVisible(bandera);
+        lblTotalAbApartadosTarjeta.setVisible(bandera);
+        lblTotalAbonosApartados.setVisible(bandera);
+        lblTotalAbonosApartadosEfectivo.setVisible(bandera);
+        lblTotalAbonosApartadosTarjeta.setVisible(bandera);
         lblTotalApartados.setVisible(bandera);
         lblTotalApartadosEfectivo.setVisible(bandera);
         lblTotalApartadosTarjeta.setVisible(bandera);
@@ -186,7 +179,7 @@ public class ConsultaFechasController implements Initializable {
         lblTotalIngresos.setVisible(bandera);
         lblTotalIngresosEfectivo.setVisible(bandera);
         lblTotalIngresosTarjeta.setVisible(bandera);
-        lblTotalPorAbonos.setVisible(bandera);
+        lblTotalPorAbonosApartados.setVisible(bandera);
         lblTotalPorApartados.setVisible(bandera);
         lblTotalPorVentas.setVisible(bandera);
         lblTotalVEfectivo.setVisible(bandera);
@@ -195,6 +188,22 @@ public class ConsultaFechasController implements Initializable {
         lblTotalVentasEfectivo.setVisible(bandera);
         lblTotalVentasTarjeta.setVisible(bandera);
         lblVentas.setVisible(bandera);
+        lblCantidadReparaciones.setVisible(bandera);
+        lblReparaciones.setVisible(bandera);
+        lblTotalPorReparaciones.setVisible(bandera);
+        lblTotalReparaciones.setVisible(bandera);
+        lblTotalReparacionesEfectivo.setVisible(bandera);
+        lblTotalREfectivo.setVisible(bandera);
+        lblTotalReparacionesTarjeta.setVisible(bandera);
+        lblTotalRTarjeta.setVisible(bandera);
+        lblCantidadAbonosReparacion.setVisible(bandera);
+        lblAbonosReparacion.setVisible(bandera);
+        lblTotalAbonosReparacion.setVisible(bandera);
+        lblAbonosReparacionEfectivo.setVisible(bandera);
+        lblTotalAbREfectivo.setVisible(bandera);
+        lblAbonosReparacionTarjeta.setVisible(bandera);
+        lblAbRTarjeta.setVisible(bandera);
+        lblTotalAbReparacion.setVisible(bandera);
     }
     
     private void CargarDatosFecha(Fecha fecha){
@@ -207,12 +216,20 @@ public class ConsultaFechasController implements Initializable {
         lblTotalApartados.setText(String.valueOf(fecha.getTotalApartados()));
         lblTotalAEfectivo.setText(String.valueOf(fecha.getTotalApartadosEfectivo()));
         lblTotalATarjeta.setText(String.valueOf(fecha.getTotalApartadosTarjeta()));
-        lblAbonos.setText(Integer.toString(fecha.getCantidadAbonosApartados()));
-        lblTotalAbonos.setText(String.valueOf(fecha.getTotalAbonosApartados()));
-        lblTotalAbEfectivo.setText(String.valueOf(fecha.getTotalAbonosApartadosEfectivo()));
-        lblTotalAbTarjeta.setText(String.valueOf(fecha.getTotalAbonosApartadosTarjeta()));
+        lblAbonosApartados.setText(Integer.toString(fecha.getCantidadAbonosApartados()));
+        lblTotalAbonosApartados.setText(String.valueOf(fecha.getTotalAbonosApartados()));
+        lblTotalAbApartadosEfectivo.setText(String.valueOf(fecha.getTotalAbonosApartadosEfectivo()));
+        lblTotalAbApartadosTarjeta.setText(String.valueOf(fecha.getTotalAbonosApartadosTarjeta()));
         lblIngresos.setText(String.valueOf(fecha.getTotalIngresos()));
         lblTotalIEfectivo.setText(String.valueOf(fecha.getTotalIngresosEfecttivo()));
         lblTotalITarjeta.setText(String.valueOf(fecha.getTotalIngresosTarjeta()));
+        lblReparaciones.setText(Integer.toString(fecha.getCantidadReparaciones()));
+        lblTotalReparaciones.setText(String.valueOf(fecha.getTotalReparaciones()));
+        lblTotalREfectivo.setText(String.valueOf(fecha.getTotalReparacionesEfectivo()));
+        lblTotalRTarjeta.setText(String.valueOf(fecha.getTotalReparacionesTarjeta()));
+        lblAbonosReparacion.setText(Integer.toString(fecha.getCantidadAbonosReparaciones()));
+        lblTotalAbReparacion.setText(String.valueOf(fecha.getTotalAbonosReparaciones()));
+        lblTotalAbREfectivo.setText(String.valueOf(fecha.getTotalAbonosReparacionesEfectivo()));
+        lblAbRTarjeta.setText(String.valueOf(fecha.getTotalAbonosReparacionesTarjeta()));
     }
 }

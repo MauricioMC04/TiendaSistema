@@ -46,7 +46,7 @@
                                  </toggleGroup>
                               </RadioButton>
                               <RadioButton fx:id="rbtnTarjeta" layoutX="210.0" layoutY="263.0" mnemonicParsing="false" styleClass="labels3" text="Tarjeta" toggleGroup="$rbtngTipoPago" />
-                              <Button fx:id="btnRealizarAbono" layoutX="317.0" layoutY="230.0" mnemonicParsing="false" onAction="#RealizarAbono" styleClass="btn2" text="Realizar Abono" />
+                              <Button fx:id="btnRealizarAbono" layoutX="320.0" layoutY="213.0" mnemonicParsing="false" onAction="#RealizarAbono" styleClass="btn2" text="Realizar Abono" />
                               <Label fx:id="lblIdClienteFactura" layoutX="35.0" layoutY="12.0" styleClass="labels3" text="IdCliente: " />
                               <Label fx:id="lblIdCliente" layoutX="160.0" layoutY="12.0" prefHeight="17.0" prefWidth="278.0" styleClass="labels3" text="Id del Cliente" />
                               <Label fx:id="lblNombreClienteFactura" layoutX="35.0" layoutY="37.0" styleClass="labels3" text="Nombre Cliente:" />
@@ -54,6 +54,8 @@
                               <Label fx:id="lblNombreCliente" layoutX="160.0" layoutY="37.0" prefHeight="17.0" prefWidth="282.0" styleClass="labels3" text="Nombre del Cliente" />
                               <Label fx:id="lblNumeroCliente" layoutX="160.0" layoutY="62.0" prefHeight="17.0" prefWidth="276.0" styleClass="labels3" text="Numero del Cliente" />
                               <Label fx:id="lblNoMonto" layoutX="374.0" layoutY="173.0" styleClass="labels4" text="*" />
+                              <Button fx:id="btnImprimir" layoutX="346.0" layoutY="250.0" mnemonicParsing="false" onAction="#Imprimir" styleClass="btn2" text="Imprimir" />
+                              <Button fx:id="btnNuevoAbono" layoutX="331.0" layoutY="288.0" mnemonicParsing="false" onAction="#NuevoAbono" styleClass="btn2" text="Nuevo Abono" />
                            </children>
                         </AnchorPane>
                     </items>

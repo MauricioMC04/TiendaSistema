@@ -26,7 +26,7 @@
       <TextArea fx:id="txtDescripcion" layoutX="198.0" layoutY="111.0" prefHeight="73.0" prefWidth="600.0" />
       <TextField fx:id="txtNombrePersona" layoutX="199.0" layoutY="230.0" prefHeight="25.0" prefWidth="600.0" />
       <TextField fx:id="txtNumeroPersona" layoutX="198.0" layoutY="276.0" prefHeight="25.0" prefWidth="600.0" />
-      <TextField fx:id="txtMontoTotal" layoutX="197.0" layoutY="342.0" prefHeight="25.0" prefWidth="601.0" />
+      <TextField fx:id="txtMontoTotal" layoutX="197.0" layoutY="342.0" prefHeight="25.0" prefWidth="601.0" promptText="0" />
       <TextField fx:id="txtMontoPagado" layoutX="196.0" layoutY="385.0" prefHeight="25.0" prefWidth="604.0" promptText="0" />
       <RadioButton fx:id="rbtnTarjeta" layoutX="437.0" layoutY="550.0" mnemonicParsing="false" styleClass="labels3" text="Tarjeta">
          <toggleGroup>

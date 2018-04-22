@@ -1,6 +1,7 @@
 
-package Models;
+package DataBase;
 
+import Models.Cliente;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,18 +16,12 @@ public class DatosClientes {
     
     public ObservableList<Cliente> Clientes(String busqueda){
         ObservableList <Cliente> modelo = FXCollections.observableArrayList();
-        String sql = GenerarSqlClientes(busqueda);
-        String[] datos = new String[3];
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery(GenerarSqlClientes(busqueda));
             while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                modelo.add(new Cliente(Integer.parseInt(datos[0]),datos[1],datos[2],
-                    CantidadApartados(Integer.parseInt(datos[0]))));
+                modelo.add(new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), CantidadApartados(rs.getInt(1))));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error Cargar Clientes \n" + ex);
@@ -37,19 +32,18 @@ public class DatosClientes {
  
     private String GenerarSqlClientes(String busqueda){
         if(busqueda.equals("Ninguna")){
-            return "select idCliente, Nombre, Numero from clientes where idCliente != 0";
+            return "select idCliente, Nombre, Numero from clientes where idCliente != 0 Order by Nombre ASC";
         }
         return "select idCliente, Nombre, Numero from clientes where idCliente != 0 And (idCliente Like '%" + busqueda +
-            "%' Or Nombre Like '%" + busqueda + "%' Or Numero Like '%" + busqueda + "%')";
+            "%' Or Nombre Like '%" + busqueda + "%' Or Numero Like '%" + busqueda + "%') Order by Nombre ASC";
     }
     
     private int CantidadApartados(int idCliente){
         int cantidad = 0;
-        String sql = "select count(idCliente) from facturas where idCliente = " + idCliente;
         Connection conexion = conex.open();
         try {
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery("select count(idCliente) from facturas where idCliente = " + idCliente);
             while (rs.next()) {
                 cantidad = rs.getInt(1);
             }

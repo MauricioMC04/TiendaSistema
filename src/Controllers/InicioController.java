@@ -1,7 +1,7 @@
 
 package Controllers;
 
-import Models.DatosInicio;
+import DataBase.DatosInicio;
 import Models.Fecha;
 import java.net.URL;
 import java.util.ResourceBundle;

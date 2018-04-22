@@ -56,16 +56,8 @@ public class PrincipalController implements Initializable {
     @FXML
     private void Inicio(ActionEvent event){
         btnInicio.setDisable(true);
+        DesSeleccionar();
         CargarVentana("Inicio");
-        Seleccionados(btnInicio.getStyleClass());
-        Seleccionados(btnAbonoApartado.getStyleClass());
-        Seleccionados(btnAbonoReparacion.getStyleClass());
-        Seleccionados(btnApartado.getStyleClass());
-        Seleccionados(btnArticulos.getStyleClass());
-        Seleccionados(btnConsultas.getStyleClass());
-        Seleccionados(btnDocumentacion.getStyleClass());
-        Seleccionados(btnReparacion.getStyleClass());
-        Seleccionados(btnVenta.getStyleClass());
         btnInicio.getStyleClass().add("btn5");
         btnInicio.setDisable(false);
     }
@@ -73,16 +65,8 @@ public class PrincipalController implements Initializable {
     @FXML
     private void Venta(ActionEvent event) {
         btnVenta.setDisable(true);
+        DesSeleccionar();
         CargarVentana("Venta");
-        Seleccionados(btnVenta.getStyleClass());
-        Seleccionados(btnInicio.getStyleClass());
-        Seleccionados(btnAbonoApartado.getStyleClass());
-        Seleccionados(btnAbonoReparacion.getStyleClass());
-        Seleccionados(btnApartado.getStyleClass());
-        Seleccionados(btnArticulos.getStyleClass());
-        Seleccionados(btnConsultas.getStyleClass());
-        Seleccionados(btnDocumentacion.getStyleClass());
-        Seleccionados(btnReparacion.getStyleClass());
         btnVenta.getStyleClass().add("btn5");
         btnVenta.setDisable(false);
     }
@@ -90,16 +74,8 @@ public class PrincipalController implements Initializable {
     @FXML
     private void Apartado(ActionEvent event) {
         btnApartado.setDisable(true);
+        DesSeleccionar();
         CargarVentana("Apartado");
-        Seleccionados(btnApartado.getStyleClass());
-        Seleccionados(btnInicio.getStyleClass());
-        Seleccionados(btnAbonoApartado.getStyleClass());
-        Seleccionados(btnAbonoReparacion.getStyleClass());
-        Seleccionados(btnArticulos.getStyleClass());
-        Seleccionados(btnConsultas.getStyleClass());
-        Seleccionados(btnDocumentacion.getStyleClass());
-        Seleccionados(btnReparacion.getStyleClass());
-        Seleccionados(btnVenta.getStyleClass());
         btnApartado.getStyleClass().add("btn5");
         btnApartado.setDisable(false);
     }
@@ -107,16 +83,8 @@ public class PrincipalController implements Initializable {
     @FXML
     private void Consultas(ActionEvent event) {
         btnConsultas.setDisable(true);
+        DesSeleccionar();
         CargarVentana("Consultas");
-        Seleccionados(btnInicio.getStyleClass());
-        Seleccionados(btnAbonoApartado.getStyleClass());
-        Seleccionados(btnAbonoReparacion.getStyleClass());
-        Seleccionados(btnApartado.getStyleClass());
-        Seleccionados(btnArticulos.getStyleClass());
-        Seleccionados(btnConsultas.getStyleClass());
-        Seleccionados(btnDocumentacion.getStyleClass());
-        Seleccionados(btnReparacion.getStyleClass());
-        Seleccionados(btnVenta.getStyleClass());
         btnConsultas.getStyleClass().add("btn5");
         btnConsultas.setDisable(false);
     }
@@ -151,16 +119,8 @@ public class PrincipalController implements Initializable {
     @FXML
     private void Documentacion(ActionEvent event) {
         btnDocumentacion.setDisable(true);
+        DesSeleccionar();
         CargarVentana("Documentacion");
-        Seleccionados(btnInicio.getStyleClass());
-        Seleccionados(btnAbonoApartado.getStyleClass());
-        Seleccionados(btnAbonoReparacion.getStyleClass());
-        Seleccionados(btnApartado.getStyleClass());
-        Seleccionados(btnArticulos.getStyleClass());
-        Seleccionados(btnConsultas.getStyleClass());
-        Seleccionados(btnDocumentacion.getStyleClass());
-        Seleccionados(btnReparacion.getStyleClass());
-        Seleccionados(btnVenta.getStyleClass());
         btnDocumentacion.getStyleClass().add("btn5");
         btnDocumentacion.setDisable(false);
     }
@@ -168,16 +128,8 @@ public class PrincipalController implements Initializable {
     @FXML
     private void Articulos(ActionEvent event) {
         btnArticulos.setDisable(true);
+        DesSeleccionar();
         CargarVentana("Articulos");
-        Seleccionados(btnInicio.getStyleClass());
-        Seleccionados(btnAbonoApartado.getStyleClass());
-        Seleccionados(btnAbonoReparacion.getStyleClass());
-        Seleccionados(btnApartado.getStyleClass());
-        Seleccionados(btnArticulos.getStyleClass());
-        Seleccionados(btnConsultas.getStyleClass());
-        Seleccionados(btnDocumentacion.getStyleClass());
-        Seleccionados(btnReparacion.getStyleClass());
-        Seleccionados(btnVenta.getStyleClass());
         btnArticulos.getStyleClass().add("btn5");
         btnArticulos.setDisable(false);
     }
@@ -185,16 +137,8 @@ public class PrincipalController implements Initializable {
     @FXML
     private void AbonoApartado(ActionEvent event) {
         btnAbonoApartado.setDisable(true);
+        DesSeleccionar();
         CargarVentana("AbonoApartado");
-        Seleccionados(btnInicio.getStyleClass());
-        Seleccionados(btnAbonoApartado.getStyleClass());
-        Seleccionados(btnAbonoReparacion.getStyleClass());
-        Seleccionados(btnApartado.getStyleClass());
-        Seleccionados(btnArticulos.getStyleClass());
-        Seleccionados(btnConsultas.getStyleClass());
-        Seleccionados(btnDocumentacion.getStyleClass());
-        Seleccionados(btnReparacion.getStyleClass());
-        Seleccionados(btnVenta.getStyleClass());
         btnAbonoApartado.getStyleClass().add("btn5");
         btnAbonoApartado.setDisable(false);
     }
@@ -202,16 +146,8 @@ public class PrincipalController implements Initializable {
     @FXML
     private void Reparacion(ActionEvent event) {
         btnReparacion.setDisable(true);
+        DesSeleccionar();
         CargarVentana("Reparacion");
-        Seleccionados(btnInicio.getStyleClass());
-        Seleccionados(btnAbonoApartado.getStyleClass());
-        Seleccionados(btnAbonoReparacion.getStyleClass());
-        Seleccionados(btnApartado.getStyleClass());
-        Seleccionados(btnArticulos.getStyleClass());
-        Seleccionados(btnConsultas.getStyleClass());
-        Seleccionados(btnDocumentacion.getStyleClass());
-        Seleccionados(btnReparacion.getStyleClass());
-        Seleccionados(btnVenta.getStyleClass());
         btnReparacion.getStyleClass().add("btn5");
         btnReparacion.setDisable(false);
     }
@@ -219,16 +155,8 @@ public class PrincipalController implements Initializable {
     @FXML
     private void AbonoReparacion(ActionEvent event) {
         btnAbonoReparacion.setDisable(true);
+        DesSeleccionar();
         CargarVentana("AbonoReparacion");
-        Seleccionados(btnInicio.getStyleClass());
-        Seleccionados(btnAbonoApartado.getStyleClass());
-        Seleccionados(btnAbonoReparacion.getStyleClass());
-        Seleccionados(btnApartado.getStyleClass());
-        Seleccionados(btnArticulos.getStyleClass());
-        Seleccionados(btnConsultas.getStyleClass());
-        Seleccionados(btnDocumentacion.getStyleClass());
-        Seleccionados(btnReparacion.getStyleClass());
-        Seleccionados(btnVenta.getStyleClass());
         btnAbonoReparacion.getStyleClass().add("btn5");
         btnAbonoReparacion.setDisable(false);
     }
@@ -237,5 +165,17 @@ public class PrincipalController implements Initializable {
         if(lista.size()>2){
             lista.remove(2);
         }
+    }
+    
+    private void DesSeleccionar(){
+        Seleccionados(btnInicio.getStyleClass());
+        Seleccionados(btnAbonoApartado.getStyleClass());
+        Seleccionados(btnAbonoReparacion.getStyleClass());
+        Seleccionados(btnApartado.getStyleClass());
+        Seleccionados(btnArticulos.getStyleClass());
+        Seleccionados(btnConsultas.getStyleClass());
+        Seleccionados(btnDocumentacion.getStyleClass());
+        Seleccionados(btnReparacion.getStyleClass());
+        Seleccionados(btnVenta.getStyleClass());
     }
 }

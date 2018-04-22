@@ -2,7 +2,7 @@
 package Controllers;
 
 import Models.Articulo;
-import Models.DatosArticulos;
+import DataBase.DatosArticulos;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -13,7 +13,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 
 public class ConsultaArticulosController implements Initializable {
 
@@ -26,13 +25,10 @@ public class ConsultaArticulosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        CargarColumnasArticulos(tblArticulos);
+        CargarColumnasArticulos();
         CargarArticulos("Ninguna");
+        tblArticulos.setCursor(Cursor.CROSSHAIR);
     }    
-
-    private void MouseEscribir(MouseEvent event) {
-         txtBusqueda.setCursor(Cursor.TEXT);
-    }
 
     @FXML
     private void BusquedaArticulo(KeyEvent event) {
@@ -42,22 +38,18 @@ public class ConsultaArticulosController implements Initializable {
             CargarArticulos(txtBusqueda.getText());
         }
     }
-
-    private void MouseDireccion(MouseEvent event) {
-        tblArticulos.setCursor(Cursor.CROSSHAIR);
-    }
     
-    private void CargarColumnasArticulos(TableView<Articulo> table) {
+    private void CargarColumnasArticulos() {
         TableColumn tblCCodigoArticulo = new TableColumn("Codigo");
-        tblCCodigoArticulo.setCellValueFactory(new PropertyValueFactory<Articulo, String>("CodigoArticulo"));
+        tblCCodigoArticulo.setCellValueFactory(new PropertyValueFactory<>("CodigoArticulo"));
         tblCCodigoArticulo.setMinWidth(272);
         TableColumn tblCNombre = new TableColumn("Nombre");
-        tblCNombre.setCellValueFactory(new PropertyValueFactory<Articulo, String>("Nombre"));
+        tblCNombre.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         tblCNombre.setMinWidth(272);
         TableColumn tblCPrecio = new TableColumn("Precio");
-        tblCPrecio.setCellValueFactory(new PropertyValueFactory<Articulo, String>("Precio"));
+        tblCPrecio.setCellValueFactory(new PropertyValueFactory<>("Precio"));
         tblCPrecio.setMinWidth(272);
-        table.getColumns().addAll(tblCCodigoArticulo, tblCNombre, tblCPrecio);
+        tblArticulos.getColumns().addAll(tblCCodigoArticulo, tblCNombre, tblCPrecio);  
     }
     
     private void CargarArticulos(String busqueda){

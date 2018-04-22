@@ -39,5 +39,4 @@ public class Articulo {
     public void setPrecio(double Precio) {
         this.Precio = Precio;
     }
-    
 }
